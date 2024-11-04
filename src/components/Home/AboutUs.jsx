@@ -1,7 +1,7 @@
 function AboutUs({}) {
   return (
     <>
-      <section className="bg-black text-white min-h-screen px-4 pt-8 md:px-8 lg:px-16">
+      <section className="bg-black text-white px-4 py-8 md:px-8 lg:px-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold mb-8">What We Do</h1>
 
