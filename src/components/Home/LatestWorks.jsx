@@ -65,6 +65,7 @@ export default function LatestWorks() {
         </div>
       </div>
     </div>
+    {/* <hr className="border-gray-400 w-auto mx-auto"/> */}
   </section>
   );
 }

@@ -4,6 +4,7 @@ import { Phone } from "lucide-react";
 
 export default function HeroSection() {
   return (
+    <>
     <div className="relative min-h-screen">
       {/* Background Image */}
       <div
@@ -56,5 +57,7 @@ export default function HeroSection() {
         <Phone className="w-6 h-6" />
       </Link>
     </div>
+    {/* <hr className="border-gray-400 w-auto mx-auto"/> */}
+    </>
   );
 }
