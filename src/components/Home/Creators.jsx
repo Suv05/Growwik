@@ -1,0 +1,74 @@
+import { FaInstagram, FaYoutube } from "react-icons/fa";
+import Image from "next/image";
+
+function Creators({}) {
+  const creators = [
+    {
+      id: "@creator_001",
+      image: "https://plus.unsplash.com/premium_photo-1674389878102-fe66cd2bc29e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+    },
+    {
+      id: "@creator_001",
+      image: "https://images.unsplash.com/photo-1581368076903-c20fee986735?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+    },
+    {
+      id: "@creator_001",
+      image: "https://images.unsplash.com/photo-1581368039520-576f51440580?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3JlYXRvcnN8ZW58MHx8MHx8fDA%3D",
+    },
+    {
+      id: "@creator_001",
+      image: "https://plus.unsplash.com/premium_photo-1677171381845-c6627ed5d2ad?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+    },
+    {
+      id: "@creator_001",
+      image: "https://images.unsplash.com/photo-1581368129682-e2d66324045b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+    },
+  ];
+  return (
+    <>
+      <section className="bg-black text-white px-4 py-16 md:px-8 lg:px-16">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16">
+            Creators we have
+          </h2>
+
+          <div className="flex flex-wrap justify-center gap-8 mb-16">
+            {creators.map((creator, index) => (
+              <div key={index} className="flex flex-col items-center gap-4">
+                {/* Circular Image Container */}
+                <div className="relative w-40 h-40 md:w-48 md:h-48">
+                  <div className="absolute inset-0 rounded-full border-4 border-white">
+                    <Image
+                      src={creator.image}
+                      alt={`Creator ${index + 1}`}
+                      fill
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+                </div>
+
+                {/* Creator ID */}
+                <p className="text-lg font-medium">{creator.id}</p>
+
+                {/* Social Media Icons */}
+                <div className="flex gap-4">
+                  <FaInstagram className="w-6 h-6 cursor-pointer hover:text-gray-300 transition-colors" />
+                  <FaYoutube className="w-6 h-6 cursor-pointer hover:text-gray-300 transition-colors" />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Explore More Button */}
+          <div className="text-center">
+            <button className="bg-white text-black px-8 py-3 rounded-full font-medium text-lg hover:bg-gray-200 transition-colors">
+              Explore More
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export default Creators;
