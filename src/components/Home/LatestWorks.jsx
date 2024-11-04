@@ -30,20 +30,22 @@ export default function LatestWorks() {
 
   return (
     <section className="bg-black py-16 px-4">
-      <div className="container mx-auto">
-        <h2 className="text-white text-4xl md:text-5xl font-bold mb-12 px-4">
-          Our Latest Works
-        </h2>
-
+    <div className="container mx-auto">
+      <h2 className="text-white text-4xl md:text-5xl font-bold mb-12 text-center">
+        Our Latest Works
+      </h2>
+      
+      {/* Works Gallery Container */}
+      <div className="max-w-7xl mx-auto">
         {/* Works Gallery */}
-        <div className="flex gap-8 overflow-x-auto pb-8 snap-x snap-mandatory px-8">
+        <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory justify-start md:justify-center">
           {works.map((work) => (
             <div
               key={work.id}
-              className="flex-none w-[280px] md:w-[320px] snap-center"
+              className="flex-none w-[240px] md:w-[280px] snap-center first:ml-0 md:first:ml-auto"
             >
               {/* Phone Frame */}
-              <div className="relative bg-white rounded-[3rem] p-3 aspect-[9/19.5]">
+              <div className="relative bg-white rounded-[3rem] p-3 aspect-[9/16]">
                 {/* Phone Screen */}
                 <div className="relative w-full h-full overflow-hidden rounded-[2.5rem]">
                   <Image
@@ -51,10 +53,10 @@ export default function LatestWorks() {
                     alt={work.alt}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 280px, 320px"
+                    sizes="(max-width: 768px) 240px, 280px"
                   />
                 </div>
-
+                
                 {/* Phone Notch */}
                 <div className="absolute top-5 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full" />
               </div>
@@ -62,6 +64,7 @@ export default function LatestWorks() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   );
 }
