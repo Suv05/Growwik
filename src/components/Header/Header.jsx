@@ -1,27 +1,35 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from "next/link"
-import Image from "next/image"
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useScroll } from "@/lib/ScrollContext";
 
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollToSection } = useScroll();
 
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/services", label: "Our Services" },
-    { href: "/brands", label: "Brands" },
-    { href: "/contact", label: "Contact Us" },
-    { href: "/blogs", label: "Blogs" },
-  ]
+    { label: "Home", section: null },
+    { label: "About Us", section: "aboutUs" },
+    { label: "Our Services", section: "servicePage" },
+    { label: "Brands", section: "ourClients" },
+    { label: "Contact Us", section: "contactForm" },
+    { label: "Blogs", section: null },
+  ];
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+  const handleNavClick = (section) => {
+    if (section) {
+      scrollToSection(section);
+    }
+    setIsMobileMenuOpen(false); // Close the mobile menu
+  };
 
   return (
-    <header className="bg-black py-4">
+    <header className="fixed top-0 left-0 w-full bg-black py-4 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -41,13 +49,22 @@ export default function Header() {
           <nav className="hidden xl:block">
             <ul className="flex space-x-8">
               {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-white hover:text-gray-300 transition-colors duration-200 text-lg"
-                  >
-                    {item.label}
-                  </Link>
+                <li key={item.label}>
+                  {item.section ? (
+                    <button
+                      onClick={() => scrollToSection(item.section)}
+                      className="text-white hover:text-gray-300 transition-colors duration-200 text-lg"
+                    >
+                      {item.label}
+                    </button>
+                  ) : (
+                    <Link
+                      href={item.label === "Blogs" ? "/blogs" : "/"}
+                      className="text-white hover:text-gray-300 transition-colors duration-200 text-lg"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -87,21 +104,28 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <div
-          className={`xl:hidden ${
-            isMobileMenuOpen ? 'block' : 'hidden'
-          } mt-4`}
+          className={`xl:hidden ${isMobileMenuOpen ? "block" : "hidden"} mt-4`}
         >
           <nav>
             <ul className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-white hover:text-gray-300 transition-colors duration-200 text-lg block"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
+                <li key={item.label}>
+                  {item.section ? (
+                    <button
+                      onClick={() => handleNavClick(item.section)}
+                      className="text-white hover:text-gray-300 transition-colors duration-200 text-lg"
+                    >
+                      {item.label}
+                    </button>
+                  ) : (
+                    <Link
+                      href={item.label === "Blogs" ? "/blogs" : "/"}
+                      className="text-white hover:text-gray-300 transition-colors duration-200 text-lg"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -119,5 +143,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
