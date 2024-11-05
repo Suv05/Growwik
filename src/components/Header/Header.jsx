@@ -53,14 +53,14 @@ export default function Header() {
                   {item.section ? (
                     <button
                       onClick={() => scrollToSection(item.section)}
-                      className="text-white hover:text-gray-300 transition-colors duration-200 text-lg"
+                      className="button-underline"
                     >
                       {item.label}
                     </button>
                   ) : (
                     <Link
                       href={item.label === "Blogs" ? "/blogs" : "/"}
-                      className="text-white hover:text-gray-300 transition-colors duration-200 text-lg"
+                      className="button-underline"
                     >
                       {item.label}
                     </Link>
@@ -113,14 +113,14 @@ export default function Header() {
                   {item.section ? (
                     <button
                       onClick={() => handleNavClick(item.section)}
-                      className="text-white hover:text-gray-300 transition-colors duration-200 text-lg"
+                      className="button-underline"
                     >
                       {item.label}
                     </button>
                   ) : (
                     <Link
                       href={item.label === "Blogs" ? "/blogs" : "/"}
-                      className="text-white hover:text-gray-300 transition-colors duration-200 text-lg"
+                      className="button-underline"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.label}

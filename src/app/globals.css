@@ -65,3 +65,34 @@
   }
 }
 
+/* header button */
+.button-underline {
+  position: relative;
+  color: #ccc; /* Use a valid color code */
+  text-transform: uppercase;
+  font-size: 0.875rem; /* Equivalent to text-sm */
+  font-weight: normal;
+  transition: color 0.2s;
+}
+
+.button-underline:hover {
+  color: #fff; /* Optional: Change text color on hover */
+}
+
+.button-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px; /* Adjust the thickness of the underline */
+  background-image: linear-gradient(90deg, #ff7e5f, #feb47b); /* Colorful gradient */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.button-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
