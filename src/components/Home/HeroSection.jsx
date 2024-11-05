@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { FiMessageCircle } from "react-icons/fi";
+
 
 export default function HeroSection() {
   return (
@@ -51,13 +52,13 @@ export default function HeroSection() {
       {/* Fixed WhatsApp Button */}
       <Link
         href="https://wa.me/your-whatsapp-number"
-        className="fixed bottom-8 right-8 z-50 bg-[#222222] text-white p-4 rounded-full hover:bg-gray-800 transition-colors duration-300"
+        className="fixed bottom-8 right-8 z-50 bg-[#222222] text-white p-4 rounded-2xl hover:bg-gray-800 transition-colors duration-300"
         aria-label="Contact us on WhatsApp"
       >
-        <Phone className="w-6 h-6" />
+        <FiMessageCircle className="w-6 h-6" />
       </Link>
     </div>
-    {/* <hr className="border-gray-400 w-auto mx-auto"/> */}
+   
     </>
   );
 }
