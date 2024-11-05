@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -92,9 +93,10 @@ export default function Review() {
           <div className="flex flex-col md:flex-row gap-6 items-center">
             <div className="relative">
               <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-[#ACFF33]">
-                <img
+                <Image
                   src={testimonials[currentSlide].image}
                   alt={testimonials[currentSlide].name}
+                  fill
                   className="w-full h-full object-cover"
                 />
               </div>

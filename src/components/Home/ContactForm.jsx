@@ -1,5 +1,5 @@
 "use client";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
   const {
@@ -19,7 +19,7 @@ const ContactForm = () => {
     <div className="bg-black p-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-white mb-8">
-          Let's Have Chat
+          Let&apos;s Have Chat
         </h1>
         
         <div className="bg-gray-800 rounded-3xl p-8 md:p-12">

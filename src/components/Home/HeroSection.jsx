@@ -36,13 +36,13 @@ export default function HeroSection() {
                 href="/brand"
                 className="bg-white text-black px-6 py-2 sm:px-8 sm:py-3 rounded-lg hover:bg-gray-100 transition-colors duration-300 font-bold text-lg sm:text-xl"
               >
-                I'm Brand
+                I&apos;m Brand
               </Link>
               <Link
                 href="/influencer"
                 className="bg-white text-black px-6 py-2 sm:px-8 sm:py-3 rounded-lg hover:bg-gray-100 transition-colors duration-300 font-bold text-lg sm:text-xl"
               >
-                I'm Influencer
+                I&apos;m Influencer
               </Link>
             </div>
           </div>
