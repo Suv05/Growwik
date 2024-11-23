@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FiMessageCircle } from "react-icons/fi";
 
 export default function HeroSection() {
   return (
@@ -22,7 +21,7 @@ export default function HeroSection() {
             {/* Logo and Text */}
             <div className="text-center">
               <Image
-                src="/Agency-Logo-(Tag).png"
+                src="/Logo-with-tag.svg"
                 alt="Growwik Logo"
                 width={300} // Adjusted for mobile
                 height={150} // Adjusted for mobile
@@ -47,15 +46,6 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-
-        {/* Fixed WhatsApp Button */}
-        <Link
-          href="https://wa.me/your-whatsapp-number"
-          className="fixed bottom-8 right-8 z-50 bg-[#222222] text-white p-4 rounded-2xl hover:bg-gray-800 transition-colors duration-300"
-          aria-label="Contact us on WhatsApp"
-        >
-          <FiMessageCircle className="w-6 h-6" />
-        </Link>
       </div>
     </>
   );
