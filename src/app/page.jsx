@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { FiMessageCircle } from "react-icons/fi";
 import { useScroll } from "@/lib/ScrollContext";
 import HeroSection from "@/components/Home/HeroSection";
 import LatestWorks from "@/components/Home/LatestWorks";
