@@ -59,7 +59,7 @@ function OurClients() {
           transition={{ duration: 0.5 }}
           className="text-4xl font-bold text-white mb-12 text-center"
         >
-          Clients We've Worked With
+          Clients We&apos;ve Worked With
         </motion.h1>
 
         <motion.div
