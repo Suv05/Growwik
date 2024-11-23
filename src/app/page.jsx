@@ -1,10 +1,12 @@
 "use client";
+
+import Link from "next/link";
+import { FiMessageCircle } from "react-icons/fi";
 import { useScroll } from "@/lib/ScrollContext";
 import HeroSection from "@/components/Home/HeroSection";
 import LatestWorks from "@/components/Home/LatestWorks";
 import AboutUs from "@/components/Home/AboutUs";
 import ServicePage from "@/components/Home/ServicePage";
-import Platform from "@/components/Home/Platfrom";
 import Creators from "@/components/Home/Creators";
 import WhyChooseUse from "@/components/Home/WhyChooseUs";
 import OurClients from "@/components/Home/OurClients";
@@ -25,9 +27,6 @@ export default function Home() {
       <div ref={refs.servicePage}>
         <ServicePage />
       </div>
-
-      <Platform />
-
       <Creators />
 
       <WhyChooseUse />
@@ -40,6 +39,14 @@ export default function Home() {
       <div ref={refs.contactForm}>
         <ContactForm />
       </div>
+      {/* Fixed WhatsApp Button */}
+      <Link
+        href="https://wa.me/your-whatsapp-number"
+        className="fixed bottom-8 right-8 z-50 bg-[#222222] text-white p-4 rounded-2xl hover:bg-gray-800 transition-colors duration-300"
+        aria-label="Contact us on WhatsApp"
+      >
+        <FiMessageCircle className="w-6 h-6" />
+      </Link>
     </>
   );
 }
