@@ -1,9 +1,10 @@
 "use client";
+
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 function ServicePage() {
-  const [flippedIndex, setFlippedIndex] = useState(null); // Track which card is flipped
+  const [flippedIndex, setFlippedIndex] = useState(null);
 
   const services = [
     {
@@ -18,14 +19,14 @@ function ServicePage() {
       defaultColor: "bg-gray-600",
       activeColor: "bg-gradient-to-r from-yellow-400 to-orange-500",
       description:
-        "Utilize viral memes to create engaging content, capturing attention and enhancing your brand’s visibility.",
+        "Utilize viral memes to create engaging content, capturing attention and enhancing your brand's visibility.",
     },
     {
       title: "Content Creation",
       defaultColor: "bg-gray-600",
       activeColor: "bg-gradient-to-r from-blue-500 to-indigo-500",
       description:
-        "High-quality content tailored to your brand’s voice, including videos, graphics, blogs, and more.",
+        "High-quality content tailored to your brand's voice, including videos, graphics, blogs, and more.",
     },
     {
       title: "Social Media Management",
@@ -46,73 +47,115 @@ function ServicePage() {
       defaultColor: "bg-gray-600",
       activeColor: "bg-gradient-to-r from-cyan-500 to-blue-500",
       description:
-        "Boost your site’s visibility on search engines, enhancing organic traffic with expert SEO techniques.",
+        "Boost your site's visibility on search engines, enhancing organic traffic with expert SEO techniques.",
     },
   ];
 
   const handleCardClick = (index) => {
-    setFlippedIndex(index === flippedIndex ? null : index); // Toggle flip state
+    setFlippedIndex(index === flippedIndex ? null : index);
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+      },
+    },
   };
 
   return (
-    <section className="bg-black text-white min-h-screen px-4 py-16 md:px-8 lg:px-16 relative">
+    <section className="bg-black text-white min-h-screen px-4 py-16 md:px-8 lg:px-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold text-center mb-16"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           Services We Provide
-        </h2>
+        </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {services.map((service, index) => (
             <motion.div
               key={index}
               className="relative perspective-1000"
               onClick={() => handleCardClick(index)}
-              onHoverStart={() => handleCardClick(index)}
-              style={{ perspective: "1000px" }} // Set perspective for 3D effect
+              variants={cardVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <motion.div
-                className={`rounded-3xl p-6 md:p-8 min-h-[120px] cursor-pointer text-center transition-all duration-500 transform-style-3d ${
-                  flippedIndex === index ? "rotate-y-180" : ""
-                }`}
-                style={{
-                  transformStyle: "preserve-3d",
-                }}
-                transition={{ duration: 0.6 }}
-              >
-                {/* Front Side */}
-                <div
-                  className={`absolute inset-0 flex items-center justify-center text-xl md:text-2xl font-semibold rounded-3xl ${
+              <AnimatePresence>
+                <motion.div
+                  className={`rounded-3xl p-6 md:p-8 h-[200px] cursor-pointer text-center ${
                     flippedIndex === index
                       ? service.activeColor
                       : service.defaultColor
                   }`}
-                  style={{
-                    backfaceVisibility: "hidden",
-                  }}
+                  initial={false}
+                  animate={{ rotateY: flippedIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.6 }}
                 >
-                  {service.title}
-                </div>
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center text-xl md:text-2xl font-semibold rounded-3xl backface-hidden"
+                    initial={false}
+                    animate={{ opacity: flippedIndex === index ? 0 : 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {service.title}
+                  </motion.div>
 
-                {/* Back Side */}
-                <div
-                  className={`absolute inset-0 flex items-center justify-center text-lg p-4 md:p-6 font-medium rounded-3xl ${service.activeColor}`}
-                  style={{
-                    transform: "rotateY(180deg)",
-                    backfaceVisibility: "hidden",
-                  }}
-                >
-                  {service.description}
-                </div>
-              </motion.div>
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center text-lg p-4 md:p-6 font-medium rounded-3xl backface-hidden"
+                    initial={{ rotateY: 180 }}
+                    animate={{ opacity: flippedIndex === index ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {service.description}
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="text-center">
-          <button className="bg-white text-black px-8 py-3 rounded-full font-medium text-lg hover:bg-gray-200 transition-colors">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <motion.button
+            className="bg-white text-black px-8 py-3 rounded-full font-medium text-lg hover:bg-gray-200 transition-colors"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 0px 8px rgb(255,255,255)",
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
             Submit Your Brief!
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );
