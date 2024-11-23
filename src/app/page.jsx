@@ -12,6 +12,7 @@ import WhyChooseUse from "@/components/Home/WhyChooseUs";
 import OurClients from "@/components/Home/OurClients";
 import ContactForm from "@/components/Home/ContactForm";
 import Review from "@/components/Home/Review";
+import AnimatedContactButtons from "@/components/Home/AnimatedContactButtons";
 
 export default function Home() {
   const { refs } = useScroll();
@@ -40,13 +41,7 @@ export default function Home() {
         <ContactForm />
       </div>
       {/* Fixed WhatsApp Button */}
-      <Link
-        href="https://wa.me/your-whatsapp-number"
-        className="fixed bottom-8 right-8 z-50 bg-[#222222] text-white p-4 rounded-2xl hover:bg-gray-800 transition-colors duration-300"
-        aria-label="Contact us on WhatsApp"
-      >
-        <FiMessageCircle className="w-6 h-6" />
-      </Link>
+      <AnimatedContactButtons />
     </>
   );
 }
