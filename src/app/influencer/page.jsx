@@ -1,5 +1,5 @@
-import HeroSection from "@/components/brandUI/HeroSection";
-import BrandFrom from "@/components/brandUI/BrandForm";
+import HeroSection from "@/components/influencerUI/HeroSection";
+import BrandFrom from "@/components/influencerUI/BrandForm";
 
 function Influencer({}) {
   return (
