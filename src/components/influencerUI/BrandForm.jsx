@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
@@ -10,43 +11,38 @@ import {
   FaFacebook,
   FaLinkedin,
 } from "react-icons/fa6";
-import {
-  Smile,
-  Globe2,
-  Cog,
-  Brain,
-  Gamepad2,
-  Bike,
-  TrendingUp,
-  Music2,
-  Utensils,
-} from "lucide-react";
+import { SlUserFollow } from "react-icons/sl";
 
 const platforms = [
   {
     id: "instagram",
     name: "Instagram",
     icon: <FaInstagram size={35} />,
+    activeColor: "linear-gradient(to right, #F58529, #DD2A7B, #515BD4)",
   },
   {
     id: "youtube",
     name: "YouTube",
     icon: <FaYoutube size={35} />,
+    activeColor: "linear-gradient(to right, #FF0000, #C4302B)",
   },
   {
     id: "snapchat",
     name: "Snapchat",
     icon: <FaSnapchat size={35} />,
+    activeColor: "linear-gradient(to right, #f7ff00, #ffe600)",
   },
   {
     id: "facebook",
     name: "Facebook",
     icon: <FaFacebook size={35} />,
+    activeColor: "linear-gradient(to right, #1877F2, #3b5998)",
   },
   {
     id: "linkedin",
     name: "LinkedIn",
     icon: <FaLinkedin size={35} />,
+    activeColor: "linear-gradient(to right, #007bb5, #0077b5)",
   },
 ];
 
@@ -54,59 +50,60 @@ const genres = [
   {
     id: "beauty",
     name: "Beauty & Fashion",
-    icon: <Smile className="w-8 h-8" />,
+    icon: "/geners/make-up.png",
   },
   {
     id: "entertainment",
     name: "Entertainment & Comedy",
-    icon: <Smile className="w-8 h-8" />,
-    gradient: true,
+    icon: "/geners/video.png",
   },
   {
     id: "travel",
     name: "Travel",
-    icon: <Globe2 className="w-8 h-8" />,
+    icon: "/geners/world.png",
   },
   {
     id: "tech",
     name: "Technology",
-    icon: <Cog className="w-8 h-8" />,
+    icon: "/geners/project-management.png",
   },
   {
     id: "wellness",
-    name: "Wellness",
-    icon: <Brain className="w-8 h-8" />,
+    name: "Motivational",
+    icon: "/geners/motivation.png",
   },
   {
     id: "gaming",
     name: "Gaming",
-    icon: <Gamepad2 className="w-8 h-8" />,
+    icon: "/geners/console.png",
   },
   {
     id: "fitness",
-    name: "Fitness",
-    icon: <Bike className="w-8 h-8" />,
+    name: "Health & Fitness",
+    icon: "/geners/dumbbell.png",
   },
   {
     id: "business",
-    name: "Business",
-    icon: <TrendingUp className="w-8 h-8" />,
+    name: "Business & Finance",
+    icon: "/geners/business-and-finance.png",
   },
   {
     id: "music",
     name: "Music",
-    icon: <Music2 className="w-8 h-8" />,
+    icon: "/geners/wave-sound.png",
   },
   {
     id: "food",
     name: "Food",
-    icon: <Utensils className="w-8 h-8" />,
+    icon: "/geners/fast-food.png",
   },
 ];
 
 export default function BrandForm() {
   const [selectedPlatform, setSelectedPlatform] = useState("");
-  const [selectedGenre, setSelectedGenre] = useState("entertainment");
+  const [hoveredPlatform, setHoveredPlatform] = useState("");
+  const [hoveredGenre, setHoveredGenre] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
@@ -114,153 +111,228 @@ export default function BrandForm() {
   };
 
   return (
-    <div className="bg-black p-8 text-white">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="max-w-3xl mx-4 space-y-12"
-      >
+    <div className="bg-black min-[810px]:px-20 text-white p-8">
+      <form onSubmit={handleSubmit(onSubmit)} className="mx-4 space-y-40">
         {/* Name Input */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold tracking-wider">YOUR NAME:</h2>
+        <div className="space-y-8">
+          <h2 className="max-[680px]:text-lg text-xl font-medium tracking-wider">
+            YOUR NAME:
+          </h2>
           <div className="relative">
             <input
               {...register("name")}
               type="text"
               placeholder="Enter Your Name"
-              className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-lg focus:outline-none focus:border-gray-400 placeholder-gray-600"
+              className=" mt-2 w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-2xl focus:outline-none focus:border-gray-400 placeholder-gray-300 font-normal max-w-3xl px-4"
             />
           </div>
         </div>
 
         {/* Platform Selection */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-wider">
-            SELECT INFLUENCER MARKETING PLATFORM:
+        <div className="space-y-16">
+          <h2 className="text-3xl max-[680px]:text-xl font-bold tracking-wider">
+            SELECT INFLUENCER MARKETING PLATFORMS
           </h2>
-          <div className="flex gap-4">
+          <div
+            className="grid gap-6 
+            max-[340px]:grid-cols-1
+               max-[680px]:grid-cols-2
+               max-[1022px]:grid-cols-3 
+               lg:grid-cols-5 
+               mx-auto justify-items-center"
+          >
             {platforms.map((platform) => (
               <motion.button
                 key={platform.id}
                 type="button"
                 onClick={() => setSelectedPlatform(platform.id)}
-                className={`
-                  flex items-center justify-center w-44 h-24 rounded-xl
-                  ${
-                    platform.id === selectedPlatform ||
-                    (platform.id === "youtube" && !selectedPlatform)
-                      ? "bg-red-500"
-                      : "bg-gray-700"
-                  }
-                  transition-colors duration-200
-                `}
+                onHoverStart={() => setHoveredPlatform(platform.id)}
+                onHoverEnd={() => setHoveredPlatform("")}
+                className={`flex flex-col items-center justify-center 
+                    w-32 h-32 rounded-lg text-white
+                    ${
+                      platform.id === selectedPlatform
+                        ? "text-white"
+                        : "text-gray-200"
+                    }
+                    transition-transform duration-200 hover:scale-105 active:scale-95`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                style={{
+                  background:
+                    platform.id === selectedPlatform ||
+                    platform.id === hoveredPlatform
+                      ? platform.activeColor
+                      : "#3e3e3e",
+                }}
               >
                 {platform.icon}
-                <span className="sr-only">{platform.name}</span>
+                <span className="mt-2 text-sm font-medium">
+                  {platform.name}
+                </span>
               </motion.button>
             ))}
           </div>
         </div>
 
         {/* Social Handles */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-wider">Social Handles:</h2>
+        <div className="space-y-10">
+          <h2 className="text-3xl max-[680px]:text-xl font-bold tracking-wider">
+            LINK TO YOUR KEY CHANNELS/ HANDLES
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="relative">
+            {/* Instagram ID Input */}
+            <div className="relative flex items-center border-b-2 border-[#ffffff] pb-2 focus-within:border-gray-400">
+              <span className="text-gray-300 text-xl mr-4">
+                {/* Instagram Icon */}
+                <FaInstagram size={25} />
+              </span>
               <input
                 {...register("instaId")}
                 type="text"
-                placeholder="Enter Your Insta id"
-                className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-lg focus:outline-none focus:border-gray-400 placeholder-gray-600"
+                placeholder="Enter your Instagram ID"
+                className="w-full bg-transparent focus:outline-none placeholder-gray-300 font-light text-xl tracking-wider"
               />
             </div>
-            <div className="relative">
+
+            {/* YouTube ID Input */}
+            <div className="relative flex items-center border-b-2 border-[#ffffff] pb-2 focus-within:border-gray-400">
+              <span className="text-gray-300 text-xl mr-4">
+                {/* YouTube Icon */}
+                <FaYoutube size={25} />
+              </span>
               <input
                 {...register("youtubeId")}
                 type="text"
-                placeholder="Enter Your Youtube id"
-                className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-lg focus:outline-none focus:border-gray-400 placeholder-gray-600"
+                placeholder="Enter your YouTube ID"
+                className="w-full bg-transparent focus:outline-none placeholder-gray-300 font-light text-xl tracking-wider"
               />
             </div>
           </div>
         </div>
 
         {/* Followers/Subscribers Count */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-wider">
-            Followers/Subscribers Count:
+        <div className="space-y-10">
+          <h2 className="text-3xl max-[680px]:text-xl font-bold tracking-wider">
+            FOLLOWER / SUBSCRIBER COUNT
           </h2>
-          <div className="relative">
+          <div className="relative flex items-center border-b-2 border-[#ffffff] pb-2 focus-within:border-gray-400">
+            <span className="text-gray-300 text-xl mr-4">
+              {/* YouTube Icon */}
+              <SlUserFollow size={25} />
+            </span>
             <input
               {...register("followersCount")}
               type="text"
               placeholder="Write in Numbers only"
-              className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-lg focus:outline-none focus:border-gray-400 placeholder-gray-600"
+              className="w-full bg-transparent  focus:outline-none  placeholder-gray-300 font-light text-xl tracking-wider"
             />
           </div>
         </div>
 
         {/* Genre Selection */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-wider">Genre:</h2>
-          <div className="grid grid-cols-5 gap-4">
+        <div className="space-y-16">
+          <h2 className="text-3xl max-[680px]:text-xl font-bold tracking-wider">
+            GENRE
+          </h2>
+          <div
+            className="grid gap-6
+            max-[340px]:grid-cols-1
+               max-[680px]:grid-cols-2
+               max-[1022px]:grid-cols-3 
+               lg:grid-cols-5 
+               mx-auto justify-items-center"
+          >
             {genres.map((genre) => (
               <motion.button
                 key={genre.id}
                 type="button"
                 onClick={() => setSelectedGenre(genre.id)}
+                onMouseEnter={() => setHoveredGenre(genre.id)}
+                onMouseLeave={() => setHoveredGenre("")}
                 className={`
-                  flex items-center justify-center p-6 rounded-xl
+                  flex items-center justify-center p-4 rounded-xl
                   ${
                     genre.id === selectedGenre
                       ? genre.gradient
                         ? "bg-gradient-to-br from-purple-500 to-orange-500"
                         : "bg-purple-500"
-                      : "bg-gray-700"
+                      : "bg-[#4E4E4E]"
                   }
                   transition-colors duration-200
                 `}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {genre.icon}
-                {genre.gradient && (
-                  <span className="absolute bottom-2 text-[10px] text-center leading-tight">
-                    Entertainment & Comedy
-                  </span>
+                {hoveredGenre === genre.id ? (
+                  <h3 className="text-white text-xl font-semibold">
+                    {genre.name}
+                  </h3>
+                ) : (
+                  <Image
+                    src={genre.icon}
+                    alt={genre.name}
+                    width={150}
+                    height={100}
+                    className="rounded-full"
+                  />
                 )}
-                <span className="sr-only">{genre.name}</span>
               </motion.button>
             ))}
           </div>
         </div>
+
         {/* Contact Information */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-wider">
-            Enter Contact Number/Email Id:
-          </h2>
-          <div className="relative">
-            <input
-              {...register("contact", {
-                required: true,
-                pattern: {
-                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$|^\d{10}$/,
-                  message: "Please enter a valid email or phone number",
-                },
-              })}
-              type="text"
-              placeholder="Enter Contact details"
-              className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-lg focus:outline-none focus:border-gray-400 placeholder-gray-600"
-            />
+        <div className="mx-auto bg-[#323232] rounded-xl p-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="relative">
+              <label
+                className="text-lg font-light tracking-wider pb-5"
+                htmlFor="email"
+              >
+                Email ID
+              </label>
+              <input
+                {...register("email", {
+                  required: true,
+                  pattern: {
+                    value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                    message: "Please enter a valid email",
+                  },
+                })}
+                type="text"
+                placeholder="xyz@gmail.com"
+                className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
+              />
+            </div>
+            <div className="relative">
+              <label
+                className="text-lg font-light tracking-wider pb-5"
+                htmlFor="phoneNo"
+              >
+                Your Contact Number
+              </label>
+              <input
+                {...register("phoneNo", {
+                  required: true,
+                  pattern: {
+                    value: /^\d{10}$/,
+                    message: "Please enter a valid phone number",
+                  },
+                })}
+                type="text"
+                placeholder="Mobile Number"
+                className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
+              />
+            </div>
           </div>
         </div>
 
         {/* Submit Button */}
-        <div className="flex justify-center pt-6">
+        <div className="flex justify-center">
           <motion.button
             type="submit"
-            className="bg-white text-black px-12 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
+            className="bg-white text-black px-12 py-3 rounded-lg font-bold text-xl hover:bg-gray-100 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
