@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Apply the font globally or to specific elements */
+body {
+  font-family: "Noto Serif JP", serif;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -27,7 +35,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
     --background: 222.2 84% 4.9%;
@@ -53,7 +61,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 @layer base {
@@ -80,13 +88,17 @@
 }
 
 .button-underline::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   height: 2px; /* Adjust the thickness of the underline */
-  background-image: linear-gradient(90deg, #ff7e5f, #feb47b); /* Colorful gradient */
+  background-image: linear-gradient(
+    90deg,
+    #ff7e5f,
+    #feb47b
+  ); /* Colorful gradient */
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
