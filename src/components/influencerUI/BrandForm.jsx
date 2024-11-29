@@ -10,6 +10,7 @@ import {
   FaSnapchat,
   FaFacebook,
   FaLinkedin,
+  FaXTwitter,
 } from "react-icons/fa6";
 import { SlUserFollow } from "react-icons/sl";
 
@@ -43,6 +44,12 @@ const platforms = [
     name: "LinkedIn",
     icon: <FaLinkedin size={35} />,
     activeColor: "linear-gradient(to right, #007bb5, #0077b5)",
+  },
+  {
+    id: "x",
+    name: "X",
+    icon: <FaXTwitter size={35} />,
+    activeColor: "linear-gradient(to right, #1d9bf0, #1da1f2)",
   },
 ];
 
