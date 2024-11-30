@@ -120,15 +120,42 @@ const genres = [
 
 function Influencer() {
   const { register, handleSubmit } = useForm();
-  const [selectedPlatform, setSelectedPlatform] = useState("");
+  const [selectedPlatform, setSelectedPlatform] = useState([]);
   const [hoveredPlatform, setHoveredPlatform] = useState("");
-  const [selectedCampaign, setSelectedCampaign] = useState("");
+  const [selectedCampaign, setSelectedCampaign] = useState([]);
   const [hoveredCampaign, setHoveredCampaign] = useState("");
   const [hoveredGenre, setHoveredGenre] = useState("");
-  const [selectedGenre, setSelectedGenre] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState([]);
 
   const onSubmit = (data) => {
     console.log({ ...data });
+  };
+
+  //for toggle paltfrom selection
+  const togglePlatfromSelection = (platformId) => {
+    setSelectedPlatform((prev) =>
+      prev.includes(platformId)
+        ? prev.filter((id) => id !== platformId)
+        : [...prev, platformId]
+    );
+  };
+
+  //for toggle genre campign selection
+  const toggleCampaignSelection = (campaignId) => {
+    setSelectedCampaign((prev) =>
+      prev.includes(campaignId)
+        ? prev.filter((id) => id !== campaignId)
+        : [...prev, campaignId]
+    );
+  };
+
+  //for toggle genre selection
+  const toggleGenreSelection = (genreId) => {
+    setSelectedGenre((prev) =>
+      prev.includes(genreId)
+        ? prev.filter((id) => id !== genreId)
+        : [...prev, genreId]
+    );
   };
 
   return (
@@ -248,13 +275,13 @@ function Influencer() {
                 <motion.button
                   key={platform.id}
                   type="button"
-                  onClick={() => setSelectedPlatform(platform.id)}
+                  onClick={() => togglePlatfromSelection(platform.id)}
                   onHoverStart={() => setHoveredPlatform(platform.id)}
                   onHoverEnd={() => setHoveredPlatform("")}
                   className={`flex flex-col items-center justify-center 
                     w-32 h-32 rounded-lg text-white
                     ${
-                      platform.id === selectedPlatform
+                      selectedPlatform.includes(platform.id)
                         ? "text-white"
                         : "text-gray-200"
                     }
@@ -263,7 +290,7 @@ function Influencer() {
                   whileTap={{ scale: 0.95 }}
                   style={{
                     background:
-                      platform.id === selectedPlatform ||
+                      selectedPlatform.includes(platform.id) ||
                       platform.id === hoveredPlatform
                         ? platform.activeColor
                         : "#3e3e3e",
@@ -292,19 +319,21 @@ function Influencer() {
                 <motion.button
                   key={objective}
                   type="button"
-                  className={`p-4 rounded-full border border-white/20 hover:border-white/40 bg-black/20 backdrop-blur-sm transition-all duration-300  ${
-                    index === selectedCampaign ? "text-black" : "text-white"
-                  }`}
+                  className={`p-4 rounded-full border border-white/20 hover:border-white/40 
+            transition-all duration-300 
+            ${
+              selectedCampaign.includes(index)
+                ? "bg-white text-black"
+                : hoveredCampaign === index
+                ? "bg-white text-black"
+                : "bg-black/20 text-white"
+            }`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 * index }}
-                  onClick={() => setSelectedCampaign(index)}
-                  // onHoverStart={() => setHoveredCampaign(index)}
-                  // onHoverEnd={() => setHoveredCampaign("")}
-                  style={{
-                    background:
-                      index === selectedCampaign ? "#ffffff" : "bg-black/20",
-                  }}
+                  onClick={() => toggleCampaignSelection(index)}
+                  onMouseEnter={() => setHoveredCampaign(index)}
+                  onMouseLeave={() => setHoveredCampaign("")}
                 >
                   <span className="text-xl font-light">{objective}</span>
                 </motion.button>
@@ -332,13 +361,13 @@ function Influencer() {
                 <motion.button
                   key={genre.id}
                   type="button"
-                  onClick={() => setSelectedGenre(genre.id)}
+                  onClick={() => toggleGenreSelection(genre.id)}
                   onMouseEnter={() => setHoveredGenre(genre.id)}
                   onMouseLeave={() => setHoveredGenre("")}
                   className={`
                   flex items-center justify-center p-4 rounded-xl
                   ${
-                    genre.id === selectedGenre
+                    selectedGenre.includes(genre.id)
                       ? genre.gradient
                         ? "bg-gradient-to-br from-purple-500 to-orange-500"
                         : "bg-purple-500"

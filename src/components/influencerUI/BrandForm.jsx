@@ -107,14 +107,32 @@ const genres = [
 ];
 
 export default function BrandForm() {
-  const [selectedPlatform, setSelectedPlatform] = useState("");
+  const [selectedPlatform, setSelectedPlatform] = useState([]);
   const [hoveredPlatform, setHoveredPlatform] = useState("");
   const [hoveredGenre, setHoveredGenre] = useState("");
-  const [selectedGenre, setSelectedGenre] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState([]);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log({ ...data, platform: selectedPlatform, genre: selectedGenre });
+    console.log({ ...data, platforms: selectedPlatform, genre: selectedGenre });
+  };
+
+  //for toggle paltfrom selection
+  const togglePlatfromSelection = (platformId) => {
+    setSelectedPlatform((prev) =>
+      prev.includes(platformId)
+        ? prev.filter((id) => id !== platformId)
+        : [...prev, platformId]
+    );
+  };
+
+  //for toggle genre selection
+  const toggleGenreSelection = (genreId) => {
+    setSelectedGenre((prev) =>
+      prev.includes(genreId)
+        ? prev.filter((id) => id !== genreId)
+        : [...prev, genreId]
+    );
   };
 
   return (
@@ -152,13 +170,13 @@ export default function BrandForm() {
               <motion.button
                 key={platform.id}
                 type="button"
-                onClick={() => setSelectedPlatform(platform.id)}
+                onClick={() => togglePlatfromSelection(platform.id)}
                 onHoverStart={() => setHoveredPlatform(platform.id)}
                 onHoverEnd={() => setHoveredPlatform("")}
                 className={`flex flex-col items-center justify-center 
                     w-32 h-32 rounded-lg text-white
                     ${
-                      platform.id === selectedPlatform
+                      selectedPlatform.includes(platform.id)
                         ? "text-white"
                         : "text-gray-200"
                     }
@@ -167,7 +185,7 @@ export default function BrandForm() {
                 whileTap={{ scale: 0.95 }}
                 style={{
                   background:
-                    platform.id === selectedPlatform ||
+                    selectedPlatform.includes(platform.id) ||
                     platform.id === hoveredPlatform
                       ? platform.activeColor
                       : "#3e3e3e",
@@ -254,13 +272,13 @@ export default function BrandForm() {
               <motion.button
                 key={genre.id}
                 type="button"
-                onClick={() => setSelectedGenre(genre.id)}
+                onClick={() => toggleGenreSelection(genre.id)}
                 onMouseEnter={() => setHoveredGenre(genre.id)}
                 onMouseLeave={() => setHoveredGenre("")}
                 className={`
                   flex items-center justify-center p-4 rounded-xl
                   ${
-                    genre.id === selectedGenre
+                    selectedGenre.includes(genre.id)
                       ? genre.gradient
                         ? "bg-gradient-to-br from-purple-500 to-orange-500"
                         : "bg-purple-500"
