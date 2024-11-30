@@ -19,7 +19,7 @@ export default function HeroSection() {
       />
 
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-4 py-16 md:py-20">
+      <div className="relative z-10 container mx-auto px-10 py-16 md:py-20">
         <div className="flex flex-col md:flex-row items-center justify-between min-h-[calc(100vh-80px)]">
           {/* Left Column: Logo and Buttons */}
           <div className="md:w-1/2 mb-8 md:mb-0">
@@ -64,7 +64,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="md:w-1/2 text-white"
+            className="md:w-1/2 text-white max-[1028px]:hidden"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <AnimatedText text="FASTEST GROWING INFLUENCER MARKETING AGENCY" />
