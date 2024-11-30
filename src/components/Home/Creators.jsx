@@ -26,9 +26,9 @@ function Creators({}) {
   ];
   return (
     <>
-      <section className="bg-black text-white px-4 py-16 md:px-8 lg:px-16">
+      <section className="bg-black text-white px-14 max-[432px]:px-6 py-16 relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16">
+          <h2 className="text-white text-4xl font-bold mb-12">
             Creators we have
           </h2>
 
