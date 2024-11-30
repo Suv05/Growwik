@@ -51,13 +51,13 @@ function OurClients() {
   };
 
   return (
-    <div className="bg-black p-8">
+    <div className="bg-black px-14 max-[432px]:px-6 py-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-white mb-12 text-center"
+          className="text-white text-4xl font-bold mb-12"
         >
           Clients We&apos;ve Worked With
         </motion.h1>
