@@ -39,9 +39,9 @@ function WhyChooseUse({}) {
 
   return (
     <>
-      <div className="bg-black p-8">
+      <div className="bg-black px-14 max-[432px]:px-6 py-16 relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-white text-center mb-12">
+          <h1 className="text-white text-4xl font-bold mb-12">
             Why Choose Us?
           </h1>
 
@@ -54,7 +54,7 @@ function WhyChooseUse({}) {
                   <h3 className="text-red-500 font-bold text-xl mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-white text-sm">{feature.description}</p>
+                  <p className="text-white text-sm tracking-wider">{feature.description}</p>
                 </div>
               </div>
             ))}
