@@ -41,7 +41,7 @@ function AboutUs() {
         animate={inView ? 'visible' : 'hidden'}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-8"
+          className="text-white text-4xl font-bold mb-12"
           variants={itemVariants}
         >
           What We Do
