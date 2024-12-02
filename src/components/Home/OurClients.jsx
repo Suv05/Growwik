@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const clients = [
   { name: "Britannia", logo: "/brands/Britannia.svg" },
@@ -21,6 +22,7 @@ const clients = [
 ];
 
 function OurClients() {
+  const router = useRouter();
   const controls = useAnimation();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
@@ -102,7 +104,7 @@ function OurClients() {
           transition={{ delay: 0.5 }}
           className="flex justify-center"
         >
-          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105 active:scale-95">
+          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105 active:scale-95" onClick={() => router.push("/case-studies")}>
             Case Studies
           </button>
         </motion.div>
