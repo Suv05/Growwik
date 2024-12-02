@@ -1,10 +1,10 @@
-
+import CaseStudy from "@/components/case-studies/Casestudy";
 
 function Page({}) {
   return (
-    <div>
-      Content
-    </div>
+    <>
+      <CaseStudy />
+    </>
   );
 }
 
