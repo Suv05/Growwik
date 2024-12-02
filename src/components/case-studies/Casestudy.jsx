@@ -110,7 +110,7 @@ function CaseStudy() {
                     Influencer Partnerships
                   </h3>
                   <p className="text-gray-300">
-                    Collaborated with 200+ influencers on YouTube and Instagram to showcase Maono's high-quality microphones and audio equipment.
+                    Collaborated with 200+ influencers on YouTube and Instagram to showcase Maono&apos;s high-quality microphones and audio equipment.
                   </p>
                 </Card>
                 <Card className="p-6 bg-gray-800 border-none">
@@ -192,7 +192,7 @@ function CaseStudy() {
                   Increased Visibility
                 </h3>
                 <p className="text-gray-300">
-                  The campaign generated over 32 million views, significantly boosting awareness for Maono's product lineup.
+                  The campaign generated over 32 million views, significantly boosting awareness for Maono&apos;s product lineup.
                 </p>
               </Card>
               <Card className="p-6 bg-gray-800 border-none">
