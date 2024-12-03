@@ -256,17 +256,20 @@ export default function BrandForm() {
         </div>
 
         {/* Genre Selection */}
+
         <div className="space-y-16">
           <h2 className="text-3xl max-[680px]:text-xl font-bold tracking-wider">
             GENRE
           </h2>
           <div
-            className="grid gap-6
-            max-[340px]:grid-cols-1
-               max-[680px]:grid-cols-2
-               max-[1022px]:grid-cols-3 
-               lg:grid-cols-5 
-               mx-auto justify-items-center"
+            className="
+      grid gap-6
+      max-[340px]:grid-cols-1
+      max-[680px]:grid-cols-2
+      max-[1022px]:grid-cols-3
+      lg:grid-cols-5
+      mx-auto justify-items-center
+    "
           >
             {genres.map((genre) => (
               <motion.button
@@ -276,29 +279,30 @@ export default function BrandForm() {
                 onMouseEnter={() => setHoveredGenre(genre.id)}
                 onMouseLeave={() => setHoveredGenre("")}
                 className={`
-                  flex items-center justify-center p-4 rounded-xl
-                  ${
-                    selectedGenre.includes(genre.id)
-                      ? genre.gradient
-                        ? "bg-gradient-to-br from-purple-500 to-orange-500"
-                        : "bg-purple-500"
-                      : "bg-[#4E4E4E]"
-                  }
-                  transition-colors duration-200
-                `}
+          flex flex-col items-center justify-center 
+          w-32 h-32 p-4 rounded-xl
+          ${
+            selectedGenre.includes(genre.id)
+              ? genre.gradient
+                ? "bg-gradient-to-br from-purple-500 to-orange-500"
+                : "bg-purple-500"
+              : "bg-[#4E4E4E]"
+          }
+          transition-colors duration-200
+        `}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {hoveredGenre === genre.id ? (
-                  <h3 className="text-white text-xl font-semibold">
+                  <h3 className="text-white text-center text-sm font-semibold">
                     {genre.name}
                   </h3>
                 ) : (
                   <Image
                     src={genre.icon}
                     alt={genre.name}
-                    width={150}
-                    height={100}
+                    width={50}
+                    height={50}
                     className="rounded-full"
                   />
                 )}
