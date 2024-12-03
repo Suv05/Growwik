@@ -16,13 +16,13 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-black p-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-white mb-8">
+    <div className="bg-black px-14 max-[432px]:px-6 py-16 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-white text-4xl font-bold mb-12">
           Let&apos;s Have Chat
         </h1>
         
-        <div className="bg-gray-800 rounded-3xl p-8 md:p-12">
+        <div className="bg-[#323232]/20 rounded-3xl p-8 md:p-12">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Name Input */}
@@ -33,7 +33,7 @@ const ContactForm = () => {
                 <input
                   {...register("name", { required: "Name is required" })}
                   type="text"
-                  className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors"
+                  className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
                   placeholder="Enter your name"
                 />
                 {errors.name && (
@@ -49,7 +49,7 @@ const ContactForm = () => {
                 <input
                   {...register("company", { required: "Company name is required" })}
                   type="text"
-                  className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors"
+                  className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
                   placeholder="Enter company name"
                 />
                 {errors.company && (
@@ -71,7 +71,7 @@ const ContactForm = () => {
                     }
                   })}
                   type="email"
-                  className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors"
+                  className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
                   placeholder="Enter your email"
                 />
                 {errors.email && (
@@ -87,7 +87,7 @@ const ContactForm = () => {
                 <input
                   {...register("contact", { required: "Contact details are required" })}
                   type="tel"
-                  className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors"
+                  className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
                   placeholder="Enter contact number"
                 />
                 {errors.contact && (
@@ -103,7 +103,7 @@ const ContactForm = () => {
               </label>
               <textarea
                 {...register("message", { required: "Message is required" })}
-                className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors resize-none h-24"
+                className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors resize-none h-24 text-lg"
                 placeholder="Enter your message"
               />
               {errors.message && (
