@@ -164,7 +164,7 @@ function Influencer() {
   const [selectedPlatform, setSelectedPlatform] = useState([]);
   const [hoveredPlatform, setHoveredPlatform] = useState("");
   const [selectedCampaign, setSelectedCampaign] = useState([]);
-  const [hoveredCampaign, setHoveredCampaign] = useState("");
+  const [hoveredCampaign, setHoveredCampaign] = useState(null);
   const [hoveredGenre, setHoveredGenre] = useState("");
   const [selectedGenre, setSelectedGenre] = useState([]);
   const [selectedContent, setSelectedContent] = useState([]);
@@ -182,7 +182,7 @@ function Influencer() {
     );
   };
 
-  //for toggle genre campign selection
+  // Toggle Campaign Selection
   const toggleCampaignSelection = (campaignId) => {
     setSelectedCampaign((prev) =>
       prev.includes(campaignId)
@@ -355,6 +355,7 @@ function Influencer() {
               ))}
             </div>
           </div>
+
           {/* KEY CAMPAIGN OBJECTIVES */}
           <motion.div
             className="space-y-6"
@@ -368,23 +369,22 @@ function Influencer() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {objectives.map((objective, index) => (
                 <motion.button
-                  key={objective}
+                  key={index}
                   type="button"
-                  className={`p-4 rounded-full border border-white/20 hover:border-white/40 
-            transition-all duration-300 
-            ${
-              selectedCampaign.includes(index)
-                ? "bg-white text-black"
-                : hoveredCampaign === index
-                ? "bg-white text-black"
-                : "bg-black/20 text-white"
-            }`}
+                  className={`p-4 rounded-full border border-white/20 
+          hover:border-white/40 transition-all duration-300 
+          ${
+            selectedCampaign.includes(index)
+              ? "bg-white text-black"
+              : "bg-black/20 text-white"
+          }`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 * index }}
                   onClick={() => toggleCampaignSelection(index)}
+                  onTouchStart={() => setHoveredCampaign(index)} // Handles hover effect for touch devices
                   onMouseEnter={() => setHoveredCampaign(index)}
-                  onMouseLeave={() => setHoveredCampaign("")}
+                  onMouseLeave={() => setHoveredCampaign(null)}
                 >
                   <span className="text-xl font-light">{objective}</span>
                 </motion.button>
