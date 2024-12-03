@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -21,36 +21,25 @@ const clients = [
   { name: "ROOTER", logo: "/brands/Rooter.svg" },
 ];
 
+// Split clients into two rows
+const row1 = [...clients.slice(0, Math.ceil(clients.length / 2))];
+const row2 = [...clients.slice(Math.ceil(clients.length / 2))];
+
+// Duplicate arrays for seamless infinite scroll
+const row1Doubled = [...row1, ...row1];
+const row2Doubled = [...row2, ...row2];
+
 function OurClients() {
   const router = useRouter();
   const controls = useAnimation();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
-  const [hoveredIndex, setHoveredIndex] = useState(null); // Fixed useState initialization
 
   useEffect(() => {
     if (inView) {
       controls.start("visible");
     }
   }, [controls, inView]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
 
   return (
     <div className="bg-black px-14 max-[432px]:px-6 py-16 relative overflow-hidden">
@@ -64,47 +53,94 @@ function OurClients() {
           Clients We&apos;ve Worked With
         </motion.h1>
 
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12"
-        >
-          {clients.map((client, index) => (
+        <div ref={ref} className="relative">
+          {/* First Row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="flex gap-8 mb-8 overflow-hidden whitespace-nowrap"
+          >
             <motion.div
-              key={index}
-              variants={itemVariants}
-              className="rounded-2xl p-6 flex items-center justify-center h-24 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              animate={{
+                x: [0, -100 * (row1.length)],
+              }}
+              transition={{
+                x: {
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                },
+              }}
+              className="flex gap-8"
             >
-              <motion.div
-                animate={{
-                  scale: hoveredIndex === index ? 1.1 : 1,
-                  rotate: hoveredIndex === index ? 5 : 0,
-                }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  width={100}
-                  height={100}
-                  className="w-20 h-20 object-contain"
-                />
-              </motion.div>
+              {row1Doubled.map((client, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className="relative min-w-[200px] h-24 bg-white/5 backdrop-blur-sm rounded-2xl p-6 flex items-center justify-center"
+                >
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    width={100}
+                    height={100}
+                    className="w-20 h-20 object-contain"
+                  />
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          </motion.div>
+
+          {/* Second Row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="flex gap-8 overflow-hidden whitespace-nowrap"
+          >
+            <motion.div
+              animate={{
+                x: [-100 * (row2.length), 0],
+              }}
+              transition={{
+                x: {
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                },
+              }}
+              className="flex gap-8"
+            >
+              {row2Doubled.map((client, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.1, rotate: -5 }}
+                  className="relative min-w-[200px] h-24 bg-white/5 backdrop-blur-sm rounded-2xl p-6 flex items-center justify-center"
+                >
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    width={100}
+                    height={100}
+                    className="w-20 h-20 object-contain"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="flex justify-center"
+          className="flex justify-center mt-12"
         >
-          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105 active:scale-95" onClick={() => router.push("/case-studies")}>
+          <button 
+            className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105 active:scale-95"
+            onClick={() => router.push("/case-studies")}
+          >
             Case Studies
           </button>
         </motion.div>
@@ -114,3 +150,4 @@ function OurClients() {
 }
 
 export default OurClients;
+
