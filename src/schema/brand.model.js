@@ -46,7 +46,7 @@ const BrandSchema = new Schema({
       "Enter a valid email address",
     ],
   },
-  phone: {
+  phoneNo: {
     type: String,
     required: true,
     minlength: 10, // Corrected to lowercase
