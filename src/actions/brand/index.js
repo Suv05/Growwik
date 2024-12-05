@@ -1,3 +1,5 @@
+"use server";
+
 import createConnection from "@/db";
 import Brand from "@/schema/brand.model.js";
 
@@ -6,9 +8,9 @@ export async function setBrand(data) {
     // Ensure the MongoDB connection is established
     await createConnection();
 
-    const newUser = await Brand.create(data);
+    const newBrand = await Brand.create(data);
 
-    if (newUser) {
+    if (newBrand) {
       return {
         status: "success",
         message: "Brand created successfully",
