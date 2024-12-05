@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { setInfluencer } from "@/actions/influencer";
 import {
   FaInstagram,
   FaYoutube,
@@ -111,11 +112,19 @@ export default function BrandForm() {
   const [hoveredPlatform, setHoveredPlatform] = useState("");
   const [hoveredGenre, setHoveredGenre] = useState("");
   const [selectedGenre, setSelectedGenre] = useState([]);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = (data) => {
-    console.log({ ...data, platforms: selectedPlatform, genre: selectedGenre });
-  };
+  async function onSubmit(data) {
+    const { status, message } = await setInfluencer({
+      ...data,
+      platforms: selectedPlatform,
+      genre: selectedGenre,
+    });
+    if (status === "success") {
+      alert(message);
+    }
+    reset();
+  }
 
   //for toggle paltfrom selection
   const togglePlatfromSelection = (platformId) => {
