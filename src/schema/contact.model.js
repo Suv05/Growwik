@@ -18,7 +18,7 @@ const ContactSchema = new Schema({
       "Enter a valid email address",
     ],
   },
-  phone: {
+  contact: {
     type: String,
     required: true,
     minlength: 10, // Corrected to lowercase
@@ -27,7 +27,7 @@ const ContactSchema = new Schema({
       "Enter a valid phone number",
     ], // Broader regex
   },
-  companyName: {
+  company: {
     type: String,
     maxlength: 100,
     trim: true,
