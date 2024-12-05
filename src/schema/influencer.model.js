@@ -18,7 +18,7 @@ const InfluencerSchema = new Schema({
       "Enter a valid email address",
     ],
   },
-  phone: {
+  phoneNo: {
     type: String,
     required: true,
     minlength: 10, // Corrected casing
@@ -43,7 +43,7 @@ const InfluencerSchema = new Schema({
     trim: true,
     default: null, // Optional clarity
   },
-  followers: {
+  followersCount: {
     type: Number, // Changed to Number for numeric representation
     default: 0, // Default to zero if not provided
   },
