@@ -67,7 +67,7 @@ export default function CaseStudy() {
                 whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
                 className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-sm shadow-xl"
               >
-                <Link href={`/case-study/${study.id}`}>
+                <Link href={`/case-studies/${study.id}`}>
                   <div className="aspect-[16/9] relative">
                     <Image
                       src={study.image}
