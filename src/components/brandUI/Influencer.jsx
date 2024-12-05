@@ -1,5 +1,6 @@
 "use client";
 
+import { setBrand } from "@/actions/brand";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -160,7 +161,7 @@ const itemVariants = {
 };
 
 function Influencer() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [selectedPlatform, setSelectedPlatform] = useState([]);
   const [hoveredPlatform, setHoveredPlatform] = useState("");
   const [selectedCampaign, setSelectedCampaign] = useState([]);
@@ -169,15 +170,36 @@ function Influencer() {
   const [selectedGenre, setSelectedGenre] = useState([]);
   const [selectedContent, setSelectedContent] = useState([]);
 
-  const onSubmit = (data) => {
-    console.log({
+  // input feilds
+  const [brandName, setBrandName] = useState("");
+  const [campaignDescription, setCampaignDescription] = useState("");
+
+  async function onSubmit(data) {
+    const { status, message } = await setBrand({
       ...data,
+      brand: brandName,
+      description: campaignDescription,
       platforms: selectedPlatform,
       campaign: selectedCampaign,
       content: selectedContent,
       industry: selectedGenre,
     });
-  };
+
+    alert(message);
+
+    if (status === "success") {
+      // Clear all state variables
+      setBrandName("");
+      setCampaignDescription("");
+      setSelectedPlatform([]);
+      setSelectedCampaign([]);
+      setSelectedContent([]);
+      setSelectedGenre([]);
+
+      // Clear React Hook Form data
+      reset();
+    }
+  }
 
   //for toggle paltfrom selection
   const togglePlatfromSelection = (platformId) => {
@@ -287,9 +309,11 @@ function Influencer() {
             >
               <label className="text-2xl font-light block">Brand Name:</label>
               <Input
-                name="brandName"
+                name="brand"
                 placeholder="Enter your brand name"
                 className="bg-transparent border-b border-t-0 border-x-0 rounded-none text-lg placeholder:text-gray-500 focus-visible:ring-0 focus-visible:border-white"
+                value={brandName}
+                onChange={(e) => setBrandName(e.target.value)}
               />
             </motion.div>
 
@@ -303,9 +327,11 @@ function Influencer() {
                 Describe your campaign:
               </label>
               <Textarea
-                name="campaign"
+                name="description"
                 placeholder="Describe your campaign"
                 className="bg-transparent border-b border-t-0 border-x-0 rounded-none text-lg placeholder:text-gray-500 focus-visible:ring-0 focus-visible:border-white resize-none min-h-[100px]"
+                value={campaignDescription}
+                onChange={(e) => setCampaignDescription(e.target.value)}
               />
             </motion.div>
           </div>
