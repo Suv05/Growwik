@@ -1,19 +1,24 @@
 "use client";
 import { useForm } from "react-hook-form";
+import { setContact } from "@/actions/contact";
 
 const ContactForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  async function onSubmit(data) {
     // Add your form submission logic here
+    const { status, message } = await setContact(data);
+    if (status === "success") {
+      alert(message);
+    }
+
     reset();
-  };
+  }
 
   return (
     <div className="bg-black px-14 max-[432px]:px-6 py-16 relative overflow-hidden">
@@ -21,7 +26,7 @@ const ContactForm = () => {
         <h1 className="text-white text-4xl font-bold mb-12">
           Let&apos;s Have Chat
         </h1>
-        
+
         <div className="bg-[#323232]/20 rounded-3xl p-8 md:p-12">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -47,13 +52,17 @@ const ContactForm = () => {
                   COMPANY NAME :
                 </label>
                 <input
-                  {...register("company", { required: "Company name is required" })}
+                  {...register("company", {
+                    required: "Company name is required",
+                  })}
                   type="text"
                   className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
                   placeholder="Enter company name"
                 />
                 {errors.company && (
-                  <p className="text-red-500 text-sm">{errors.company.message}</p>
+                  <p className="text-red-500 text-sm">
+                    {errors.company.message}
+                  </p>
                 )}
               </div>
 
@@ -63,12 +72,12 @@ const ContactForm = () => {
                   EMAIL ADDRESS:
                 </label>
                 <input
-                  {...register("email", { 
+                  {...register("email", {
                     required: "Email is required",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "Invalid email address"
-                    }
+                      message: "Invalid email address",
+                    },
                   })}
                   type="email"
                   className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
@@ -85,13 +94,17 @@ const ContactForm = () => {
                   CONTACT DETAILS
                 </label>
                 <input
-                  {...register("contact", { required: "Contact details are required" })}
+                  {...register("contact", {
+                    required: "Contact details are required",
+                  })}
                   type="tel"
                   className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
                   placeholder="Enter contact number"
                 />
                 {errors.contact && (
-                  <p className="text-red-500 text-sm">{errors.contact.message}</p>
+                  <p className="text-red-500 text-sm">
+                    {errors.contact.message}
+                  </p>
                 )}
               </div>
             </div>
