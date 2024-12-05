@@ -56,12 +56,12 @@ const platforms = [
 ];
 
 const objectives = [
-  "Generate Sales",
-  "Website Traffic",
-  "App Downloads",
-  "Brand awareness",
-  "Content creation",
-  "Local Store visits",
+  { id: "generateSales", name: "Generate Sales" },
+  { id: "websiteTraffic", name: "Website Traffic" },
+  { id: "appDownloads", name: "App Downloads" },
+  { id: "brandAwareness", name: "Brand awareness" },
+  { id: "contentCreation", name: "Content creation" },
+  { id: "localStoreVisits", name: "Local Store visits" },
 ];
 
 const genres = [
@@ -118,13 +118,13 @@ const genres = [
 ];
 
 const categories = [
-  "Nano",
-  "Micro",
-  "Macro",
-  "Mega",
-  "Mega A+",
-  "Celebrities",
-  "Platinum Celebrities",
+  { id: "nano", name: "Nano" },
+  { id: "micro", name: "Micro" },
+  { id: "macro", name: "Macro" },
+  { id: "mega", name: "Mega" },
+  { id: "megaA+", name: "Mega A+" },
+  { id: "celebrities", name: "Celebrities" },
+  { id: "platinumCelebrities", name: "Platinum Celebrities" },
 ];
 
 const containerVariants = {
@@ -170,7 +170,13 @@ function Influencer() {
   const [selectedContent, setSelectedContent] = useState([]);
 
   const onSubmit = (data) => {
-    console.log({ ...data });
+    console.log({
+      ...data,
+      platforms: selectedPlatform,
+      campaign: selectedCampaign,
+      content: selectedContent,
+      industry: selectedGenre,
+    });
   };
 
   //for toggle paltfrom selection
@@ -369,24 +375,24 @@ function Influencer() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {objectives.map((objective, index) => (
                 <motion.button
-                  key={index}
+                  key={objective.id}
                   type="button"
                   className={`p-4 rounded-full border border-white/20 
           hover:border-white/40 transition-all duration-300 
           ${
-            selectedCampaign.includes(index)
+            selectedCampaign.includes(objective.id)
               ? "bg-white text-black"
               : "bg-black/20 text-white"
           }`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 * index }}
-                  onClick={() => toggleCampaignSelection(index)}
+                  onClick={() => toggleCampaignSelection(objective.id)}
                   onTouchStart={() => setHoveredCampaign(index)} // Handles hover effect for touch devices
                   onMouseEnter={() => setHoveredCampaign(index)}
                   onMouseLeave={() => setHoveredCampaign(null)}
                 >
-                  <span className="text-xl font-light">{objective}</span>
+                  <span className="text-xl font-light">{objective.name}</span>
                 </motion.button>
               ))}
             </div>
@@ -412,27 +418,27 @@ function Influencer() {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 md:gap-6">
                 {categories.map((category, index) => (
                   <motion.div
-                    key={category}
+                    key={category.id}
                     variants={itemVariants}
                     whileHover="hover"
                     className="relative group"
-                    onClick={() => toggleContentSelection(index)}
+                    onClick={() => toggleContentSelection(category.id)}
                   >
                     <div
                       className={`rounded-2xl p-6 h-full flex items-center justify-center cursor-pointer transition-shadow duration-300 group-hover:shadow-lg group-hover:shadow-white/10 ${
-                        selectedContent.includes(index)
+                        selectedContent.includes(category.id)
                           ? "bg-white"
                           : "bg-neutral-800"
                       }`}
                     >
                       <h2
                         className={`text-center font-medium text-lg md:text-xl ${
-                          selectedContent.includes(index)
+                          selectedContent.includes(category.id)
                             ? "text-black"
                             : "text-white"
                         }`}
                       >
-                        {category}
+                        {category.name}
                       </h2>
                     </div>
                   </motion.div>
@@ -507,7 +513,7 @@ function Influencer() {
                 <FaMoneyCheck size={25} />
               </span>
               <input
-                {...register("followersCount")}
+                {...register("budget")}
                 type="text"
                 placeholder="Write in Numbers only"
                 className=" bg-transparent  focus:outline-none  placeholder-gray-300 font-light text-xl tracking-wider"
