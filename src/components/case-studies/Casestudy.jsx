@@ -6,7 +6,8 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Card } from '@/components/ui/card'
-import { Youtube, Users, Eye, ThumbsUp, ArrowRight, Globe, Target, TrendingUp } from 'lucide-react'
+import { Users, Eye, ThumbsUp, Globe, Target, TrendingUp } from 'lucide-react'
+import {FaYoutube} from "react-icons/fa6"
 
 gsap.registerPlugin(ScrollTrigger)
 
