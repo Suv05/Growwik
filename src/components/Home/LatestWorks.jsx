@@ -1,71 +1,99 @@
-import Image from "next/image";
+"use client";
+import { useRef, useEffect } from "react";
 
 export default function LatestWorks() {
-  const works = [
-    {
-      id: 1,
-      image:
-        "https://images.unsplash.com/photo-1668469739030-007d6b74d82e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGluc3RhZ3JhbSUyMHJlZWxzfGVufDB8fDB8fHww",
-      alt: "Investment app interface showing trading charts and statistics",
-    },
-    {
-      id: 2,
-      image:
-        "https://images.unsplash.com/photo-1531887259712-aa6e090e9289?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGluc3RhZ3JhbSUyMHJlZWxzfGVufDB8fDB8fHww",
-      alt: "Movie promotional content featuring superhero characters",
-    },
-    {
-      id: 3,
-      image:
-        "https://images.unsplash.com/photo-1565716744284-76e26a661fa0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGluc3RhZ3JhbSUyMHJlZWxzfGVufDB8fDB8fHww",
-      alt: "Fashion photography showing ethnic wear collection",
-    },
-    {
-      id: 4,
-      image:
-        "https://images.unsplash.com/photo-1667420855394-e3530f4c8d3d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGluc3RhZ3JhbSUyMHJlZWxzfGVufDB8fDB8fHww",
-      alt: "Casual wear photography in outdoor setting",
-    },
+  const scrollRef = useRef(null);
+
+  const videos = [
+    { id: 1, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 2, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 3, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 4, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 5, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 6, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 7, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 8, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 9, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 10, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 11, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 12, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
   ];
 
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scrollInterval = setInterval(() => {
+      const maxScrollLeft =
+        scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+      // Check if the scroll is at the end
+      if (scrollContainer.scrollLeft >= maxScrollLeft) {
+        scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollContainer.scrollBy({ left: 300, behavior: "smooth" }); // Adjust 300px to the width of one card
+      }
+    }, 5000); // Scroll every 5 seconds
+
+    return () => clearInterval(scrollInterval); // Cleanup on component unmount
+  }, []);
+
+  const handleMouseDown = (e) => {
+    const slider = scrollRef.current;
+    slider.isDown = true;
+    slider.startX = e.pageX - slider.offsetLeft;
+    slider.scrollLeftStart = slider.scrollLeft;
+  };
+
+  const handleMouseMove = (e) => {
+    const slider = scrollRef.current;
+    if (!slider.isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - slider.startX) * 2; // Adjust scrolling speed
+    slider.scrollLeft = slider.scrollLeftStart - walk;
+  };
+
+  const handleMouseUp = () => {
+    const slider = scrollRef.current;
+    slider.isDown = false;
+  };
+
   return (
-    <section className="bg-black px-14 max-[432px]:px-6 py-16 relative overflow-hidden">
-    <div className="max-w-6xl  mx-auto">
-      <h2 className="text-white text-4xl font-bold mb-12">
-        Our Latest Works
-      </h2>
-      
-      {/* Works Gallery Container */}
-      <div className="max-w-7xl mx-auto">
-        {/* Works Gallery */}
-        <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory justify-start md:justify-center">
-          {works.map((work) => (
+    <div className="bg-black px-14 max-[432px]:px-6 py-16 relative overflow-hidden ">
+      <section className="max-w-6xl mx-auto">
+        <h2 className="text-white text-4xl font-bold mb-12">Our Latest Work</h2>
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-auto space-x-4 scrollbar-hide "
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseUp}
+          onMouseUp={handleMouseUp}
+        >
+          {videos.map((video, index) => (
             <div
-              key={work.id}
-              className="flex-none w-[240px] md:w-[280px] snap-center first:ml-0 md:first:ml-auto"
+              key={index}
+              className="relative flex-shrink-0 w-[300px] h-[500px] rounded-lg overflow-hidden shadow-lg"
             >
-              {/* Phone Frame */}
-              <div className="relative bg-white rounded-[3rem] p-3 aspect-[9/16]">
-                {/* Phone Screen */}
-                <div className="relative w-full h-full overflow-hidden rounded-[2.5rem]">
-                  <Image
-                    src={work.image}
-                    alt={work.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 240px, 280px"
-                  />
-                </div>
-                
-                {/* Phone Notch */}
-                <div className="absolute top-5 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full" />
+              <video
+                className="w-full h-full object-cover"
+                src={video.src}
+                autoPlay
+                muted
+                loop
+              ></video>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <img
+                  src={video.logo}
+                  alt={`Logo ${index}`}
+                  className="h-20 w-20"
+                />
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </div>
-    {/* <hr className="border-gray-400 w-auto mx-auto"/> */}
-  </section>
   );
 }
