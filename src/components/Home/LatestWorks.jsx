@@ -74,7 +74,7 @@ export default function LatestWorks() {
           {videos.map((video, index) => (
             <div
               key={index}
-              className="relative flex-shrink-0 w-[300px] h-[500px] rounded-lg overflow-hidden shadow-lg"
+              className="relative flex-shrink-0 w-[300px] h-[500px] rounded-xl overflow-hidden shadow-lg"
             >
               <video
                 className="w-full h-full object-cover"
