@@ -20,8 +20,9 @@ export default function LatestWorks() {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    const scrollInterval = setInterval(() => {
-      if (isPaused) return; // Skip auto-scroll if paused
+    // Interval function
+    const scroll = () => {
+      if (isPaused) return;
 
       const maxScrollLeft =
         scrollContainer.scrollWidth - scrollContainer.clientWidth;
@@ -31,10 +32,12 @@ export default function LatestWorks() {
       } else {
         scrollContainer.scrollBy({ left: 300, behavior: "smooth" }); // Adjust 300px to match card width
       }
-    }, 5000);
+    };
+
+    const scrollInterval = setInterval(scroll, 5000); // Auto-scroll every 5 seconds
 
     return () => clearInterval(scrollInterval); // Cleanup on component unmount
-  }, [isPaused]);
+  }, [isPaused]); // React to `isPaused` state changes
 
   const handleMouseDown = (e) => {
     const slider = scrollRef.current;
@@ -57,6 +60,7 @@ export default function LatestWorks() {
     slider.isDown = false;
   };
 
+  // Pause auto-scroll when interacting with a video
   const handleVideoInteraction = (isInteracting) => {
     setIsPaused(isInteracting);
   };
