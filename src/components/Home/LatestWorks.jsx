@@ -6,17 +6,13 @@ export default function LatestWorks() {
 
   const videos = [
     { id: 1, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 2, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 3, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 4, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 5, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 6, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 7, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 8, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 9, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 10, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 11, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
-    { id: 12, src: "/video/1.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 2, src: "/video/2.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 3, src: "/video/3.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 4, src: "/video/4.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 5, src: "/video/5.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 6, src: "/video/6.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 7, src: "/video/7.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
+    { id: 8, src: "/video/8.mp4", logo: "/logos/Maono.svg", brand: "Jockey" },
   ];
 
   useEffect(() => {
