@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight } from 'lucide-react'
+import { Button } from '../ui/button'
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -269,6 +270,29 @@ function Lumaai() {
             <p className="text-gray-300 text-lg">
               The campaign demonstrated the impact of strategic partnerships and authentic influencer content in amplifying brand awareness and driving substantial user engagement without paid advertising.
             </p>
+          </motion.div>
+        </div>
+      </section>
+      {/* Contact Section */}
+      <section className="py-20 bg-zinc-700/50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-3xl font-bold mb-6">
+              Want to Know More About This Case Study?
+            </h2>
+            <p className="text-gray-300 text-lg mb-8">
+              Contact our team to get more details on how we can help you
+              achieve similar results for your brand.
+            </p>
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+              Contact Us
+            </Button>
           </motion.div>
         </div>
       </section>

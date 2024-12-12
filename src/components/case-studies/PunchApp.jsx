@@ -7,6 +7,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '../ui/button'
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -250,6 +251,30 @@ function PunchApp() {
             <p className="text-gray-300 text-lg">
               " This campaign leveraged relatable content and storytelling to introduce Punch App to a wide audience, creating an authentic buzz and positioning it as a trusted, community-friendly trading platform."
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 bg-zinc-700/50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-3xl font-bold mb-6">
+              Want to Know More About This Case Study?
+            </h2>
+            <p className="text-gray-300 text-lg mb-8">
+              Contact our team to get more details on how we can help you
+              achieve similar results for your brand.
+            </p>
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+              Contact Us
+            </Button>
           </motion.div>
         </div>
       </section>
