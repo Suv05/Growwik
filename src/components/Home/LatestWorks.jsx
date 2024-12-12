@@ -34,7 +34,7 @@ export default function LatestWorks() {
       }
     };
 
-    const scrollInterval = setInterval(scroll, 5000); // Auto-scroll every 5 seconds
+    const scrollInterval = setInterval(scroll, 10000); // Auto-scroll every 5 seconds
 
     return () => clearInterval(scrollInterval); // Cleanup on component unmount
   }, [isPaused]); // React to `isPaused` state changes
