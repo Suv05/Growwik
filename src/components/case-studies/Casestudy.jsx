@@ -13,7 +13,7 @@ const caseStudies = [
     description: "transformed their digital marketing with us.",
   },
   {
-    id: "Maono",
+    id: "Maono-App",
     image: "/ai-img.avif",
     title: "See how",
     company: "Maono",
