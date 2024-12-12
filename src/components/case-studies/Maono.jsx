@@ -139,7 +139,7 @@ function Maono() {
           >
             <h2 className="text-3xl font-bold mb-6">Campaign Objective</h2>
             <p className="text-gray-300 text-lg">
-              Increase brand awareness and product adoption for Maono's audio
+              Increase brand awareness and product adoption for Maono&apos;s audio
               technology products among tech and creative audiences in USA,
               Canada, India, and East Asian Countries.
             </p>
@@ -159,7 +159,7 @@ function Maono() {
             </h3>
             <p className="text-gray-300 mb-4">
               Collaborated with 200+ nano and micro influencers on YouTube and
-              Instagram, focusing on showcasing Maono's high-quality microphones
+              Instagram, focusing on showcasing Maono&apos;s high-quality microphones
               and audio equipment.
             </p>
           </Card>

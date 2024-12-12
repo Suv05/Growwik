@@ -159,7 +159,7 @@ function Lumaai() {
             <Card className="p-6 bg-zinc-900/50 border-zinc-800">
               <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">Execution</h3>
               <p className="text-gray-300">
-                Influencers utilized Luma's keyframe features to create immersive content, such as drone-like shots and interactive 3D models.
+                Influencers utilized Luma&apos;s keyframe features to create immersive content, such as drone-like shots and interactive 3D models.
               </p>
             </Card>
           </div>

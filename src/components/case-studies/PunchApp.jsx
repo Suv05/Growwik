@@ -249,7 +249,7 @@ function PunchApp() {
           >
             <h2 className="text-3xl font-bold mb-6">Conclusion</h2>
             <p className="text-gray-300 text-lg">
-              " This campaign leveraged relatable content and storytelling to introduce Punch App to a wide audience, creating an authentic buzz and positioning it as a trusted, community-friendly trading platform."
+            &quot; This campaign leveraged relatable content and storytelling to introduce Punch App to a wide audience, creating an authentic buzz and positioning it as a trusted, community-friendly trading platform. &quot;
             </p>
           </motion.div>
         </div>

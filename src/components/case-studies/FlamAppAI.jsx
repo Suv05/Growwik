@@ -286,7 +286,7 @@ function FlamAppAI() {
                 Flam x AJIO Heeramandi Collection
               </h3>
               <p className="text-gray-300 mb-6">
-                Objective: Promote AJIO's exclusive Heeramandi ethnic collection
+                Objective: Promote AJIO&apos;s exclusive Heeramandi ethnic collection
                 through AR-driven engagement.
               </p>
               <div className="grid md:grid-cols-2 gap-8">
