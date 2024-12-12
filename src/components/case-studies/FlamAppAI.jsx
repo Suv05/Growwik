@@ -362,7 +362,7 @@ function FlamAppAI() {
                   Market Hype
                 </h3>
                 <p className="text-gray-300">
-                  FlamApp's innovative campaigns created a buzz in the
+                  FlamApp&apos;s innovative campaigns created a buzz in the
                   advertising industry, leading to partnerships with major
                   brands like Flipkart, Samsung, and Aditya Birla Capital for
                   similar AR-driven advertisements.
@@ -380,7 +380,7 @@ function FlamAppAI() {
                   Industry Recognition
                 </h3>
                 <p className="text-gray-300">
-                  Organic LinkedIn posts praised FlamApp's AR technology, with
+                  Organic LinkedIn posts praised FlamApp&apos;s AR technology, with
                   marketing professionals discussing the potential of
                   interactive advertising.
                 </p>
