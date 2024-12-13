@@ -20,7 +20,7 @@ const caseStudies = [
     description: "transformed their digital marketing with us.",
   },
   {
-    id: "Punch-App",  
+    id: "Punch-App",
     image: "/ai-img.avif",
     title: "See how",
     company: "Punch App",
@@ -35,23 +35,22 @@ const caseStudies = [
   },
 ];
 
-
-
 export default function CaseStudy() {
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
   return (
     <div
-      className="min-h-screen bg-cover bg-center bg-fixed text-white overflow-hidden"
-      style={{
-        backgroundImage: "url('/our-service.png')",
-      }}
+      className={`min-h-screen bg-cover bg-center ${
+        isMobile ? "bg-scroll" : "bg-fixed"
+      } text-white overflow-hidden`}
+      style={{ backgroundImage: "url('/our-service.png')" }}
     >
       <div className="min-h-screen backdrop-blur-sm">
-        {/* Main Content */}
         <main className="pt-32 px-6 max-w-7xl mx-auto backdrop-blur-sm">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="text-white text-4xl font-bold mb-12 text-center"
           >
             Case Studies
@@ -61,10 +60,9 @@ export default function CaseStudy() {
             {caseStudies.map((study, index) => (
               <motion.div
                 key={study.id}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-sm shadow-xl"
               >
                 <Link href={`/case-studies/${study.id}`}>
@@ -73,6 +71,8 @@ export default function CaseStudy() {
                       src={study.image}
                       alt={`${study.company} case study`}
                       fill
+                      priority={index < 2}
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
