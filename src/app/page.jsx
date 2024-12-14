@@ -27,11 +27,8 @@ export default function Home() {
         <ServicePage />
       </div>
       <Creators />
-
       <WhyChooseUse />
-
       <Review />
-
       <div ref={refs.ourClients}>
         <OurClients />
       </div>

@@ -6,14 +6,14 @@ export default function LatestWorks() {
   const [isPaused, setIsPaused] = useState(false);
 
   const videos = [
-    { id: 1, src: "/video/1.mp4", logo: "/logos/Maono.svg" },
-    { id: 2, src: "/video/2.mp4", logo: "/logos/Maono.svg" },
-    { id: 3, src: "/video/3.mp4", logo: "/logos/Maono.svg" },
-    { id: 4, src: "/video/4.mp4", logo: "/logos/Maono.svg" },
-    { id: 5, src: "/video/5.mp4", logo: "/logos/Maono.svg" },
-    { id: 6, src: "/video/6.mp4", logo: "/logos/Maono.svg" },
-    { id: 7, src: "/video/7.mp4", logo: "/logos/Maono.svg" },
-    { id: 8, src: "/video/8.mp4", logo: "/logos/Maono.svg" },
+    { id: 1, src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/1.mp4?alt=media&token=86e643a5-fdbf-489c-9375-45bdd7798b00", logo: "/logos/Maono.svg" },
+    { id: 2, src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/2.mp4?alt=media&token=b2fe76d9-b5bc-4cdf-8824-aa5b1a95b6cb", logo: "/logos/Maono.svg" },
+    { id: 3, src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/3.mp4?alt=media&token=320a5e8f-c7a9-4819-ab34-602c3748f169", logo: "/logos/Maono.svg" },
+    { id: 4, src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/4.mp4?alt=media&token=e1e377a5-dc47-41e8-87eb-de6ed80c6cba", logo: "/logos/Maono.svg" },
+    { id: 5, src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/5.mp4?alt=media&token=37c265ad-7214-4998-bbc1-4d5034d11e0d", logo: "/logos/Maono.svg" },
+    { id: 6, src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/6.mp4?alt=media&token=e68baaa3-b407-45f6-bc51-890e9c7b0a42", logo: "/logos/Maono.svg" },
+    { id: 7, src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/7.mp4?alt=media&token=ba0ce644-149c-4bc9-9edf-64422ac99a14", logo: "/logos/Maono.svg" },
+    { id: 8, src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/8.mp4?alt=media&token=c6cd4039-6dba-4c9a-8868-6f4290b4fed8", logo: "/logos/Maono.svg" },
   ];
 
   useEffect(() => {
@@ -76,6 +76,7 @@ export default function LatestWorks() {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseUp}
           onMouseUp={handleMouseUp}
+          
         >
           {videos.map((video, index) => (
             <div
