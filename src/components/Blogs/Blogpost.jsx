@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import FileUploadProgress from "@/utilities/Progress";
+import Spin from "@/utilities/Spin";
 import {
   Card,
   CardContent,
@@ -14,10 +16,23 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Upload } from 'lucide-react';
+import { Upload } from "lucide-react";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { app } from "../../firebase"; // Import your Firebase config here
+import { postBlog } from "@/actions/blog";
 
 function Blogpost() {
   const [imagePreview, setImagePreview] = useState(null);
+  const [filePrec, setFilePrec] = useState(0);
+  const [imgLoading, setImgLoading] = useState(false);
+  const [imageURL, setImageURL] = useState(null); // Store the uploaded image URL
+  const lastUpdate = useRef(0);
+
   const {
     register,
     handleSubmit,
@@ -25,19 +40,69 @@ function Blogpost() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    if (!imageURL) {
+      alert("Please wait until the image upload is complete.");
+      return;
+    }
+    const finalData = { ...data, image: imageURL };
+    console.log(finalData);
     // Handle form submission
+
+    const { status, message } = await postBlog(finalData);
+    if (status === "success") {
+      alert(message);
+    } else {
+      alert(message);
+    }
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleImageChange = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    setImgLoading(true);
+
+    // Set up the preview
+    const reader = new FileReader();
+    reader.onloadend = () => setImagePreview(reader.result);
+    reader.readAsDataURL(file);
+
+    // Initialize Firebase upload
+    const storage = getStorage(app);
+    const fileName = `${Date.now()}_${file.name}`;
+    const storageRef = ref(storage, fileName);
+
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    // Monitor the upload progress
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+        const now = Date.now();
+        if (now - lastUpdate.current > 50) {
+          setFilePrec(Math.floor(progress));
+          lastUpdate.current = now;
+        }
+      },
+      (error) => {
+        console.error("Upload failed:", error);
+        setImgLoading(false);
+      },
+      async () => {
+        try {
+          const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
+          setImageURL(downloadUrl); // Set the uploaded image URL
+          setImgLoading(false);
+          alert("Image uploaded successfully!");
+        } catch (err) {
+          console.error("Error getting download URL:", err);
+          setImgLoading(false);
+        }
+      }
+    );
   };
 
   return (
@@ -56,6 +121,7 @@ function Blogpost() {
           </CardHeader>
           <CardContent className="px-6">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              {/* Title Input */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -80,6 +146,7 @@ function Blogpost() {
                 )}
               </motion.div>
 
+              {/* Description Input */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -107,6 +174,7 @@ function Blogpost() {
                 )}
               </motion.div>
 
+              {/* link upload */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -132,6 +200,7 @@ function Blogpost() {
                 )}
               </motion.div>
 
+              {/* Image Upload */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -155,15 +224,9 @@ function Blogpost() {
                     type="file"
                     accept="image/*"
                     className="hidden"
-                    {...register("image", { required: "Image is required" })}
                     onChange={handleImageChange}
                   />
                 </Label>
-                {errors.image && (
-                  <p className="text-red-400 text-sm mt-1">
-                    {errors.image.message}
-                  </p>
-                )}
                 {imagePreview && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -179,23 +242,26 @@ function Blogpost() {
                   </motion.div>
                 )}
               </motion.div>
+
+              {/* Progress Bar */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <FileUploadProgress filePrec={filePrec} />
+              </motion.div>
+              <CardFooter className="px-6 py-8">
+                <Button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 rounded-md transition-all duration-300 transform hover:scale-105"
+                  disabled={imgLoading} // Disable while uploading
+                >
+                  {imgLoading ? <Spin /> : "Create Post"}
+                </Button>
+              </CardFooter>
             </form>
           </CardContent>
-          <CardFooter className="px-6 py-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="w-full"
-            >
-              <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 rounded-md transition-all duration-300 transform hover:scale-105"
-              >
-                Create Post
-              </Button>
-            </motion.div>
-          </CardFooter>
         </Card>
       </motion.div>
     </div>
@@ -203,4 +269,3 @@ function Blogpost() {
 }
 
 export default Blogpost;
-
