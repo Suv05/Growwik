@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import AnimatedText from "./animated-text";
+// import AnimatedText from "./animated-text";
 
 export default function HeroSection() {
   return (
@@ -58,7 +58,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column: Animated Description */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -68,7 +68,7 @@ export default function HeroSection() {
               <AnimatedText text="FASTEST GROWING INFLUENCER MARKETING AGENCY" />
             </h2>
             <AnimatedText text="We're a global influencer marketing agency, powered by influencers. We pride ourselves in bringing together data-led performance, real human relationships, expert creative strategy, authentic engaging content, and laser-sharp paid media targeting." />
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </div>
