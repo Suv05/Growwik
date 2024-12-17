@@ -16,6 +16,7 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 import { FaMoneyCheck } from "react-icons/fa";
+import { Toast } from "@/utilities/Toast";
 
 const platforms = [
   {
@@ -169,6 +170,11 @@ function Influencer() {
   const [hoveredGenre, setHoveredGenre] = useState("");
   const [selectedGenre, setSelectedGenre] = useState([]);
   const [selectedContent, setSelectedContent] = useState([]);
+  const [toast, setToast] = useState({
+    message: "",
+    type: "success",
+    show: false,
+  });
 
   // input feilds
   const [brandName, setBrandName] = useState("");
@@ -185,9 +191,12 @@ function Influencer() {
       industry: selectedGenre,
     });
 
-    alert(message);
-
     if (status === "success") {
+      setToast({
+        message: "🙏🏻Thanks for contacting us!",
+        type: "success",
+        show: true,
+      });
       // Clear all state variables
       setBrandName("");
       setCampaignDescription("");
@@ -198,6 +207,12 @@ function Influencer() {
 
       // Clear React Hook Form data
       reset();
+    } else {
+      setToast({
+        message: "😢 Something went wrong, please try again later!",
+        type: "error",
+        show: true,
+      });
     }
   }
 
@@ -611,6 +626,13 @@ function Influencer() {
             </motion.button>
           </div>
         </form>
+        {toast.show && (
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast((prev) => ({ ...prev, show: false }))}
+          />
+        )}
       </div>
     </>
   );

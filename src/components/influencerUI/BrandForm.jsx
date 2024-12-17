@@ -14,6 +14,7 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 import { SlUserFollow } from "react-icons/sl";
+import { Toast } from "@/utilities/Toast";
 
 const platforms = [
   {
@@ -113,6 +114,11 @@ export default function BrandForm() {
   const [hoveredGenre, setHoveredGenre] = useState("");
   const [selectedGenre, setSelectedGenre] = useState([]);
   const { register, handleSubmit, reset } = useForm();
+  const [toast, setToast] = useState({
+    message: "",
+    type: "success",
+    show: false,
+  });
 
   async function onSubmit(data) {
     const { status, message } = await setInfluencer({
@@ -121,9 +127,21 @@ export default function BrandForm() {
       genre: selectedGenre,
     });
     if (status === "success") {
-      alert(message);
+      setToast({
+        message: "🙏🏻Thanks for contacting us!",
+        type: "success",
+        show: true,
+      });
+      setSelectedPlatform([]);
+      setSelectedGenre([]);
+      reset();
+    } else {
+      setToast({
+        message: "😢 Something went wrong, please try again later!",
+        type: "error",
+        show: true,
+      });
     }
-    reset();
   }
 
   //for toggle paltfrom selection
@@ -378,6 +396,13 @@ export default function BrandForm() {
           </motion.button>
         </div>
       </form>
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast((prev) => ({ ...prev, show: false }))}
+        />
+      )}
     </div>
   );
 }
