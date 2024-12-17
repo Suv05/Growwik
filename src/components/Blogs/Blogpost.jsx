@@ -7,7 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import FileUploadProgress from "@/utilities/Progress";
-import Spin from "@/utilities/Spin";
 import {
   Card,
   CardContent,
@@ -25,6 +24,8 @@ import {
 } from "firebase/storage";
 import { app } from "../../firebase"; // Import your Firebase config here
 import { postBlog } from "@/actions/blog";
+import { Toast } from "@/utilities/Toast";
+import { redirect } from "next/navigation";
 
 function Blogpost() {
   const [imagePreview, setImagePreview] = useState(null);
@@ -32,6 +33,11 @@ function Blogpost() {
   const [imgLoading, setImgLoading] = useState(false);
   const [imageURL, setImageURL] = useState(null); // Store the uploaded image URL
   const lastUpdate = useRef(0);
+  const [toast, setToast] = useState({
+    message: "",
+    type: "success",
+    show: false,
+  });
 
   const {
     register,
@@ -41,18 +47,23 @@ function Blogpost() {
 
   const onSubmit = async (data) => {
     if (!imageURL) {
-      alert("Please wait until the image upload is complete.");
+      setToast({
+        message: "Please wait until the image upload is complete.",
+        type: "error",
+        show: true,
+      });
+
       return;
     }
     const finalData = { ...data, image: imageURL };
-    console.log(finalData);
     // Handle form submission
 
     const { status, message } = await postBlog(finalData);
     if (status === "success") {
-      alert(message);
+      setToast({ message, type: "success", show: true });
+      redirect("/blogs");
     } else {
-      alert(message);
+      setToast({ message, type: "error", show: true });
     }
   };
 
@@ -90,16 +101,30 @@ function Blogpost() {
       (error) => {
         console.error("Upload failed:", error);
         setImgLoading(false);
+        setToast({
+          message: "Error uploading image. Please try again.",
+          type: "error",
+          show: true,
+        });
       },
       async () => {
         try {
           const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
           setImageURL(downloadUrl); // Set the uploaded image URL
           setImgLoading(false);
-          alert("Image uploaded successfully!");
+          setToast({
+            message: "Image uploaded successfully!",
+            type: "success",
+            show: true,
+          });
         } catch (err) {
           console.error("Error getting download URL:", err);
           setImgLoading(false);
+          setToast({
+            message: "Error uploading image. Please try again.",
+            type: "error",
+            show: true,
+          });
         }
       }
     );
@@ -248,22 +273,32 @@ function Blogpost() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
+                className={`${imgLoading ? "" : "hidden"}`}
               >
                 <FileUploadProgress filePrec={filePrec} />
               </motion.div>
+
+              {/* Submit Button */}
               <CardFooter className="px-6 py-8">
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 rounded-md transition-all duration-300 transform hover:scale-105"
                   disabled={imgLoading} // Disable while uploading
                 >
-                  {imgLoading ? <Spin /> : "Create Post"}
+                  {imgLoading ? "Loading..." : "Create Post"}
                 </Button>
               </CardFooter>
             </form>
           </CardContent>
         </Card>
       </motion.div>
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast((prev) => ({ ...prev, show: false }))}
+        />
+      )}
     </div>
   );
 }
