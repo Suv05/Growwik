@@ -1,34 +1,33 @@
-'use client'
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { useScroll } from "@/lib/ScrollContext"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useScroll } from "@/lib/ScrollContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { scrollToSection } = useScroll()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollToSection } = useScroll();
 
   const navItems = [
-    { label: "Home", section: null },
     { label: "About Us", section: "aboutUs" },
     { label: "Our Services", section: "servicePage" },
-    { label: "Brands", section: "ourClients" },
-    { label: "Contact Us", section: "contactForm" },
+    { label: "Case Study", section: "ourClients" },
     { label: "Blogs", section: null },
-  ]
+    { label: "Contact Us", section: "contactForm" },
+  ];
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const handleNavClick = (section) => {
     if (section) {
-      scrollToSection(section)
+      scrollToSection(section);
     }
-    setIsMobileMenuOpen(false)
-  }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <motion.header
@@ -40,10 +39,7 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link href="/">
               <Image
                 src="/Agency-Logo-(Tag).png"
@@ -205,5 +201,5 @@ export default function Header() {
         </AnimatePresence>
       </div>
     </motion.header>
-  )
+  );
 }
