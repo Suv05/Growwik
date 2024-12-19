@@ -22,7 +22,7 @@ export default function Header() {
         { label: "INFLUENCER", section: "/influencer" },
       ],
     },
-    { label: "Case Study", section: "ourClients" },
+    { label: "Case Study", section: null }, // Updated here
     { label: "Blogs", section: null },
     { label: "Contact Us", section: "contactForm" },
   ];
@@ -117,7 +117,7 @@ export default function Header() {
                   </div>
                 ) : (
                   <Link
-                    href={item.label === "Blogs" ? "/blogs" : "/"}
+                    href={item.label === "Blogs" ? "/blogs" : "/case-studies"}
                     className="button-underline text-white relative overflow-hidden group"
                   >
                     {item.label}
@@ -222,7 +222,9 @@ export default function Header() {
                         </div>
                       ) : (
                         <Link
-                          href={item.label === "Blogs" ? "/blogs" : "/"}
+                          href={
+                            item.label === "Blogs" ? "/blogs" : "/case-studies"
+                          }
                           className="button-underline text-white relative overflow-hidden group"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
