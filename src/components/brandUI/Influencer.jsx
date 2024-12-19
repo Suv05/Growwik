@@ -586,7 +586,7 @@ function Influencer() {
                       },
                     })}
                     type="text"
-                    placeholder="xyz@gmail.com"
+                    placeholder="xyz@org.com"
                     className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
                   />
                 </div>
@@ -606,7 +606,7 @@ function Influencer() {
                       },
                     })}
                     type="text"
-                    placeholder="Mobile Number"
+                    placeholder="+1 123 456 7890"
                     className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
                   />
                 </div>

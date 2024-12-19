@@ -39,7 +39,7 @@ const ContactForm = () => {
                   {...register("name", { required: "Name is required" })}
                   type="text"
                   className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
-                  placeholder="Enter your name"
+                  placeholder="Jhon Deo"
                 />
                 {errors.name && (
                   <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -57,7 +57,7 @@ const ContactForm = () => {
                   })}
                   type="text"
                   className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
-                  placeholder="Enter company name"
+                  placeholder="XYZ pvt ltd."
                 />
                 {errors.company && (
                   <p className="text-red-500 text-sm">
@@ -81,7 +81,7 @@ const ContactForm = () => {
                   })}
                   type="email"
                   className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
-                  placeholder="Enter your email"
+                  placeholder="xyz@gmail.com"
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -99,7 +99,7 @@ const ContactForm = () => {
                   })}
                   type="tel"
                   className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
-                  placeholder="Enter contact number"
+                  placeholder="+1 123 456 7890"
                 />
                 {errors.contact && (
                   <p className="text-red-500 text-sm">
@@ -117,7 +117,7 @@ const ContactForm = () => {
               <textarea
                 {...register("message", { required: "Message is required" })}
                 className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors resize-none h-24 text-lg"
-                placeholder="Enter your message"
+                placeholder="Hello can you help me with my brand promotion?"
               />
               {errors.message && (
                 <p className="text-red-500 text-sm">{errors.message.message}</p>
