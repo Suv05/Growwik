@@ -21,39 +21,10 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Sample blog posts data
-const samplePosts = [
-  {
-    img: "/ai-img.avif",
-    title: "The Future of AI: Transforming Industries",
-    description:
-      "Explore how artificial intelligence is revolutionizing various sectors and the future of work.",
-    url: "/blog/future-of-ai",
-    date: "2024-03-15",
-  },
-  {
-    img: "/ai-img.avif",
-    title: "Building Scalable Web Applications",
-    description:
-      "Learn the best practices for creating web applications that can handle millions of users.",
-    url: "/blog/scalable-web-apps",
-    date: "2024-03-10",
-  },
-  {
-    img: "/ai-img.avif",
-    title: "Design Systems: A Comprehensive Guide",
-    description:
-      "Understanding the importance of design systems and how to implement them effectively.",
-    url: "/blog/design-systems",
-    date: "2024-03-05",
-  },
-  // Add more sample posts as needed
-];
-
-function Blogs() {
+function Blogs({ blogs }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("newest");
-  const [filteredPosts, setFilteredPosts] = useState(samplePosts);
+  const [filteredPosts, setFilteredPosts] = useState(blogs);
   const heroRef = useRef(null);
 
   useEffect(() => {
@@ -76,7 +47,7 @@ function Blogs() {
 
   useEffect(() => {
     // Filter and sort posts
-    let results = [...samplePosts];
+    let results = [...blogs];
 
     // Apply search filter
     if (searchTerm) {
@@ -89,13 +60,13 @@ function Blogs() {
 
     // Apply sorting
     results.sort((a, b) => {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
+      const dateA = new Date(a.createdAt).getTime();
+      const dateB = new Date(b.createdAt).getTime();
       return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
     });
 
     setFilteredPosts(results);
-  }, [searchTerm, sortOrder]);
+  }, [searchTerm, sortOrder, blogs]);
 
   return (
     <div className="min-h-screen bg-black text-white mt-6">
@@ -168,9 +139,10 @@ function Blogs() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPosts.map((post, index) => (
-              <BlogCard key={post.url} post={post} index={index} />
+              <BlogCard key={post._id} post={post} index={index} />
             ))}
           </div>
+
           {filteredPosts.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
