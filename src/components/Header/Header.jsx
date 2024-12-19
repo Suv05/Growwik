@@ -33,9 +33,25 @@ export default function Header() {
 
   const handleNavClick = (section) => {
     if (section) {
+      // Scroll to the section
       scrollToSection(section);
+      // Close the mobile menu after a small delay to ensure the scroll action completes
+      setTimeout(() => {
+        setIsMobileMenuOpen(false);
+      }, 300); // Adjust delay as needed
+    } else {
+      // Handle cases where section is null (e.g., navigate to external pages)
+      setIsMobileMenuOpen(false);
     }
-    setIsMobileMenuOpen(false);
+  };
+
+  const handelSublinkClick = (section) => {
+    if (section) {
+      router.push(section);
+      setIsMobileMenuOpen(false);
+    } else {
+      setIsMobileMenuOpen(false);
+    }
   };
 
   return (
@@ -193,7 +209,9 @@ export default function Header() {
                               {item.sublinks.map((sublink) => (
                                 <button
                                   key={sublink.label}
-                                  onClick={() => router.push(sublink.section)}
+                                  onClick={() =>
+                                    handelSublinkClick(sublink.section)
+                                  }
                                   className="block text-white hover:text-gray-300 transition-colors"
                                 >
                                   {sublink.label}

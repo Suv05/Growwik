@@ -1,20 +1,14 @@
 // ScrollContext.jsx
 "use client";
 
-
 import { createContext, useContext, useRef } from "react";
 
 const ScrollContext = createContext();
 
 export const ScrollProvider = ({ children }) => {
   const refs = {
-    //latestWorks: useRef(null),
     aboutUs: useRef(null),
     servicePage: useRef(null),
-    //platform: useRef(null),
-    //creators: useRef(null),
-    //whyChooseUs: useRef(null),
-    //review: useRef(null),
     ourClients: useRef(null),
     contactForm: useRef(null),
   };
