@@ -1,7 +1,36 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
+  const socialLinks = [
+    {
+      name: "Facebook",
+      icon: FaFacebookF,
+      href: "https://facebook.com/yourusername",
+    },
+    {
+      name: "Twitter",
+      icon: FaTwitter,
+      href: "https://twitter.com/yourusername",
+    },
+    {
+      name: "Instagram",
+      icon: FaInstagram,
+      href: "https://instagram.com/yourusername",
+    },
+    {
+      name: "LinkedIn",
+      icon: FaLinkedinIn,
+      href: "https://linkedin.com/in/yourusername",
+    },
+  ];
   return (
     <footer className="bg-black text-white py-12">
       <div className="container mx-auto px-4">
@@ -21,26 +50,40 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div className="col-span-1">
-            <h3 className="text-red-500 text-xl font-semibold mb-4">Navigation Link</h3>
+            <h3 className="text-red-500 text-xl font-semibold mb-4">
+              Navigation Link
+            </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="hover:text-gray-300 transition-colors duration-200">
-                  <span className="mr-2">{'>'}</span>Home
+                <Link
+                  href="/brand"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
+                  <span className="mr-2">{">"}</span>Brand
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-gray-300 transition-colors duration-200">
-                  <span className="mr-2">{'>'}</span>About Us
+                <Link
+                  href="/influencer"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
+                  <span className="mr-2">{">"}</span>Influenecer
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-gray-300 transition-colors duration-200">
-                  <span className="mr-2">{'>'}</span>Services
+                <Link
+                  href="/blogs"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
+                  <span className="mr-2">{">"}</span>Blogs
                 </Link>
               </li>
               <li>
-                <Link href="/creators" className="hover:text-gray-300 transition-colors duration-200">
-                  <span className="mr-2">{'>'}</span>Creators
+                <Link
+                  href="/case-studies"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
+                  <span className="mr-2">{">"}</span>Case Study
                 </Link>
               </li>
             </ul>
@@ -48,37 +91,45 @@ export default function Footer() {
 
           {/* Other Links */}
           <div className="col-span-1">
-            <h3 className="text-red-500 text-xl font-semibold mb-4">Other Links</h3>
+            <h3 className="text-red-500 text-xl font-semibold mb-4">
+              Platfrom Links
+            </h3>
             <ul className="space-y-2">
-              <li>
-                <Link href="/case-studies" className="hover:text-gray-300 transition-colors duration-200">
-                  <span className="mr-2">{'>'}</span>Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link href="/statiks-tools" className="hover:text-gray-300 transition-colors duration-200">
-                  <span className="mr-2">{'>'}</span>Statiks Tools
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="hover:text-gray-300 transition-colors duration-200">
-                  <span className="mr-2">{'>'}</span>Privacy Policy
-                </Link>
-              </li>
+              {socialLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="flex items-center space-x-3 hover:text-gray-300 text-white transition-colors duration-300 group"
+                  >
+                    <span className="inline-block rounded-full transition-colors duration-300">
+                      <link.icon className="w-5 h-5" />
+                    </span>
+                    <span className="text-base">{link.name}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Information */}
           <div className="col-span-1">
-            <h3 className="text-red-500 text-xl font-semibold mb-4">Contact Us</h3>
+            <h3 className="text-red-500 text-xl font-semibold mb-4">
+              Contact Us
+            </h3>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <Link href="tel:+917760519545" className="hover:text-gray-300 transition-colors duration-200">
+                <Link
+                  href="tel:+917760519545"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
                   +91 7760519545
                 </Link>
               </li>
               <li className="flex items-start">
-                <Link href="mailto:Contact@growwik.com" className="hover:text-gray-300 transition-colors duration-200">
+                <Link
+                  href="mailto:Contact@growwik.com"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
                   Contact@growwik.com
                 </Link>
               </li>
@@ -86,7 +137,12 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+          <div className="mt-12 pt-8 border-t border-gray-800 text-center">
+          <p className="text-base text-white">
+            © {currentYear} Growwik. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
-  )
+  );
 }
