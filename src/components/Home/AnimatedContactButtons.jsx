@@ -22,7 +22,7 @@ const AnimatedContactButtons = () => {
               className="mb-2"
             >
               <Link
-                href="mailto:your-email@example.com"
+                href="mailto:contact@growwik.com"
                 className="bg-[#222222] text-white p-3 rounded-full hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center"
                 aria-label="Send us an email"
               >
@@ -37,7 +37,7 @@ const AnimatedContactButtons = () => {
               className="mb-2"
             >
               <Link
-                href="https://wa.me/your-whatsapp-number"
+                href="https://wa.me/+917760519545"
                 className="bg-[#222222] text-white p-3 rounded-full hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center"
                 aria-label="Contact us on WhatsApp"
               >
@@ -48,7 +48,7 @@ const AnimatedContactButtons = () => {
         )}
       </AnimatePresence>
       <motion.button
-        className="bg-[#222222] text-white p-4 rounded-full hover:bg-gray-800 transition-colors duration-300"
+        className="bg-[#222222] text-white p-4 rounded-3xl hover:bg-gray-800 transition-colors duration-300"
         onClick={() => setIsOpen(!isOpen)}
         whileTap={{ scale: 0.9 }}
       >
