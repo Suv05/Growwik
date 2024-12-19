@@ -13,11 +13,11 @@ function BlogCard({ post, index }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Link href={post.url}>
+      <Link href={post.link}>
         <Card className="overflow-hidden bg-zinc-900/50 border-zinc-800 hover:border-purple-500/50 transition-colors">
           <div className="aspect-video relative">
             <Image
-              src={post.img || "/ai-img.avif"}
+              src={post.image}
               alt={post.title}
               fill
               className="object-cover"
@@ -32,7 +32,7 @@ function BlogCard({ post, index }) {
           <CardFooter className="p-6 pt-0 flex justify-between items-center">
             <div className="flex items-center text-sm text-gray-400">
               <CalendarDays className="mr-2 h-4 w-4" />
-              {new Date(post.date).toLocaleDateString("en-US", {
+              {new Date(post.createdAt).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
