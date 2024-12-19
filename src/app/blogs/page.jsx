@@ -1,9 +1,11 @@
 import Blogs from "@/components/Blogs/Blogs";
+import { getAllBlog } from "@/actions/blog";
 
-function Page({}) {
+async function Page({}) {
+  const { data: allBlogs } = await getAllBlog();
   return (
     <>
-      <Blogs />
+      <Blogs blogs={allBlogs} />
     </>
   );
 }
