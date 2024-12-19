@@ -5,14 +5,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { useScroll } from "@/lib/ScrollContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollToSection } = useScroll();
+  const router = useRouter();
 
   const navItems = [
     { label: "About Us", section: "aboutUs" },
-    { label: "Our Services", section: "servicePage" },
+    {
+      label: "Our Services",
+      section: "servicePage",
+      sublinks: [
+        { label: "BRAND", section: "/brand" },
+        { label: "INFLUENCER", section: "/influencer" },
+      ],
+    },
     { label: "Case Study", section: "ourClients" },
     { label: "Blogs", section: null },
     { label: "Contact Us", section: "contactForm" },
@@ -52,15 +61,16 @@ export default function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:block">
-            <ul className="flex space-x-8">
-              {navItems.map((item) => (
-                <motion.li
-                  key={item.label}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  {item.section ? (
+          <ul className="hidden md:flex space-x-8">
+            {navItems.map((item) => (
+              <motion.li
+                key={item.label}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="relative group"
+              >
+                {item.section ? (
+                  <div>
                     <button
                       onClick={() => scrollToSection(item.section)}
                       className="button-underline text-white relative overflow-hidden group"
@@ -73,24 +83,39 @@ export default function Header() {
                         transition={{ duration: 0.3 }}
                       />
                     </button>
-                  ) : (
-                    <Link
-                      href={item.label === "Blogs" ? "/blogs" : "/"}
-                      className="button-underline text-white relative overflow-hidden group"
-                    >
-                      {item.label}
-                      <motion.span
-                        className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform origin-left"
-                        initial={{ scaleX: 0 }}
-                        whileHover={{ scaleX: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    </Link>
-                  )}
-                </motion.li>
-              ))}
-            </ul>
-          </nav>
+                    {item.sublinks && (
+                      <div className="absolute hidden group-hover:block pt-2 -left-4">
+                        <div className="bg-black py-2 px-4 rounded shadow-lg">
+                          {item.sublinks.map((sublink) => (
+                            <button
+                              key={sublink.label}
+                              onClick={() => router.push(sublink.section)}
+                              className="block whitespace-nowrap py-2 text-white hover:text-gray-300 transition-colors "
+                            >
+                              {sublink.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    href={item.label === "Blogs" ? "/blogs" : "/"}
+                    className="button-underline text-white relative overflow-hidden group"
+                  >
+                    {item.label}
+                    <motion.span
+                      className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform origin-left"
+                      initial={{ scaleX: 0 }}
+                      whileHover={{ scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </Link>
+                )}
+              </motion.li>
+            ))}
+          </ul>
 
           {/* ASCI Member */}
           <motion.div
@@ -150,18 +175,33 @@ export default function Header() {
                       whileTap={{ scale: 0.95 }}
                     >
                       {item.section ? (
-                        <button
-                          onClick={() => handleNavClick(item.section)}
-                          className="button-underline text-white relative overflow-hidden group"
-                        >
-                          {item.label}
-                          <motion.span
-                            className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform origin-left"
-                            initial={{ scaleX: 0 }}
-                            whileHover={{ scaleX: 1 }}
-                            transition={{ duration: 0.3 }}
-                          />
-                        </button>
+                        <div>
+                          <button
+                            onClick={() => handleNavClick(item.section)}
+                            className="button-underline text-white relative overflow-hidden group"
+                          >
+                            {item.label}
+                            <motion.span
+                              className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform origin-left"
+                              initial={{ scaleX: 0 }}
+                              whileHover={{ scaleX: 1 }}
+                              transition={{ duration: 0.3 }}
+                            />
+                          </button>
+                          {item.sublinks && (
+                            <div className="ml-4 mt-2 space-y-2">
+                              {item.sublinks.map((sublink) => (
+                                <button
+                                  key={sublink.label}
+                                  onClick={() => router.push(sublink.section)}
+                                  className="block text-white hover:text-gray-300 transition-colors"
+                                >
+                                  {sublink.label}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       ) : (
                         <Link
                           href={item.label === "Blogs" ? "/blogs" : "/"}
