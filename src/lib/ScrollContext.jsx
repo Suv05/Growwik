@@ -1,4 +1,3 @@
-// ScrollContext.jsx
 "use client";
 
 import { createContext, useContext, useRef } from "react";
@@ -14,7 +13,17 @@ export const ScrollProvider = ({ children }) => {
   };
 
   const scrollToSection = (section) => {
-    refs[section]?.current?.scrollIntoView({ behavior: "smooth" });
+    const sectionRef = refs[section]?.current;
+    if (sectionRef) {
+      const offset = 70; // Adjust based on your header height
+      const elementPosition = sectionRef.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
