@@ -8,8 +8,18 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
   const socialLinks = [
+    {
+      name: "LinkedIn",
+      icon: FaLinkedinIn,
+      href: "https://linkedin.com/in/yourusername",
+    },
+    {
+      name: "Instagram",
+      icon: FaInstagram,
+      href: "https://instagram.com/yourusername",
+    },
     {
       name: "Facebook",
       icon: FaFacebookF,
@@ -19,16 +29,6 @@ export default function Footer() {
       name: "Twitter",
       icon: FaTwitter,
       href: "https://twitter.com/yourusername",
-    },
-    {
-      name: "Instagram",
-      icon: FaInstagram,
-      href: "https://instagram.com/yourusername",
-    },
-    {
-      name: "LinkedIn",
-      icon: FaLinkedinIn,
-      href: "https://linkedin.com/in/yourusername",
     },
   ];
   return (
@@ -92,7 +92,7 @@ export default function Footer() {
           {/* Other Links */}
           <div className="col-span-1">
             <h3 className="text-red-500 text-xl font-semibold mb-4">
-              Platfrom Links
+              Social Links
             </h3>
             <ul className="space-y-2">
               {socialLinks.map((link) => (
@@ -133,11 +133,14 @@ export default function Footer() {
                   Contact@growwik.com
                 </Link>
               </li>
-              <li>Bangalore, Karnataka</li>
+              <li>
+                No. 47, 4th Cross, 2nd Main, HSR Layout, Sector 7, Bangalore,
+                Karnataka - 560102
+              </li>
             </ul>
           </div>
         </div>
-          <div className="mt-12 pt-8 border-t border-gray-800 text-center">
+        <div className="mt-12 pt-8 border-t border-gray-800 text-center">
           <p className="text-base text-white">
             © {currentYear} Growwik. All rights reserved.
           </p>

@@ -117,7 +117,7 @@ const ContactForm = () => {
               <textarea
                 {...register("message", { required: "Message is required" })}
                 className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors resize-none h-24 text-lg"
-                placeholder="Hello can you help me with my brand promotion?"
+                placeholder="Write your message here"
               />
               {errors.message && (
                 <p className="text-red-500 text-sm">{errors.message.message}</p>

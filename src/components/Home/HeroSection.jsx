@@ -30,9 +30,9 @@ export default function HeroSection() {
               <Image
                 src="/Logo-with-tag.svg"
                 alt="Growwik Logo"
-                width={300}
+                width={400}
                 height={150}
-                className="mb-8"
+                className="mb-4"
               />
             </motion.div>
 
