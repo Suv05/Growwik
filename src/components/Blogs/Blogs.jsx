@@ -26,7 +26,6 @@ function Blogs({ blogs }) {
   const [sortOrder, setSortOrder] = useState("newest");
   const [filteredPosts, setFilteredPosts] = useState(blogs);
   const heroRef = useRef(null);
-
   useEffect(() => {
     // GSAP animation for hero section
     const ctx = gsap.context(() => {
