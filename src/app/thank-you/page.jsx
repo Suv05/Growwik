@@ -1,58 +1,99 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { gsap } from "gsap";
+import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
+import { CheckCircle, ArrowRight } from "lucide-react";
 
 export default function ThankYouPage() {
-  const textRef = useRef(null);
+  const controls = useAnimation();
+  const textRef = useRef < HTMLDivElement > null;
 
   useEffect(() => {
-    if (textRef.current) {
-      gsap.from(textRef.current.children, {
-        opacity: 0,
-        y: 20,
-        stagger: 0.2,
-        duration: 1,
-        ease: "power3.out",
-      });
-    }
-  }, []);
+    const sequence = async () => {
+      await controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
+      await controls.start("visible");
+    };
+    sequence();
+  }, [controls]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-gray-900">
-      <div className="max-w-3xl w-full px-6 py-12 bg-[#17153B] rounded-2xl shadow-xl border border-gray-800">
-        <div ref={textRef} className="text-center space-y-6 mb-12">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-[#FFB200]">
+      <motion.div
+        initial="hidden"
+        animate={controls}
+        variants={containerVariants}
+        className="max-w-3xl w-full px-6 py-12 bg-black bg-opacity-80 rounded-2xl shadow-2xl border border-[#FFB200]"
+      >
+        <motion.div
+          variants={itemVariants}
+          className="text-center space-y-6 mb-12"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="flex justify-center"
+          >
+            <CheckCircle className="w-24 h-24 text-[#FFB200]" />
+          </motion.div>
           <h1 className="text-4xl font-bold text-white">Thank You!</h1>
-          <p className="text-xl text-gray-300">
-            We&apos;ve received your campaign details and we&apos;re excited to work with
+          <p className="text-xl text-[#FFD700]">
+            We've received your campaign details and we're excited to work with
             you.
           </p>
-          <p className="text-lg text-gray-400">
+          <p className="text-lg text-gray-300">
             Our team will be in touch with you soon to discuss the next steps.
           </p>
-        </div>
+        </motion.div>
 
         <div className="flex flex-wrap justify-center gap-6">
           <AnimatedButton href="/" label="Home" />
-          <AnimatedButton href="/blog" label="Blog" />
+          <AnimatedButton href="/blogs" label="Blog" />
           <AnimatedButton href="/case-studies" label="Case Studies" />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
 
 function AnimatedButton({ href, label }) {
   return (
-    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="relative overflow-hidden rounded-lg"
+    >
       <Link
         href={href}
-        className="inline-block px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-700 text-white font-semibold rounded-lg shadow-md hover:from-purple-700 hover:to-indigo-800 transition duration-300 ease-in-out"
+        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#FFB200] to-[#FF8C00] text-black font-semibold rounded-lg shadow-md hover:from-[#FFA500] hover:to-[#FF7F00] transition duration-300 ease-in-out"
       >
         {label}
+        <ArrowRight className="ml-2 h-4 w-4" />
       </Link>
+      <motion.div
+        className="absolute inset-0 bg-white mix-blend-overlay"
+        initial={{ x: "100%" }}
+        whileHover={{ x: 0 }}
+        transition={{ type: "tween" }}
+      />
     </motion.div>
   );
 }
