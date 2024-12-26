@@ -56,7 +56,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 w-full bg-black py-4 z-50"
+      className="fixed top-0 left-0 w-full bg-black py-2 z-50"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
@@ -67,11 +67,10 @@ export default function Header() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link href="/">
               <Image
-                src="/Agency-Logo-(Tag).png"
+                src="/Logo-with-tag.svg"
                 alt="Growwik Logo"
-                width={150}
-                height={50}
-                className="h-20 w-28"
+                width={80}
+                height={30}
               />
             </Link>
           </motion.div>
@@ -142,12 +141,12 @@ export default function Header() {
           >
             <span className="text-white">MEMBER OF</span>
             <Image
-              src="/ASCI-Logo.png"
-              alt="ASCI Logo"
-              width={80}
-              height={30}
-              className="h-14 w-20"
-            />
+                src="/asci-logo.svg"
+                alt="Growwik Logo"
+                width={50}
+                height={10}
+                
+              />
           </motion.div>
 
           {/* Mobile Menu Toggle */}
@@ -249,12 +248,11 @@ export default function Header() {
               >
                 <span className="text-white">MEMBER OF</span>
                 <Image
-                  src="/ASCI-Logo.png"
-                  alt="ASCI Logo"
-                  width={80}
-                  height={30}
-                  className="h-14 w-20"
-                />
+                src="/asci-logo.svg"
+                alt="Growwik Logo"
+                width={50}
+                height={10}
+              />
               </motion.div>
             </motion.div>
           )}
