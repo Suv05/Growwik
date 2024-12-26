@@ -115,7 +115,7 @@ export default function BrandForm() {
   const [hoveredPlatform, setHoveredPlatform] = useState("");
   const [hoveredGenre, setHoveredGenre] = useState("");
   const [selectedGenre, setSelectedGenre] = useState([]);
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset,formState: { errors } } = useForm();
   const [toast, setToast] = useState({
     message: "",
     type: "success",
@@ -362,6 +362,9 @@ export default function BrandForm() {
                 placeholder="xyz@gmail.com"
                 className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
               />
+              {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email.message}</p>
+                )}
             </div>
             <div className="relative">
               <label
@@ -374,7 +377,7 @@ export default function BrandForm() {
                 {...register("phoneNo", {
                   required: true,
                   pattern: {
-                    value: /^\d{10}$/,
+                    value: /^\+?\d{1,3}?\s?\d{10}$/,
                     message: "Please enter a valid phone number",
                   },
                 })}
@@ -382,6 +385,11 @@ export default function BrandForm() {
                 placeholder="+1 123 456 7890"
                 className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
               />
+              {errors.contact && (
+                  <p className="text-red-500 text-sm">
+                    {errors.phoneNo.message}
+                  </p>
+                )}
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-[400px] bg-black overflow-hidden mt-24 lg:mt-28 min-[810px]:px-16">
+    <section className="relative w-full h-[400px] bg-black overflow-hidden mt-20 lg:mt-24 min-[810px]:px-16">
       {/* Background image */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40 w-full h-full"

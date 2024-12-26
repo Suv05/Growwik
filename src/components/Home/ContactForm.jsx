@@ -11,11 +11,14 @@ const ContactForm = () => {
     formState: { errors },
     reset,
   } = useForm();
+  const [loading,setLoading]=useState(false);
 
   async function onSubmit(data) {
+    setLoading(true);
     // Add your form submission logic here
     const { status, message } = await setContact(data);
     if (status === "success") {
+      setLoading(false);
       router.push("/thank-you");
     }
     reset();
@@ -130,8 +133,9 @@ const ContactForm = () => {
               <button
                 type="submit"
                 className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+                disabled={loading}
               >
-                Submit
+                {loading?"Submitting...":"Submit"}
               </button>
             </div>
           </form>

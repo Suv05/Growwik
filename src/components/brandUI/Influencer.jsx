@@ -604,7 +604,7 @@ function Influencer() {
                     {...register("phoneNo", {
                       required: true,
                       pattern: {
-                        value: /^\d{10}$/,
+                        value: /^\+?\d{1,3}?\s?\d{10}$/,
                         message: "Please enter a valid phone number",
                       },
                     })}
