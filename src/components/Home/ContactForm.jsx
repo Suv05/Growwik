@@ -1,8 +1,10 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { setContact } from "@/actions/contact";
+import { useRouter } from "next/navigation";
 
 const ContactForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -14,9 +16,8 @@ const ContactForm = () => {
     // Add your form submission logic here
     const { status, message } = await setContact(data);
     if (status === "success") {
-      alert(message);
+      router.push("/thank-you");
     }
-
     reset();
   }
 
