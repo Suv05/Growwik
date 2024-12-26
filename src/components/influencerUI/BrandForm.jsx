@@ -5,6 +5,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { setInfluencer } from "@/actions/influencer";
+import { useRouter } from "next/navigation";
 import {
   FaInstagram,
   FaYoutube,
@@ -109,6 +110,7 @@ const genres = [
 ];
 
 export default function BrandForm() {
+  const router = useRouter();
   const [selectedPlatform, setSelectedPlatform] = useState([]);
   const [hoveredPlatform, setHoveredPlatform] = useState("");
   const [hoveredGenre, setHoveredGenre] = useState("");
@@ -127,11 +129,7 @@ export default function BrandForm() {
       genre: selectedGenre,
     });
     if (status === "success") {
-      setToast({
-        message: "🙏🏻Thanks for contacting us!",
-        type: "success",
-        show: true,
-      });
+      router.push("/thank-you");
       setSelectedPlatform([]);
       setSelectedGenre([]);
       reset();
