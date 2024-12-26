@@ -12,17 +12,24 @@ const ContactForm = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function onSubmit(data) {
     setLoading(true);
-    // Add your form submission logic here
-    const { status, message } = await setContact(data);
-    if (status === "success") {
-      setLoading(false);
-      router.push("/thank-you");
+    try {
+      const { status, message } = await setContact(data);
+
+      if (status === "success") {
+        reset(); // Reset the form only on successful submission
+        router.push("/thank-you");
+      } else {
+        console.error(message || "Submission failed");
+      }
+    } catch (error) {
+      console.error("An error occurred during submission:", error);
+    } finally {
+      setLoading(false); // Ensure loading is set to false regardless of success or failure
     }
-    reset();
   }
 
   return (
@@ -44,7 +51,7 @@ const ContactForm = () => {
                   {...register("name", { required: "Name is required" })}
                   type="text"
                   className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
-                  placeholder="Jhon Deo"
+                  placeholder="John Doe"
                 />
                 {errors.name && (
                   <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -101,10 +108,14 @@ const ContactForm = () => {
                 <input
                   {...register("contact", {
                     required: "Contact details are required",
+                    pattern: {
+                      value: /^\+?[\d\s-]{10,}$/,
+                      message: "Please enter a valid phone number",
+                    },
                   })}
                   type="tel"
                   className="w-full bg-transparent border-b-2 border-white/30 focus:border-white outline-none text-white px-1 py-2 transition-colors text-lg"
-                  placeholder="+1 123 456 7890"
+                  placeholder="+1 123-456-7890"
                 />
                 {errors.contact && (
                   <p className="text-red-500 text-sm">
@@ -136,7 +147,11 @@ const ContactForm = () => {
                 className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
                 disabled={loading}
               >
-                {loading?"Submitting...":"Submit"}
+                {loading ? (
+                  <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-black"></div>
+                ) : (
+                  "Submit"
+                )}
               </button>
             </div>
           </form>

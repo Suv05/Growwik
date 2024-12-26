@@ -10,33 +10,44 @@ const ContactSchema = new Schema({
   },
   email: {
     type: String,
-    minlength: 10, // Corrected to lowercase
     required: [true, "Please provide your email"],
+    minlength: 10,
     lowercase: true,
     match: [
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       "Enter a valid email address",
     ],
   },
   contact: {
     type: String,
-    required: true,
-    minlength: 10, // Corrected to lowercase
-    match: [
-      /^\+?[0-9]{1,4}-?[0-9]{3,4}-?[0-9]{4}$/,
-      "Enter a valid phone number",
-    ], // Broader regex
+    required: [true, "Please provide a valid phone number"],
+    validate: {
+      validator: function(v) {
+        // This regex allows for:
+        // - Optional plus sign at the start
+        // - Optional country code
+        // - Groups of digits with optional spaces or hyphens
+        // - Minimum length of 10 digits (excluding formatting characters)
+        return /^\+?[\d\s-]{10,}$/.test(v.replace(/[\s-]/g, ''));
+      },
+      message: props => `${props.value} is not a valid phone number!`
+    },
+    // Clean the phone number before saving
+    set: function(v) {
+      // Remove all spaces and hyphens to store in a consistent format
+      return v ? v.replace(/\s+/g, '').replace(/-+/g, '') : v;
+    }
   },
   company: {
     type: String,
     maxlength: 100,
     trim: true,
-    default: null, // Optional clarity
+    default: null,
   },
   message: {
     type: String,
     maxlength: 500,
-    default: null, // Optional clarity
+    default: null,
   },
 });
 
