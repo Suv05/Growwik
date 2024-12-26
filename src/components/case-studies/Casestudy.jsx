@@ -36,17 +36,10 @@ const caseStudies = [
 ];
 
 export default function CaseStudy() {
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-
   return (
-    <div
-      className={`min-h-screen bg-cover bg-center ${
-        isMobile ? "bg-scroll" : "bg-fixed"
-      } text-white overflow-hidden`}
-      style={{ backgroundImage: "url('/our-service.png')" }}
-    >
-      <div className="min-h-screen backdrop-blur-sm">
-        <main className="pt-32 px-6 max-w-7xl mx-auto backdrop-blur-sm">
+    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 text-white overflow-hidden">
+      <div className="min-h-screen">
+        <main className="pt-32 px-6 max-w-7xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,7 +56,7 @@ export default function CaseStudy() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-sm shadow-xl"
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900/80 to-gray-800/80 shadow-xl"
               >
                 <Link href={`/case-studies/${study.id}`}>
                   <div className="aspect-[16/9] relative">
