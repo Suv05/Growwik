@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { setContact } from "@/actions/contact";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const ContactForm = () => {
   const router = useRouter();
