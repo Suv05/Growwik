@@ -121,19 +121,23 @@ export default function BrandForm() {
     type: "success",
     show: false,
   });
+  const [loading, setLoading] = useState(false);
 
   async function onSubmit(data) {
+    setLoading(true);
     const { status, message } = await setInfluencer({
       ...data,
       platforms: selectedPlatform,
       genre: selectedGenre,
     });
     if (status === "success") {
+      setLoading(false);
       router.push("/thank-you");
       setSelectedPlatform([]);
       setSelectedGenre([]);
       reset();
     } else {
+      setLoading(false);
       setToast({
         message: "😢 Something went wrong, please try again later!",
         type: "error",
@@ -389,8 +393,9 @@ export default function BrandForm() {
             className="bg-white text-black px-12 py-3 rounded-lg font-bold text-xl hover:bg-gray-100 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            disabled={loading}
           >
-            Submit
+            {loading ? "Submitting..." : "Submit"}
           </motion.button>
         </div>
       </form>

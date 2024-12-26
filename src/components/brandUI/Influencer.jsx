@@ -18,6 +18,7 @@ import {
 } from "react-icons/fa6";
 import { FaMoneyCheck } from "react-icons/fa";
 import { Toast } from "@/utilities/Toast";
+import { set } from "mongoose";
 
 const platforms = [
   {
@@ -177,12 +178,14 @@ function Influencer() {
     type: "success",
     show: false,
   });
+  const [loading, setLoading] = useState(false);
 
   // input feilds
   const [brandName, setBrandName] = useState("");
   const [campaignDescription, setCampaignDescription] = useState("");
 
   async function onSubmit(data) {
+    setLoading(true);
     const { status } = await setBrand({
       ...data,
       brand: brandName,
@@ -194,6 +197,7 @@ function Influencer() {
     });
 
     if (status === "success") {
+      setLoading(false);
       router.push("/thank-you");
       // Clear all state variables
       setBrandName("");
@@ -206,6 +210,7 @@ function Influencer() {
       // Clear React Hook Form data
       reset();
     } else {
+      setLoading(false);
       setToast({
         message: "😢 Something went wrong, please try again later!",
         type: "error",
@@ -619,8 +624,9 @@ function Influencer() {
               className="bg-white text-black px-12 py-3 rounded-lg font-bold text-xl hover:bg-gray-100 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              disabled={loading}
             >
-              Submit
+              {loading ? "Submitting..." : "Submit"}
             </motion.button>
           </div>
         </form>
