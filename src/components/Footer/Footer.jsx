@@ -38,12 +38,11 @@ export default function Footer() {
           {/* Logo Section */}
           <div className="col-span-1">
             <Link href="/">
-              <Image
-                src="/Agency-Logo-(Tag).png" // Replace with your actual logo path
+            <Image
+                src="/Logo-with-tag.svg"
                 alt="Growwik Logo"
                 width={200}
-                height={80}
-                className="w-44 h-32"
+                height={50}
               />
             </Link>
           </div>
