@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -259,9 +260,11 @@ function Blogpost() {
                     transition={{ duration: 0.3 }}
                     className="mt-4"
                   >
-                    <img
+                    <Image
                       src={imagePreview}
                       alt="Preview"
+                      width={400}
+                      height={200}
                       className="max-w-full h-auto rounded-md shadow-lg"
                     />
                   </motion.div>

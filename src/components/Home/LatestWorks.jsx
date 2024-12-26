@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function LatestWorks() {
   const scrollRef = useRef(null);
@@ -95,9 +96,11 @@ export default function LatestWorks() {
                 onTouchEnd={() => handleVideoInteraction(false)} // Resume auto-scroll on touch end
               ></video>
               <div className="absolute inset-0 flex items-center justify-center">
-                <img
+                <Image
                   src={video.logo}
                   alt={`Logo ${index}`}
+                  width={20}
+                  height={20}
                   className="h-20 w-20"
                 />
               </div>
