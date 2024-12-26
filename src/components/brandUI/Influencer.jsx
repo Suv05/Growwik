@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { setBrand } from "@/actions/brand";
 import Image from "next/image";
 import { useState } from "react";
@@ -162,6 +163,7 @@ const itemVariants = {
 };
 
 function Influencer() {
+  const router = useRouter();
   const { register, handleSubmit, reset } = useForm();
   const [selectedPlatform, setSelectedPlatform] = useState([]);
   const [hoveredPlatform, setHoveredPlatform] = useState("");
@@ -181,7 +183,7 @@ function Influencer() {
   const [campaignDescription, setCampaignDescription] = useState("");
 
   async function onSubmit(data) {
-    const { status, message } = await setBrand({
+    const { status } = await setBrand({
       ...data,
       brand: brandName,
       description: campaignDescription,
@@ -192,11 +194,7 @@ function Influencer() {
     });
 
     if (status === "success") {
-      setToast({
-        message: "🙏🏻Thanks for contacting us!",
-        type: "success",
-        show: true,
-      });
+      router.push("/thank-you");
       // Clear all state variables
       setBrandName("");
       setCampaignDescription("");
