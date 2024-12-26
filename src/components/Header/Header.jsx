@@ -6,9 +6,11 @@ import Image from "next/image";
 import { useScroll } from "@/lib/ScrollContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { ChevronDown } from "lucide-react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const { scrollToSection } = useScroll();
   const router = useRouter();
 
@@ -22,7 +24,7 @@ export default function Header() {
         { label: "INFLUENCER", section: "/influencer" },
       ],
     },
-    { label: "Case Study", section: null }, // Updated here
+    { label: "Case Study", section: null },
     { label: "Blogs", section: null },
     { label: "Contact Us", section: "contactForm" },
   ];
@@ -31,17 +33,18 @@ export default function Header() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleNavClick = (section) => {
-    if (section) {
-      // Scroll to the section
+  const handleNavClick = (section, label) => {
+    if (label === "Our Services") {
+      setIsServicesOpen(!isServicesOpen);
+    } else if (section) {
       scrollToSection(section);
-      // Close the mobile menu after a small delay to ensure the scroll action completes
       setTimeout(() => {
         setIsMobileMenuOpen(false);
-      }, 300); // Adjust delay as needed
+        setIsServicesOpen(false);
+      }, 300);
     } else {
-      // Handle cases where section is null (e.g., navigate to external pages)
       setIsMobileMenuOpen(false);
+      setIsServicesOpen(false);
     }
   };
 
@@ -141,12 +144,11 @@ export default function Header() {
           >
             <span className="text-white">MEMBER OF</span>
             <Image
-                src="/asci-logo.svg"
-                alt="Growwik Logo"
-                width={50}
-                height={10}
-                
-              />
+              src="/asci-logo.svg"
+              alt="Growwik Logo"
+              width={50}
+              height={10}
+            />
           </motion.div>
 
           {/* Mobile Menu Toggle */}
@@ -189,35 +191,52 @@ export default function Header() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      {item.section ? (
+                      {item.label === "Our Services" ? (
                         <div>
-                          <button
-                            onClick={() => handleNavClick(item.section)}
-                            className="button-underline text-white relative overflow-hidden group"
-                          >
-                            {item.label}
-                            <motion.span
-                              className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform origin-left"
-                              initial={{ scaleX: 0 }}
-                              whileHover={{ scaleX: 1 }}
+                          <div className="flex items-center w-full">
+                            <button
+                              onClick={() => setIsServicesOpen(!isServicesOpen)}
+                              className="button-underline text-white relative overflow-hidden group text-left flex items-center"
+                            >
+                              {item.label}
+                              <motion.span
+                                className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform origin-left"
+                                initial={{ scaleX: 0 }}
+                                whileHover={{ scaleX: 1 }}
+                                transition={{ duration: 0.3 }}
+                              />
+                            </button>
+                            <motion.div
+                              animate={{ rotate: isServicesOpen ? 180 : 0 }}
                               transition={{ duration: 0.3 }}
-                            />
-                          </button>
-                          {item.sublinks && (
-                            <div className="ml-4 mt-2 space-y-2">
-                              {item.sublinks.map((sublink) => (
-                                <button
-                                  key={sublink.label}
-                                  onClick={() =>
-                                    handelSublinkClick(sublink.section)
-                                  }
-                                  className="block text-white hover:text-gray-300 transition-colors"
-                                >
-                                  {sublink.label}
-                                </button>
-                              ))}
-                            </div>
-                          )}
+                              className={`ml-2.5`}
+                            >
+                              <ChevronDown className="w-5 h-5 text-white" />
+                            </motion.div>
+                          </div>
+                          <AnimatePresence>
+                            {isServicesOpen && (
+                              <motion.div
+                                className="ml-4 mt-2 space-y-2"
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                {item.sublinks.map((sublink) => (
+                                  <button
+                                    key={sublink.label}
+                                    onClick={() =>
+                                      handelSublinkClick(sublink.section)
+                                    }
+                                    className="block text-white hover:text-gray-300 transition-colors"
+                                  >
+                                    {sublink.label}
+                                  </button>
+                                ))}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
                       ) : (
                         <Link
@@ -248,11 +267,11 @@ export default function Header() {
               >
                 <span className="text-white">MEMBER OF</span>
                 <Image
-                src="/asci-logo.svg"
-                alt="Growwik Logo"
-                width={50}
-                height={10}
-              />
+                  src="/asci-logo.svg"
+                  alt="Growwik Logo"
+                  width={50}
+                  height={10}
+                />
               </motion.div>
             </motion.div>
           )}
