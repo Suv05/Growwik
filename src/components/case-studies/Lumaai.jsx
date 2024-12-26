@@ -42,7 +42,7 @@ function Lumaai() {
       {/* Hero Section */}
       <section className="relative h-[80vh] overflow-hidden">
         <Image
-          src="/5194072.jpg"
+          src="/3676748.jpg"
           alt="Luma AI Banner"
           fill
           className="object-cover opacity-60"

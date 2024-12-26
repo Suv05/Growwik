@@ -42,7 +42,7 @@ function Maono() {
       {/* Hero Section */}
       <section className="relative h-[80vh] overflow-hidden">
         <Image
-          src="/5194072.jpg"
+          src="/3676748.jpg"
           alt="Maono Banner"
           fill
           className="object-cover opacity-60"
