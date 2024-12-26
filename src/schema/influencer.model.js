@@ -20,12 +20,23 @@ const InfluencerSchema = new Schema({
   },
   phoneNo: {
     type: String,
-    required: true,
-    minlength: 10, // Corrected casing
-    match: [
-      /^\+?[0-9]{1,4}-?[0-9]{3,4}-?[0-9]{4}$/,
-      "Enter a valid phone number",
-    ], // Flexible regex
+    required: [true, "Please provide a valid phone number"],
+    validate: {
+      validator: function(v) {
+        // This regex allows for:
+        // - Optional plus sign at the start
+        // - Optional country code
+        // - Groups of digits with optional spaces or hyphens
+        // - Minimum length of 10 digits (excluding formatting characters)
+        return /^\+?[\d\s-]{10,}$/.test(v.replace(/[\s-]/g, ''));
+      },
+      message: props => `${props.value} is not a valid phone number!`
+    },
+    // Clean the phone number before saving
+    set: function(v) {
+      // Remove all spaces and hyphens to store in a consistent format
+      return v ? v.replace(/\s+/g, '').replace(/-+/g, '') : v;
+    }
   },
   platforms: {
     type: [String], // Specify array of strings

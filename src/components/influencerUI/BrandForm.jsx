@@ -115,7 +115,12 @@ export default function BrandForm() {
   const [hoveredPlatform, setHoveredPlatform] = useState("");
   const [hoveredGenre, setHoveredGenre] = useState("");
   const [selectedGenre, setSelectedGenre] = useState([]);
-  const { register, handleSubmit, reset,formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [toast, setToast] = useState({
     message: "",
     type: "success",
@@ -125,24 +130,30 @@ export default function BrandForm() {
 
   async function onSubmit(data) {
     setLoading(true);
-    const { status, message } = await setInfluencer({
-      ...data,
-      platforms: selectedPlatform,
-      genre: selectedGenre,
-    });
-    if (status === "success") {
-      setLoading(false);
-      router.push("/thank-you");
-      setSelectedPlatform([]);
-      setSelectedGenre([]);
-      reset();
-    } else {
-      setLoading(false);
-      setToast({
-        message: "😢 Something went wrong, please try again later!",
-        type: "error",
-        show: true,
+    try {
+      const { status, message } = await setInfluencer({
+        ...data,
+        platforms: selectedPlatform,
+        genre: selectedGenre,
       });
+
+      if (status === "success") {
+        reset(); // Reset the form only on successful submission
+        setSelectedPlatform([]);
+        setSelectedGenre([]);
+        router.push("/thank-you");
+      } else {
+        console.error(message || "Submission failed");
+        setToast({
+          message: "😥 Submission failed, please try again later!",
+          type: "error",
+          show: true,
+        });
+      }
+    } catch (error) {
+      console.error("An error occurred during submission:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -363,8 +374,8 @@ export default function BrandForm() {
                 className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
               />
               {errors.email && (
-                  <p className="text-red-500 text-sm">{errors.email.message}</p>
-                )}
+                <p className="text-red-500 text-sm">{errors.email.message}</p>
+              )}
             </div>
             <div className="relative">
               <label
@@ -375,21 +386,19 @@ export default function BrandForm() {
               </label>
               <input
                 {...register("phoneNo", {
-                  required: true,
+                  required: [true, "Contact number is required"],
                   pattern: {
-                    value: /^\+?\d{1,3}?\s?\d{10}$/,
+                    value: /^\+?[\d\s-]{10,}$/,
                     message: "Please enter a valid phone number",
                   },
                 })}
-                type="text"
-                placeholder="+1 123 456 7890"
+                type="tel"
+                placeholder="+1 123-456-7890"
                 className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
               />
-              {errors.contact && (
-                  <p className="text-red-500 text-sm">
-                    {errors.phoneNo.message}
-                  </p>
-                )}
+              {errors.phoneNo && (
+                <p className="text-red-500 text-sm">{errors.phoneNo.message}</p>
+              )}
             </div>
           </div>
         </div>
@@ -403,7 +412,11 @@ export default function BrandForm() {
             whileTap={{ scale: 0.95 }}
             disabled={loading}
           >
-            {loading ? "Submitting..." : "Submit"}
+            {loading ? (
+              <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-black"></div>
+            ) : (
+              "Submit"
+            )}
           </motion.button>
         </div>
       </form>

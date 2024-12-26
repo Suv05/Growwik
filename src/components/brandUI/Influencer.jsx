@@ -18,7 +18,6 @@ import {
 } from "react-icons/fa6";
 import { FaMoneyCheck } from "react-icons/fa";
 import { Toast } from "@/utilities/Toast";
-import { set } from "mongoose";
 
 const platforms = [
   {
@@ -165,7 +164,12 @@ const itemVariants = {
 
 function Influencer() {
   const router = useRouter();
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [selectedPlatform, setSelectedPlatform] = useState([]);
   const [hoveredPlatform, setHoveredPlatform] = useState("");
   const [selectedCampaign, setSelectedCampaign] = useState([]);
@@ -186,36 +190,40 @@ function Influencer() {
 
   async function onSubmit(data) {
     setLoading(true);
-    const { status } = await setBrand({
-      ...data,
-      brand: brandName,
-      description: campaignDescription,
-      platforms: selectedPlatform,
-      campaign: selectedCampaign,
-      content: selectedContent,
-      industry: selectedGenre,
-    });
-
-    if (status === "success") {
-      setLoading(false);
-      router.push("/thank-you");
-      // Clear all state variables
-      setBrandName("");
-      setCampaignDescription("");
-      setSelectedPlatform([]);
-      setSelectedCampaign([]);
-      setSelectedContent([]);
-      setSelectedGenre([]);
-
-      // Clear React Hook Form data
-      reset();
-    } else {
-      setLoading(false);
-      setToast({
-        message: "😢 Something went wrong, please try again later!",
-        type: "error",
-        show: true,
+    try {
+      const { status, message } = await setBrand({
+        ...data,
+        brand: brandName,
+        description: campaignDescription,
+        platforms: selectedPlatform,
+        campaign: selectedCampaign,
+        content: selectedContent,
+        industry: selectedGenre,
       });
+
+      if (status === "success") {
+        reset();
+        // Clear all state variables
+        setBrandName("");
+        setCampaignDescription("");
+        setSelectedPlatform([]);
+        setSelectedCampaign([]);
+        setSelectedContent([]);
+        setSelectedGenre([]);
+
+        router.push("/thank-you");
+      } else {
+        console.error(message || "Submission failed");
+        setToast({
+          message: "😢 Submission failed, please try again later!",
+          type: "error",
+          show: true,
+        });
+      }
+    } catch (error) {
+      console.error("An error occurred during submission:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -592,6 +600,11 @@ function Influencer() {
                     placeholder="xyz@org.com"
                     className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
                 <div className="relative">
                   <label
@@ -602,16 +615,21 @@ function Influencer() {
                   </label>
                   <input
                     {...register("phoneNo", {
-                      required: true,
+                      required: [true, "Contact number is required"],
                       pattern: {
-                        value: /^\+?\d{1,3}?\s?\d{10}$/,
+                        value: /^\+?[\d\s-]{10,}$/,
                         message: "Please enter a valid phone number",
                       },
                     })}
-                    type="text"
-                    placeholder="+1 123 456 7890"
+                    type="tel"
+                    placeholder="+1 123-456-7890"
                     className="w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-500 font-light"
                   />
+                  {errors.phoneNo && (
+                    <p className="text-red-500 text-sm">
+                      {errors.phoneNo.message}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -626,7 +644,11 @@ function Influencer() {
               whileTap={{ scale: 0.95 }}
               disabled={loading}
             >
-              {loading ? "Submitting..." : "Submit"}
+              {loading ? (
+                <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-black"></div>
+              ) : (
+                "Submit"
+              )}
             </motion.button>
           </div>
         </form>
