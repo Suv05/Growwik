@@ -7,7 +7,6 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 
 export default function ThankYouPage() {
   const controls = useAnimation();
-  const textRef = useRef < HTMLDivElement > null;
 
   useEffect(() => {
     const sequence = async () => {
@@ -56,7 +55,7 @@ export default function ThankYouPage() {
           </motion.div>
           <h1 className="text-4xl font-bold text-white">Thank You!</h1>
           <p className="text-xl text-[#FFD700]">
-            We've received your campaign details and we're excited to work with
+            We&apos;ve received your campaign details and we&apos;re excited to work with
             you.
           </p>
           <p className="text-lg text-gray-300">
