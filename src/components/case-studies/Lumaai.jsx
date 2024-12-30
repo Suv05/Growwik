@@ -126,7 +126,7 @@ function Lumaai() {
             <h2 className="text-3xl font-bold mb-6 text-center">Campaign Overview</h2>
             <Card className="p-6 bg-black/50 border-zinc-800">
               <p className="text-gray-300">
-                Luma AI partnered with Growwik Media to amplify its global presence and showcase its 3D content creation platform. The campaign aimed to highlight Luma AI's unique features, drive app downloads, and position it as a go-to tool for creators, influencers, and businesses.
+                Luma AI partnered with Growwik Media to amplify its global presence and showcase its 3D content creation platform. The campaign aimed to highlight Luma AI&apos;s unique features, drive app downloads, and position it as a go-to tool for creators, influencers, and businesses.
               </p>
             </Card>
           </motion.div>
@@ -146,14 +146,14 @@ function Lumaai() {
             <Card className="p-6 bg-zinc-900/50 border-zinc-800">
               <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">Strategy</h3>
               <p className="text-gray-300">
-                The campaign strategy revolved around leveraging influencers to demonstrate Luma AI's ability to create "drone shots without a drone." Growwik collaborated with 35 influencers from diverse niches, including travel, food, and sports, to produce visually stunning and relatable content.
+                The campaign strategy revolved around leveraging influencers to demonstrate Luma AI&apos;s ability to create "drone shots without a drone." Growwik collaborated with 35 influencers from diverse niches, including travel, food, and sports, to produce visually stunning and relatable content.
               </p>
             </Card>
             <Card className="p-6 bg-zinc-900/50 border-zinc-800">
               <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">Execution</h3>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
                 <li>Generate curiosity with the tagline "Drone shots without a drone."</li>
-                <li>Showcase the platform's usability for creators and businesses.</li>
+                <li>Showcase the platform&apos;s usability for creators and businesses.</li>
                 <li>Organically reach a broad audience through engaging and authentic influencer content.</li>
               </ul>
             </Card>
@@ -175,11 +175,11 @@ function Lumaai() {
               <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">Key Elements</h3>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
                 <li>Tagline: "Drone shots without a drone" to spark interest and curiosity.</li>
-                <li>Influencers created cinematic 3D visuals using Luma AI's tools.</li>
+                <li>Influencers created cinematic 3D visuals using Luma AI&apos;s tools.</li>
                 <li>Reels and videos centered on travel, sports, and food to appeal to diverse audiences.</li>
               </ul>
               <p className="mt-4 text-gray-300">
-                An organic highlight was when the Chennai Super Kings (CSK) cricket team created their own reel using Luma AI's technology. The reel went viral, showcasing how creators and teams could easily use the platform to produce visually stunning content, even without formal collaboration.
+                An organic highlight was when the Chennai Super Kings (CSK) cricket team created their own reel using Luma AI&apos;s technology. The reel went viral, showcasing how creators and teams could easily use the platform to produce visually stunning content, even without formal collaboration.
               </p>
             </Card>
           </motion.div>
@@ -197,7 +197,7 @@ function Lumaai() {
           <h2 className="text-3xl font-bold mb-12 text-center">Challenges Faced</h2>
           <Card className="p-6 bg-zinc-900/50 border-zinc-800">
             <p className="text-gray-300">
-              The key challenge was to stand out in a highly competitive AI market and achieve organic growth in user engagement and app downloads without heavy reliance on paid promotions. Growwik addressed this by focusing on the campaign's unique creative angle and leveraging influential voices across platforms.
+              The key challenge was to stand out in a highly competitive AI market and achieve organic growth in user engagement and app downloads without heavy reliance on paid promotions. Growwik addressed this by focusing on the campaign&apos;s unique creative angle and leveraging influential voices across platforms.
             </p>
           </Card>
         </motion.div>
@@ -223,7 +223,7 @@ function Lumaai() {
           </div>
           <Card className="p-6 bg-black/50 border-zinc-800">
             <p className="text-gray-300">
-              The campaign was a massive success, achieving global recognition for Luma AI. Additionally, the viral success of organic reels, like the one created by CSK, demonstrated Luma AI's capabilities, cementing its position as a leader in 3D content creation.
+              The campaign was a massive success, achieving global recognition for Luma AI. Additionally, the viral success of organic reels, like the one created by CSK, demonstrated Luma AI&apos;s capabilities, cementing its position as a leader in 3D content creation.
             </p>
           </Card>
         </div>
@@ -258,7 +258,7 @@ function Lumaai() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                A standout moment was an organic reel created by the Chennai Super Kings (CSK) cricket team, which showcased Luma AI's technology. Using the tagline "Drone shots without a drone," CSK produced a visually captivating 3D video that resonated with fans and reached a massive audience.
+                A standout moment was an organic reel created by the Chennai Super Kings (CSK) cricket team, which showcased Luma AI&apos;s technology. Using the tagline &quot;Drone shots without a drone,&quot; CSK produced a visually captivating 3D video that resonated with fans and reached a massive audience.
               </motion.p>
             </Card>
           </div>
@@ -342,7 +342,7 @@ function Lumaai() {
           >
             <h2 className="text-3xl font-bold mb-6">Key Takeaways</h2>
             <p className="text-gray-300 text-lg">
-              The campaign demonstrated the impact of strategic partnerships and authentic influencer content in amplifying brand awareness and driving substantial user engagement without paid advertising. Luma AI's unique approach to creating immersive 3D content resonated with creators and audiences alike, establishing the platform as a leader in AI-powered content creation.
+              The campaign demonstrated the impact of strategic partnerships and authentic influencer content in amplifying brand awareness and driving substantial user engagement without paid advertising. Luma AI&apos;s unique approach to creating immersive 3D content resonated with creators and audiences alike, establishing the platform as a leader in AI-powered content creation.
             </p>
           </motion.div>
         </div>
