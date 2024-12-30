@@ -13,22 +13,22 @@ export default function Footer() {
     {
       name: "LinkedIn",
       icon: FaLinkedinIn,
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://www.linkedin.com/company/growwik/",
     },
     {
       name: "Instagram",
       icon: FaInstagram,
-      href: "https://instagram.com/yourusername",
+      href: "https://www.instagram.com/growwikmedia/profilecard/?igsh=MWwyeDBoNWtyZTgzZA==",
     },
     {
       name: "Facebook",
       icon: FaFacebookF,
-      href: "https://facebook.com/yourusername",
+      href: "https://facebook.com",
     },
     {
       name: "Twitter",
       icon: FaTwitter,
-      href: "https://twitter.com/yourusername",
+      href: "https://twitter.com",
     },
   ];
   return (
