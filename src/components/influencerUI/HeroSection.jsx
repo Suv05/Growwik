@@ -14,7 +14,7 @@ export default function HeroSection() {
         transition={{ duration: 1 }}
       >
         <Image
-          src="/Illusion-Background.png"
+          src="/influencer back.jpg"
           alt="Zebra pattern background"
           fill
           className="object-cover"
