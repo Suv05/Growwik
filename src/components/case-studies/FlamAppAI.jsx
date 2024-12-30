@@ -99,6 +99,31 @@ function FlamAppAI() {
         </motion.div>
       </section>
 
+      {/* Campaign Overview Section */}
+      <section className="py-20 bg-zinc-900/50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold mb-6 text-center">
+              Campaign Overview
+            </h2>
+            <Card className="p-6 bg-black/50 border-zinc-800">
+              <p className="text-gray-300">
+                FlamApp AI collaborated with Growwik Media to integrate AR
+                technology into marketing campaigns for several prominent
+                brands. The objective was to enhance consumer engagement,
+                increase brand visibility, and position these brands as pioneers
+                in AR-driven marketing.
+              </p>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Campaigns Section */}
       <section className="py-20 bg-zinc-900/50">
         <div className="container mx-auto px-4">
@@ -286,8 +311,8 @@ function FlamAppAI() {
                 Flam x AJIO Heeramandi Collection
               </h3>
               <p className="text-gray-300 mb-6">
-                Objective: Promote AJIO&apos;s exclusive Heeramandi ethnic collection
-                through AR-driven engagement.
+                Objective: Promote AJIO&apos;s exclusive Heeramandi ethnic
+                collection through AR-driven engagement.
               </p>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -343,7 +368,123 @@ function FlamAppAI() {
           </motion.div>
         </div>
       </section>
+      {/* Content Planning Section */}
+      <section className="py-20 bg-zinc-900/50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">
+            Content Planning
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full p-6 bg-black/50 border-zinc-800">
+                <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">
+                  Interactive Print Ads
+                </h3>
+                <p className="text-gray-300">
+                  Enabled readers to scan ads and access dynamic video content,
+                  enhancing engagement.
+                </p>
+              </Card>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full p-6 bg-black/50 border-zinc-800">
+                <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">
+                  Influencer Collaborations
+                </h3>
+                <p className="text-gray-300">
+                  Leveraged influencers to share AR experiences on social media,
+                  broadening reach and engagement.
+                </p>
+              </Card>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full p-6 bg-black/50 border-zinc-800">
+                <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">
+                  Educational Integration
+                </h3>
+                <p className="text-gray-300">
+                  Developed AR-powered educational materials to make learning
+                  more interactive and appealing.
+                </p>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
+      {/* Challenges Faced Section */}
+      <section className="py-20 bg-zinc-900/50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">
+            Challenges Faced
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full p-6 bg-black/50 border-zinc-800">
+                <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">
+                  Consumer Education
+                </h3>
+                <p className="text-gray-300">
+                  Ensuring consumers understood how to access and interact with
+                  AR content.
+                </p>
+              </Card>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full p-6 bg-black/50 border-zinc-800">
+                <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">
+                  Technical Accessibility
+                </h3>
+                <p className="text-gray-300">
+                  Making sure the AR experiences were easily accessible without
+                  the need for additional applications.
+                </p>
+              </Card>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full p-6 bg-black/50 border-zinc-800">
+                <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">
+                  Content Integration
+                </h3>
+                <p className="text-gray-300">
+                  Seamlessly blending AR content with existing marketing
+                  materials to maintain brand consistency.
+                </p>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
       {/* Outcomes Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -380,8 +521,8 @@ function FlamAppAI() {
                   Industry Recognition
                 </h3>
                 <p className="text-gray-300">
-                  Organic LinkedIn posts praised FlamApp&apos;s AR technology, with
-                  marketing professionals discussing the potential of
+                  Organic LinkedIn posts praised FlamApp&apos;s AR technology,
+                  with marketing professionals discussing the potential of
                   interactive advertising.
                 </p>
               </Card>
@@ -424,6 +565,7 @@ function FlamAppAI() {
           </div>
         </div>
       </section>
+
       {/* Contact Section */}
       <section className="py-20 bg-zinc-700/50">
         <div className="container mx-auto px-4">
