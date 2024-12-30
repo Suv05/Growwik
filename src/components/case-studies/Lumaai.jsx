@@ -146,13 +146,13 @@ function Lumaai() {
             <Card className="p-6 bg-zinc-900/50 border-zinc-800">
               <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">Strategy</h3>
               <p className="text-gray-300">
-                The campaign strategy revolved around leveraging influencers to demonstrate Luma AI&apos;s ability to create "drone shots without a drone." Growwik collaborated with 35 influencers from diverse niches, including travel, food, and sports, to produce visually stunning and relatable content.
+                The campaign strategy revolved around leveraging influencers to demonstrate Luma AI&apos;s ability to create &quot;drone shots without a drone.&quot; Growwik collaborated with 35 influencers from diverse niches, including travel, food, and sports, to produce visually stunning and relatable content.
               </p>
             </Card>
             <Card className="p-6 bg-zinc-900/50 border-zinc-800">
               <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">Execution</h3>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>Generate curiosity with the tagline "Drone shots without a drone."</li>
+                <li>Generate curiosity with the tagline &quot;Drone shots without a drone.&quot;</li>
                 <li>Showcase the platform&apos;s usability for creators and businesses.</li>
                 <li>Organically reach a broad audience through engaging and authentic influencer content.</li>
               </ul>
@@ -174,7 +174,7 @@ function Lumaai() {
             <Card className="p-6 bg-black/50 border-zinc-800">
               <h3 className="text-xl font-semibold mb-4 text-[#FFB200]">Key Elements</h3>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>Tagline: "Drone shots without a drone" to spark interest and curiosity.</li>
+                <li>Tagline: &quot;Drone shots without a drone&quot; to spark interest and curiosity.</li>
                 <li>Influencers created cinematic 3D visuals using Luma AI&apos;s tools.</li>
                 <li>Reels and videos centered on travel, sports, and food to appeal to diverse audiences.</li>
               </ul>
