@@ -66,7 +66,7 @@ export default function Footer() {
                   href="/influencer"
                   className="hover:text-gray-300 transition-colors duration-200"
                 >
-                  <span className="mr-2">{">"}</span>Influenecer
+                  <span className="mr-2">{">"}</span>Influencer
                 </Link>
               </li>
               <li>
