@@ -85,7 +85,7 @@ function Creators() {
     <section className="bg-black text-white px-14 max-[432px]:px-6 py-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-white text-4xl font-bold mb-12">
-          Creators we have
+          Creators we have worked
         </h2>
 
         <div className="flex flex-wrap justify-center gap-8 mb-16">
