@@ -4,37 +4,74 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaStar } from "react-icons/fa";
+import Link from "next/link";
 
 const testimonials = [
   {
-    name: "Cherry Lee",
-    role: "Head Of Partnerships",
-    company: "Hollyland Tech",
+    name: "Dala Chan",
+    role: "Overseas marketing specilist",
+    company: "Hollyland",
     image:
       "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
-    star: 4,
+    star: 4.8,
     quote:
-      "Our content-first offering is completely bespoke for each of our clients, with different industries, brands, objectives, audiences and influencers, there is no plug 'n' play option",
+      "Working with Growwik Media was a fantastic experience. Their influencer marketing campaign for our Lark M2 and M2 Max products helped us connect with audiences in India, the US, and Canada in a meaningful way. The engagement we saw was remarkable, and their attention to detail made all the difference. We’re excited about what we achieved together and look forward to collaborating again soon!",
+    site: "https://www.hollyland.com/",
   },
   {
-    name: "Alex Johnson",
-    role: "Marketing Director",
-    company: "Innovate Media",
+    name: "Salabh Jaishwal",
+    role: "founder's office",
+    company: "Punch Trade",
     image:
       "https://www.shutterstock.com/image-photo/portrait-mature-man-45-50-600nw-2089548508.jpg",
-    star: 5,
+    star: 4.7,
     quote:
-      "Our goal is to create impactful strategies that resonate with audiences. We leverage data-driven insights to craft campaigns that are both engaging and effective, tailored uniquely for each client.",
+      "The Growwik team transformed the way we approached our meme marketing campaign for Punch. Their creativity and innovative thinking normalized the product in the market, making it feel natural and relatable without coming across as promotional. Their work brought us visibility on par with brands like Zerodha, which is no small feat. It’s rare to find such a clever and impactful approach to marketing.",
+    site: "https://www.punch.trade/",
   },
   {
-    name: "Samantha Chen",
-    role: "Chief Creative Officer",
-    company: "Bright Ideas Co.",
+    name: "Prabhakar Chaudhary",
+    role: "Growth manager",
+    company: "Flamapp AI",
+    image:
+      "https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-59329.jpg?semt=ais_hybrid",
+    star: 4.9,
+    quote:
+      "Despite the challenge of a tight budget and a one-day campaign window, Growwik Media delivered beyond our expectations for Flamapp AI. Their ability to coordinate UGC influencers with our AR newspaper ads was nothing short of seamless. The campaign ran smoothly, achieving great results and showing their expertise in handling high-pressure projects with finesse.",
+    site: "https://www.flamapp.ai/",
+  },
+  {
+    name: "Christina Cyr",
+    role: "Founder & CEO",
+    company: "dTooR",
+    image:
+      "https://www.shutterstock.com/image-photo/portrait-mature-man-45-50-600nw-2089548508.jpg",
+    star: 4.7,
+    quote:
+      "Our collaboration with Growwik Media on Cyrcle Phone’s marketing campaign was a game-changer. They skillfully used influencers and organic conversations to highlight the sustainable and modular design of our phone. Their thoughtful approach generated excitement and helped us reach a larger audience, significantly boosting interest in our eco-friendly product.",
+    site: "https://www.cyrclephone.com/",
+  },
+  {
+    name: "Barkley",
+    role: "Growth and product",
+    company: "Luma AI",
     image:
       "https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-59329.jpg?semt=ais_hybrid",
     star: 5,
     quote:
-      "Creativity is about breaking boundaries, and at Bright Ideas, we go beyond traditional methods to spark inspiration. Every project is a fresh start, where we push to bring new perspectives and exciting outcomes.",
+      "Partnering with Growwik Media for our Luma AI influencer campaign was a pivotal moment for us. They showcased the drone shoot feature in such a compelling way that even the CSK cricket team adopted it organically. The campaign didn’t just enhance visibility but established Luma AI as a trusted and recognized name in the market.",
+    site: "https://lumalabs.ai/dream-machine/creations",
+  },
+  {
+    name: "Vera Chan",
+    role: "overseas marketing director",
+    company: "Maono",
+    image:
+      "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+    star: 4.9,
+    quote:
+      "The influencer marketing campaign Growwik Media executed for Maono was a resounding success. Their focus on targeted engagement helped drive sales and created genuine excitement around the brand. Their strategy amplified our message and introduced us to new audiences in an impactful way. The results were truly exceptional.",
+    site: "https://www.maono.com/",
   },
 ];
 
@@ -76,7 +113,9 @@ export default function Review() {
               </div>
               <div className="p-8">
                 <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-                  {testimonials[currentIndex].company}
+                  <Link href={testimonials[currentIndex].site}>
+                    {testimonials[currentIndex].company}
+                  </Link>
                 </div>
                 <p className="mt-2 text-white">
                   {testimonials[currentIndex].quote}
@@ -89,17 +128,22 @@ export default function Review() {
                     {testimonials[currentIndex].role}
                   </p>
                 </div>
-                <div className="mt-2 flex">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar
-                      key={i}
-                      className={
-                        i < testimonials[currentIndex].star
-                          ? "text-yellow-400"
-                          : "text-gray-300"
-                      }
-                    />
-                  ))}
+                <div className="mt-2 flex items-center gap-2">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar
+                        key={i}
+                        className={
+                          i < testimonials[currentIndex].star
+                            ? "text-yellow-400"
+                            : "text-gray-300"
+                        }
+                      />
+                    ))}
+                  </div>
+                  <span className="text-white ml-1">
+                    {testimonials[currentIndex].star.toFixed(1)}
+                  </span>
                 </div>
               </div>
             </div>
