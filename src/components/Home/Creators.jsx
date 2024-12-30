@@ -1,43 +1,79 @@
 import { FaInstagram, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 
 function Creators() {
   const creators = [
     {
-      id: "@creator_001",
-      image:
-        "https://plus.unsplash.com/premium_photo-1674389878102-fe66cd2bc29e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+      id: "Toasty Bros",
+      image: "/creator/Toasty bros.jpeg",
+      instaLink: "https://www.instagram.com/toastybros/",
+      youtubeLink: "https://youtube.com/@toastybros?si=vBZDVej4f34DcfQa",
     },
     {
-      id: "@creator_002",
+      id: "Shortcircuit",
       image:
-        "https://images.unsplash.com/photo-1581368076903-c20fee986735?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+        "/creator/Shortcircuit.jpg",
+      instaLink: "https://www.instagram.com/shortcircuityt/",
+      youtubeLink: "https://youtube.com/@shortcircuit?si=LEaE3GLeWrY01BDA",
     },
     {
-      id: "@creator_003",
+      id: "Linua Tech",
       image:
-        "https://images.unsplash.com/photo-1581368039520-576f51440580?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y3JlYXRvcnN8ZW58MHx8MHx8fDA%3D",
+        "/creator/Linus tech.jpg",
+      instaLink: "https://www.instagram.com/linustech",
+      youtubeLink: "https://youtube.com/@linustechtips?si=Ppu4019aB1XgKwhs",
     },
     {
-      id: "@creator_004",
+      id: "Beebom",
       image:
-        "https://plus.unsplash.com/premium_photo-1677171381845-c6627ed5d2ad?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+        "/creator/Beebom.jpg",
+      instaLink: "https://youtube.com/@beebomco?si=g-thdbCW6N9AGeiR",
+      youtubeLink: "https://youtube.com/@beebomco?si=g-thdbCW6N9AGeiR",
     },
     {
-      id: "@creator_005",
+      id: "Kunal Malhotra",
       image:
-        "https://images.unsplash.com/photo-1581368129682-e2d66324045b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+        "/creator/Kunal Mahlotra.jpg",
+      instaLink: "instagram.com/the.photography.blogger",
+      youtubeLink: "https://youtube.com/@kunalmalhotrakm?si=Oe8ejJfkj_bop0pO",
     },
     {
-      id: "@creator_006",
+      id: "Tech Venoms",
       image:
-        "https://images.unsplash.com/photo-1581368129682-e2d66324045b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+        "/creator/tech venoms.jpg",
+      instaLink: "https://youtube.com/@venomstech?si=rvRR5IO_H5acGleJ",
+      youtubeLink: "https://youtube.com/@venomstech?si=rvRR5IO_H5acGleJ",
     },
     {
-      id: "@creator_006",
+      id: "Techno Ruhez",
       image:
-        "https://images.unsplash.com/photo-1581368129682-e2d66324045b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGNyZWF0b3JzfGVufDB8fDB8fHww",
+        "/creator/techno ruhez.jpg",
+      instaLink: "instagram.com/technoruhez",
+      youtubeLink: "https://youtube.com/@technoruhez?si=z725Vd-pxi5Y_80K",
+    },
+    {
+      id: "Assasian Army",
+      image:
+        "/creator/Assain.jpg",
+      instaLink: "instagram.com/assassinsarmy01?utm_medium=copy_link",
+      youtubeLink: "https://youtube.com/@assassinsarmy?si=XZMIDCyK-bQLzOBX",
+    },
+    {
+      id: "Purva jha",
+      image:
+        "/creator/Purv jha.jpg",
+      instaLink:
+        "https://www.instagram.com/puravjha/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D",
+      youtubeLink: "https://youtube.com/@puravjha_?si=E42SKKxALavUGdJ9",
+    },
+    {
+      id: "Nitavior",
+      image:
+        "/creator/Nitavior.jpg",
+      instaLink: "https://www.instagram.com/nitavior/",
+      youtubeLink: "https://www.instagram.com/nitavior/",
     },
   ];
 
@@ -72,8 +108,12 @@ function Creators() {
 
               {/* Social Media Icons */}
               <div className="flex gap-4">
-                <FaInstagram className="w-6 h-6 cursor-pointer hover:text-gray-300 transition-colors" />
-                <FaYoutube className="w-6 h-6 cursor-pointer hover:text-gray-300 transition-colors" />
+                <Link href={creator.instaLink}>
+                  <FaInstagram className="w-6 h-6 cursor-pointer hover:text-gray-300 transition-colors" />
+                </Link>
+                <Link href={creator.youtubeLink}>
+                  <FaYoutube className="w-6 h-6 cursor-pointer hover:text-gray-300 transition-colors" />
+                </Link>
               </div>
             </div>
           ))}
