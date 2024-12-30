@@ -55,11 +55,12 @@ export default function ThankYouPage() {
           </motion.div>
           <h1 className="text-4xl font-bold text-white">Thank You!</h1>
           <p className="text-xl text-[#FFD700]">
-            We&apos;ve received your campaign details and we&apos;re excited to work with
-            you.
+            Thank You for Connecting with Growwik!
           </p>
           <p className="text-lg text-gray-300">
-            Our team will be in touch with you soon to discuss the next steps.
+            We&apos;ve received your details and are excited to move forward
+            with you. Our team will reach out soon to discuss the next
+            steps.Stay tuned!
           </p>
         </motion.div>
 
