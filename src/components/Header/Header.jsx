@@ -142,12 +142,12 @@ export default function Header() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <span className="text-white">MEMBER OF</span>
+            <span className="text-white text-sm">PROUDLY SPONSOR</span>
             <Image
-              src="/asci-logo.svg"
+              src="/newone.svg"
               alt="Growwik Logo"
-              width={50}
-              height={10}
+              width={40}
+              height={6}
             />
           </motion.div>
 
@@ -265,12 +265,12 @@ export default function Header() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
-                <span className="text-white">MEMBER OF</span>
+                <span className="text-white text-sm">PROUDLY SPONSOR</span>
                 <Image
-                  src="/asci-logo.svg"
+                  src="/newone.svg"
                   alt="Growwik Logo"
-                  width={50}
-                  height={10}
+                  width={40}
+                  height={6}
                 />
               </motion.div>
             </motion.div>
