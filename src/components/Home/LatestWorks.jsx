@@ -67,47 +67,54 @@ export default function LatestWorks() {
   };
 
   return (
-    <div className="bg-black px-14 max-[432px]:px-6 py-16 relative overflow-hidden">
-      <section className="max-w-6xl mx-auto">
-        <h2 className="text-white text-4xl font-bold mb-12">Our Latest Work</h2>
-        <div
-          ref={scrollRef}
-          className="flex overflow-x-auto space-x-4 scrollbar-hide"
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseUp}
-          onMouseUp={handleMouseUp}
-          
-        >
-          {videos.map((video, index) => (
-            <div
-              key={index}
-              className="relative flex-shrink-0 w-[300px] h-[500px] rounded-3xl overflow-hidden shadow-lg"
-            >
-              <video
-                className="w-full h-full object-cover"
-                src={video.src}
-                autoPlay
-                muted
-                loop
-                onMouseEnter={() => handleVideoInteraction(true)} // Pause auto-scroll on hover
-                onMouseLeave={() => handleVideoInteraction(false)} // Resume auto-scroll on hover exit
-                onTouchStart={() => handleVideoInteraction(true)} // Pause auto-scroll on touch
-                onTouchEnd={() => handleVideoInteraction(false)} // Resume auto-scroll on touch end
-              ></video>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Image
-                  src={video.logo}
-                  alt={`Logo ${index}`}
-                  width={20}
-                  height={20}
-                  className="h-24 w-32"
-                />
-              </div>
+    <div className="relative overflow-hidden">
+  {/* Gradient blending into the zebra illusion */}
+  <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-t from-black to-transparent z-10"></div>
+
+  {/* Black Section */}
+  <div className="bg-black px-14 max-[432px]:px-6 py-16 relative z-20">
+    <section className="max-w-6xl mx-auto">
+      <h2 className="text-white text-4xl font-bold mb-12">Our Latest Work</h2>
+      <div
+        ref={scrollRef}
+        className="flex overflow-x-auto space-x-4 scrollbar-hide"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseUp}
+        onMouseUp={handleMouseUp}
+      >
+        {videos.map((video, index) => (
+          <div
+            key={index}
+            className="relative flex-shrink-0 w-[300px] h-[500px] rounded-3xl overflow-hidden shadow-lg"
+          >
+            <video
+              className="w-full h-full object-cover"
+              src={video.src}
+              autoPlay
+              muted
+              loop
+              onMouseEnter={() => handleVideoInteraction(true)} // Pause auto-scroll on hover
+              onMouseLeave={() => handleVideoInteraction(false)} // Resume auto-scroll on hover exit
+              onTouchStart={() => handleVideoInteraction(true)} // Pause auto-scroll on touch
+              onTouchEnd={() => handleVideoInteraction(false)} // Resume auto-scroll on touch end
+            ></video>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Image
+                src={video.logo}
+                alt={`Logo ${index}`}
+                width={20}
+                height={20}
+                className="h-24 w-32"
+              />
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</div>
+
+
   );
 }
