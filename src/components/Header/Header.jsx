@@ -16,9 +16,10 @@ export default function Header() {
 
   const navItems = [
     { label: "About Us", section: "aboutUs" },
+    { label: "Our Services", section: "servicePage" },
     {
-      label: "Our Services",
-      section: "servicePage",
+      label: "Contact Us",
+      section: "contactForm",
       sublinks: [
         { label: "BRAND", section: "/brand" },
         { label: "INFLUENCER", section: "/influencer" },
@@ -26,7 +27,6 @@ export default function Header() {
     },
     { label: "Case Study", section: null },
     { label: "Blogs", section: null },
-    { label: "Contact Us", section: "contactForm" },
   ];
 
   const toggleMobileMenu = () => {
@@ -37,7 +37,7 @@ export default function Header() {
     const isHomePage =
       typeof window !== "undefined" && window.location.pathname === "/";
 
-    if (label === "Our Services") {
+    if (label === "Contact Us") {
       setIsServicesOpen(!isServicesOpen);
     } else if (section) {
       if (isHomePage) {
@@ -152,7 +152,14 @@ export default function Header() {
             transition={{ delay: 0.5 }}
           >
             <span className="text-white text-sm">PROUDLY SPONSOR</span>
-            <Image src="/newone.svg" alt="Growwik Logo" width={40} height={6} />
+            <Link href={"https://www.soa.ac.in/"}>
+              <Image
+                src="/newone.svg"
+                alt="Growwik Logo"
+                width={40}
+                height={6}
+              />
+            </Link>
           </motion.div>
 
           {/* Mobile Menu Toggle */}
@@ -162,6 +169,8 @@ export default function Header() {
             aria-label="Toggle mobile menu"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            animate={{ rotate: isMobileMenuOpen ? 90 : 0 }} // Add rotation animation
+            transition={{ duration: 0.3 }} // Control the duration of the rotation
           >
             <svg
               className="w-6 h-6"
@@ -195,7 +204,7 @@ export default function Header() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      {item.label === "Our Services" ? (
+                      {item.label === "Contact Us" ? (
                         <div>
                           <div className="flex items-center w-full">
                             <button
@@ -269,12 +278,14 @@ export default function Header() {
                 transition={{ delay: 0.3 }}
               >
                 <span className="text-white text-sm">PROUDLY SPONSOR</span>
-                <Image
-                  src="/newone.svg"
-                  alt="Growwik Logo"
-                  width={40}
-                  height={6}
-                />
+                <Link href={"https://www.soa.ac.in/"}>
+                  <Image
+                    src="/newone.svg"
+                    alt="Growwik Logo"
+                    width={40}
+                    height={6}
+                  />
+                </Link>
               </motion.div>
             </motion.div>
           )}
