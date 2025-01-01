@@ -43,6 +43,7 @@ export default function Header() {
         setIsServicesOpen(false);
       }, 300);
     } else {
+      router.push(label === "Blogs" ? "/blogs" : "/case-studies");
       setIsMobileMenuOpen(false);
       setIsServicesOpen(false);
     }
@@ -143,12 +144,7 @@ export default function Header() {
             transition={{ delay: 0.5 }}
           >
             <span className="text-white text-sm">PROUDLY SPONSOR</span>
-            <Image
-              src="/newone.svg"
-              alt="Growwik Logo"
-              width={40}
-              height={6}
-            />
+            <Image src="/newone.svg" alt="Growwik Logo" width={40} height={6} />
           </motion.div>
 
           {/* Mobile Menu Toggle */}
@@ -239,12 +235,11 @@ export default function Header() {
                           </AnimatePresence>
                         </div>
                       ) : (
-                        <Link
-                          href={
-                            item.label === "Blogs" ? "/blogs" : "/case-studies"
+                        <button
+                          onClick={() =>
+                            handleNavClick(item.section, item.label)
                           }
                           className="button-underline text-white relative overflow-hidden group"
-                          onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {item.label}
                           <motion.span
@@ -253,7 +248,7 @@ export default function Header() {
                             whileHover={{ scaleX: 1 }}
                             transition={{ duration: 0.3 }}
                           />
-                        </Link>
+                        </button>
                       )}
                     </motion.li>
                   ))}
