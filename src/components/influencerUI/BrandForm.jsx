@@ -34,7 +34,7 @@ const platforms = [
     id: "snapchat",
     name: "Snapchat",
     icon: <FaSnapchat size={35} />,
-    activeColor: "linear-gradient(to right, #f7ff00, #ffe600)",
+    activeColor: "linear-gradient(to right, #d6de00, #ffbb00)",
   },
   {
     id: "facebook",
@@ -176,7 +176,7 @@ export default function BrandForm() {
   };
 
   return (
-    <div className="bg-black min-[810px]:px-20 text-white p-8">
+    <div className="bg-gradient-to-b from-black to-black/90 min-[810px]:px-20 text-white p-8">
       <form onSubmit={handleSubmit(onSubmit)} className="mx-4 space-y-40">
         {/* Name Input */}
         <div className="space-y-8">
