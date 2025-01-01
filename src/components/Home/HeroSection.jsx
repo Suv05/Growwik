@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-// import AnimatedText from "./animated-text";
 
 export default function HeroSection() {
   return (
@@ -15,6 +14,9 @@ export default function HeroSection() {
           backgroundPosition: "center",
         }}
       />
+
+      {/* Gradient to blend the black section */}
+      <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-black to-transparent z-5"></div>
 
       {/* Content Container */}
       <div className="relative z-10 container mx-auto px-10 py-16 md:py-20">
@@ -58,17 +60,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column: Animated Description */}
-          {/* <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="md:w-1/2 text-white max-[1028px]:hidden"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <AnimatedText text="FASTEST GROWING INFLUENCER MARKETING AGENCY" />
-            </h2>
-            <AnimatedText text="We're a global influencer marketing agency, powered by influencers. We pride ourselves in bringing together data-led performance, real human relationships, expert creative strategy, authentic engaging content, and laser-sharp paid media targeting." />
-          </motion.div> */}
+          {/* Add the animated description here if needed */}
         </div>
       </div>
     </div>
