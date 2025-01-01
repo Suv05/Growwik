@@ -8,7 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -139,9 +140,9 @@ function Maono() {
           >
             <h2 className="text-3xl font-bold mb-6">Campaign Objective</h2>
             <p className="text-gray-300 text-lg">
-              Increase brand awareness and product adoption for Maono&apos;s audio
-              technology products among tech and creative audiences in USA,
-              Canada, India, and East Asian Countries.
+              Increase brand awareness and product adoption for Maono&apos;s
+              audio technology products among tech and creative audiences in
+              USA, Canada, India, and East Asian Countries.
             </p>
           </motion.div>
         </div>
@@ -159,8 +160,8 @@ function Maono() {
             </h3>
             <p className="text-gray-300 mb-4">
               Collaborated with 200+ nano and micro influencers on YouTube and
-              Instagram, focusing on showcasing Maono&apos;s high-quality microphones
-              and audio equipment.
+              Instagram, focusing on showcasing Maono&apos;s high-quality
+              microphones and audio equipment.
             </p>
           </Card>
           <Card className="p-6 bg-zinc-900/50 border-zinc-800">
@@ -409,9 +410,11 @@ function Maono() {
               Contact our team to get more details on how we can help you
               achieve similar results for your brand.
             </p>
-            <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-              Contact Us
-            </Button>
+            <Link href={"/influencer"}>
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                Contact Us
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>

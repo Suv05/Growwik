@@ -30,7 +30,7 @@ const caseStudies = [
     id: "Flam-App",
     image: "/ai-img.avif",
     title: "See how",
-    company: "FlameApp AI",
+    company: "FlamApp AI",
     description: "transformed their digital marketing with us.",
   },
 ];

@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -318,9 +319,11 @@ function PunchApp() {
               Contact our team to get more details on how we can help you
               achieve similar results for your brand.
             </p>
-            <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-              Contact Us
-            </Button>
+            <Link href={"/influencer"}>
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                Contact Us
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
