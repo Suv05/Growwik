@@ -37,24 +37,13 @@ export default function Header() {
     const isHomePage =
       typeof window !== "undefined" && window.location.pathname === "/";
 
-    console.log(
-      "HandleNavClick called. Section:",
-      section,
-      "Label:",
-      label,
-      "isHomePage:",
-      isHomePage
-    );
-
     if (label === "Our Services") {
       setIsServicesOpen(!isServicesOpen);
     } else if (section) {
       if (isHomePage) {
-        console.log("Scrolling directly to:", section);
         scrollToSection(section, false); // Scroll directly
       } else {
         if (!localStorage.getItem("scrollTarget")) {
-          console.log("Setting scrollTarget and navigating to home");
           localStorage.setItem("scrollTarget", section);
         }
         router.push("/");
@@ -110,7 +99,7 @@ export default function Header() {
                 {item.section ? (
                   <div>
                     <button
-                      onClick={() => scrollToSection(item.section)}
+                      onClick={() => handleNavClick(item.section, item.label)}
                       className="button-underline text-white relative overflow-hidden group"
                     >
                       {item.label}
@@ -128,7 +117,7 @@ export default function Header() {
                             <button
                               key={sublink.label}
                               onClick={() => router.push(sublink.section)}
-                              className="block whitespace-nowrap py-2 text-white hover:text-gray-300 transition-colors "
+                              className="block whitespace-nowrap py-2 text-white hover:text-gray-300 transition-colors"
                             >
                               {sublink.label}
                             </button>

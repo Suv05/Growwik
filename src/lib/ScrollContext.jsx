@@ -29,9 +29,6 @@ export const ScrollProvider = ({ children }) => {
             sectionRef.getBoundingClientRect().top + window.scrollY;
           const offsetPosition = elementPosition - offset;
 
-          console.log(
-            `Scrolling to section: ${section}, Offset Position: ${offsetPosition}`
-          );
           // Smooth scrolling to the section
           window.scrollTo({
             top: offsetPosition,
