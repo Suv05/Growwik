@@ -7,7 +7,6 @@ import { useScroll } from "@/lib/ScrollContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
-import { set } from "mongoose";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,30 +34,39 @@ export default function Header() {
   };
 
   const handleNavClick = (section, label) => {
-    const isHomePage = router.pathname === "/";
-  
+    const isHomePage =
+      typeof window !== "undefined" && window.location.pathname === "/";
+
+    console.log(
+      "HandleNavClick called. Section:",
+      section,
+      "Label:",
+      label,
+      "isHomePage:",
+      isHomePage
+    );
+
     if (label === "Our Services") {
       setIsServicesOpen(!isServicesOpen);
     } else if (section) {
       if (isHomePage) {
-        // Scroll directly if already on the home page
-        scrollToSection(section);
-        setIsMobileMenuOpen(false);
-        setIsServicesOpen(false);
+        console.log("Scrolling directly to:", section);
+        scrollToSection(section, false); // Scroll directly
       } else {
-        // Navigate to the home page and set scroll target
-        scrollToSection(section, true);
-        setIsMobileMenuOpen(false);
+        if (!localStorage.getItem("scrollTarget")) {
+          console.log("Setting scrollTarget and navigating to home");
+          localStorage.setItem("scrollTarget", section);
+        }
+        router.push("/");
       }
+      setIsMobileMenuOpen(false);
+      setIsServicesOpen(false);
     } else {
       router.push(label === "Blogs" ? "/blogs" : "/case-studies");
       setIsMobileMenuOpen(false);
       setIsServicesOpen(false);
     }
   };
-  
-  
-  
 
   const handelSublinkClick = (section) => {
     if (section) {

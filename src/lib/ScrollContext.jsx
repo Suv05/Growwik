@@ -21,20 +21,28 @@ export const ScrollProvider = ({ children }) => {
       router.push("/"); // Redirect to home
     } else {
       const sectionRef = refs[section]?.current;
+
       if (sectionRef) {
-        const offset = 70; // Adjust based on header height
-        const elementPosition =
-          sectionRef.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - offset;
-  
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
+        setTimeout(() => {
+          const offset = 70; // Adjust based on header height
+          const elementPosition =
+            sectionRef.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - offset;
+
+          console.log(
+            `Scrolling to section: ${section}, Offset Position: ${offsetPosition}`
+          );
+          // Smooth scrolling to the section
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }, 0); // Add a slight delay
+      } else {
+        console.warn(`Section reference for ${section} not found.`);
       }
     }
   };
-  
 
   return (
     <ScrollContext.Provider value={{ refs, scrollToSection }}>

@@ -21,6 +21,9 @@ export default function Home() {
     if (targetSection) {
       scrollToSection(targetSection); // Scroll to the section
       localStorage.removeItem("scrollTarget"); // Clear the scroll target
+    } else {
+      // Optional: Add fallback behavior if no scrollTarget is defined
+      console.log("No scrollTarget found, default behavior applied.");
     }
   }, [scrollToSection]);
 
