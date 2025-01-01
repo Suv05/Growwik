@@ -7,6 +7,7 @@ import { useScroll } from "@/lib/ScrollContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
+import { set } from "mongoose";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,20 +35,30 @@ export default function Header() {
   };
 
   const handleNavClick = (section, label) => {
+    const isHomePage = router.pathname === "/";
+  
     if (label === "Our Services") {
       setIsServicesOpen(!isServicesOpen);
     } else if (section) {
-      scrollToSection(section);
-      setTimeout(() => {
+      if (isHomePage) {
+        // Scroll directly if already on the home page
+        scrollToSection(section);
         setIsMobileMenuOpen(false);
         setIsServicesOpen(false);
-      }, 300);
+      } else {
+        // Navigate to the home page and set scroll target
+        scrollToSection(section, true);
+        setIsMobileMenuOpen(false);
+      }
     } else {
       router.push(label === "Blogs" ? "/blogs" : "/case-studies");
       setIsMobileMenuOpen(false);
       setIsServicesOpen(false);
     }
   };
+  
+  
+  
 
   const handelSublinkClick = (section) => {
     if (section) {

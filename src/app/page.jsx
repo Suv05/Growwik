@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useScroll } from "@/lib/ScrollContext";
 import HeroSection from "@/components/Home/HeroSection";
 import LatestWorks from "@/components/Home/LatestWorks";
@@ -13,13 +14,20 @@ import Review from "@/components/Home/Review";
 import AnimatedContactButtons from "@/components/Home/AnimatedContactButtons";
 
 export default function Home() {
-  const { refs } = useScroll();
+  const { refs, scrollToSection } = useScroll();
+
+  useEffect(() => {
+    const targetSection = localStorage.getItem("scrollTarget");
+    if (targetSection) {
+      scrollToSection(targetSection); // Scroll to the section
+      localStorage.removeItem("scrollTarget"); // Clear the scroll target
+    }
+  }, [scrollToSection]);
+
   return (
     <>
       <HeroSection />
-
       <LatestWorks />
-
       <div ref={refs.aboutUs}>
         <AboutUs />
       </div>
@@ -35,7 +43,6 @@ export default function Home() {
       <div ref={refs.contactForm}>
         <ContactForm />
       </div>
-      {/* Fixed WhatsApp Button */}
       <AnimatedContactButtons />
     </>
   );
