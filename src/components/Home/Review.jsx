@@ -15,7 +15,7 @@ const testimonials = [
       "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
     star: 4.8,
     quote:
-      "Working with Growwik Media was a fantastic experience. Their influencer marketing campaign for our Lark M2 and M2 Max products helped us connect with audiences in India, the US, and Canada in a meaningful way. The engagement we saw was remarkable, and their attention to detail made all the difference. We’re excited about what we achieved together and look forward to collaborating again soon!",
+      "Working with Growwik Media was a wonderful experience. Their influencer marketing campaign for our Lark M2 and M2 Max products allowed us to connect with audiences in India, the US, and Canada in a truly impactful way. The engagement levels were exceptional, and their meticulous approach truly stood out. We’re thrilled with the results and can’t wait to collaborate with them again in the future!",
     site: "https://www.hollyland.com/",
   },
   {
@@ -26,7 +26,7 @@ const testimonials = [
       "https://www.shutterstock.com/image-photo/portrait-mature-man-45-50-600nw-2089548508.jpg",
     star: 4.7,
     quote:
-      "The Growwik team transformed the way we approached our meme marketing campaign for Punch. Their creativity and innovative thinking normalized the product in the market, making it feel natural and relatable without coming across as promotional. Their work brought us visibility on par with brands like Zerodha, which is no small feat. It’s rare to find such a clever and impactful approach to marketing.",
+      "The Growwik team redefined our approach to meme marketing for Punch with their creativity and innovation. They seamlessly positioned our product in the market, making it feel authentic and relatable rather than overly promotional. Their efforts achieved visibility comparable to major brands like Zerodha—a truly remarkable accomplishment. Finding such a smart and impactful marketing strategy is a rare gem.",
     site: "https://www.punch.trade/",
   },
   {
@@ -37,7 +37,7 @@ const testimonials = [
       "https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-59329.jpg?semt=ais_hybrid",
     star: 4.9,
     quote:
-      "Despite the challenge of a tight budget and a one-day campaign window, Growwik Media delivered beyond our expectations for Flamapp AI. Their ability to coordinate UGC influencers with our AR newspaper ads was nothing short of seamless. The campaign ran smoothly, achieving great results and showing their expertise in handling high-pressure projects with finesse.",
+      "Despite operating within a tight budget and a one-day campaign window, Growwik Media exceeded our expectations for Flamapp AI. Their seamless coordination of UGC influencers with our AR newspaper ads was impressive. The campaign not only ran smoothly but also delivered excellent results, showcasing their expertise in executing high-pressure projects with remarkable finesse.",
     site: "https://www.flamapp.ai/",
   },
   {
@@ -48,7 +48,7 @@ const testimonials = [
       "https://www.shutterstock.com/image-photo/portrait-mature-man-45-50-600nw-2089548508.jpg",
     star: 4.7,
     quote:
-      "Our collaboration with Growwik Media on Cyrcle Phone’s marketing campaign was a game-changer. They skillfully used influencers and organic conversations to highlight the sustainable and modular design of our phone. Their thoughtful approach generated excitement and helped us reach a larger audience, significantly boosting interest in our eco-friendly product.",
+      "Partnering with Growwik Media for Cyrcle Phone’s marketing campaign was a transformative experience. They effectively leveraged influencers and organic conversations to spotlight our phone’s sustainable and modular design. Their strategic and thoughtful approach created buzz and expanded our audience reach, significantly enhancing interest in our eco-friendly product.",
     site: "https://www.cyrclephone.com/",
   },
   {
@@ -59,7 +59,7 @@ const testimonials = [
       "https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-59329.jpg?semt=ais_hybrid",
     star: 5,
     quote:
-      "Partnering with Growwik Media for our Luma AI influencer campaign was a pivotal moment for us. They showcased the drone shoot feature in such a compelling way that even the CSK cricket team adopted it organically. The campaign didn’t just enhance visibility but established Luma AI as a trusted and recognized name in the market.",
+      "Collaborating with Growwik Media for our Luma AI influencer campaign marked a significant milestone for us. Their creative presentation of the drone shoot feature was so impactful that it naturally resonated with the CSK cricket team. This campaign not only boosted visibility but also positioned Luma AI as a trusted and recognized brand in the market.",
     site: "https://lumalabs.ai/dream-machine/creations",
   },
   {
@@ -70,7 +70,7 @@ const testimonials = [
       "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
     star: 4.9,
     quote:
-      "The influencer marketing campaign Growwik Media executed for Maono was a resounding success. Their focus on targeted engagement helped drive sales and created genuine excitement around the brand. Their strategy amplified our message and introduced us to new audiences in an impactful way. The results were truly exceptional.",
+      "Growwik Media's influencer marketing campaign for Maono was an outstanding success. Their emphasis on targeted engagement effectively drove sales while generating genuine excitement around the brand. Their strategic approach amplified our message, reaching and captivating new audiences in a meaningful way. The results were nothing short of exceptional.",
     site: "https://www.maono.com/",
   },
 ];
@@ -121,7 +121,7 @@ export default function Review() {
                   {testimonials[currentIndex].quote}
                 </p>
                 <div className="mt-4">
-                  <p className="text-lg font-semibold">
+                  <p className="text-lg font-semibold text-[#FFB200]">
                     {testimonials[currentIndex].name}
                   </p>
                   <p className="text-white">
