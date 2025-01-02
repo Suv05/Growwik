@@ -7,28 +7,28 @@ import Link from "next/link";
 const caseStudies = [
   {
     id: "Luma-AI",
-    image: "/ai-img.avif",
+    image: "/case-card/1.png",
     title: "See how",
     company: "Luma AI",
     description: "transformed their digital marketing with us.",
   },
   {
     id: "Maono-App",
-    image: "/ai-img.avif",
+    image: "/case-card/4.png",
     title: "See how",
     company: "Maono",
     description: "transformed their digital marketing with us.",
   },
   {
     id: "Punch-App",
-    image: "/ai-img.avif",
+    image: "/case-card/3.png",
     title: "See how",
     company: "Punch App",
     description: "transformed their digital marketing with us.",
   },
   {
     id: "Flam-App",
-    image: "/ai-img.avif",
+    image: "/case-card/2.png",
     title: "See how",
     company: "FlamApp AI",
     description: "transformed their digital marketing with us.",

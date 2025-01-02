@@ -39,17 +39,17 @@ function Maono() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white mt-20">
       {/* Hero Section */}
       <section className="relative h-[80vh] overflow-hidden">
         <Image
-          src="/3676748.jpg"
+          src="/case-banner/MAONO.png"
           alt="Maono Banner"
           fill
-          className="object-cover opacity-60"
+          className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
