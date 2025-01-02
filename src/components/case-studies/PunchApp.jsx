@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "../ui/button";
-import Link from "next/link";
+import { useScroll } from "@/lib/ScrollContext";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -17,6 +17,7 @@ if (typeof window !== "undefined") {
 
 function PunchApp() {
   const statsRef = useRef(null);
+  const { scrollToSection } = useScroll();
 
   useEffect(() => {
     // GSAP animation for stats
@@ -37,6 +38,9 @@ function PunchApp() {
     return () => ctx.revert();
   }, []);
 
+  const handleContactUsClick = () => {
+    scrollToSection("contactForm", true);
+  };
   return (
     <div className="min-h-screen bg-black text-white mt-20">
       {/* Hero Section */}
@@ -319,11 +323,13 @@ function PunchApp() {
               Contact our team to get more details on how we can help you
               achieve similar results for your brand.
             </p>
-            <Link href={"/influencer"}>
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-                Contact Us
-              </Button>
-            </Link>
+
+            <Button
+              className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+              onClick={handleContactUsClick}
+            >
+              Contact Us
+            </Button>
           </motion.div>
         </div>
       </section>
