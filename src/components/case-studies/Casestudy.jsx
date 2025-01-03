@@ -8,30 +8,34 @@ const caseStudies = [
   {
     id: "Luma-AI",
     image: "/case-card/1.png",
-    title: "See how",
+    title: "Discover how",
     company: "Luma AI",
-    description: "transformed their digital marketing with us.",
+    description:
+      "enhanced their digital marketing strategies with our expertise.",
   },
   {
     id: "Maono-App",
     image: "/case-card/4.png",
-    title: "See how",
+    title: "Learn how",
     company: "Maono",
-    description: "transformed their digital marketing with us.",
+    description:
+      "achieved digital marketing success through our tailored solutions.",
   },
   {
     id: "Punch-App",
     image: "/case-card/3.png",
-    title: "See how",
+    title: "Explore how",
     company: "Punch App",
-    description: "transformed their digital marketing with us.",
+    description:
+      "transformed their online presence with our digital marketing services.",
   },
   {
     id: "Flam-App",
     image: "/case-card/2.png",
     title: "See how",
     company: "FlamApp AI",
-    description: "transformed their digital marketing with us.",
+    description:
+      "revolutionized their digital outreach with our innovative strategies.",
   },
 ];
 
