@@ -12,7 +12,7 @@ const testimonials = [
     role: "Overseas marketing specilist",
     company: "Hollyland",
     image:
-      "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+      "/review/1.jpg",
     star: 4.8,
     quote:
       "Working with Growwik Media was a wonderful experience. Their influencer marketing campaign for our Lark M2 and M2 Max products allowed us to connect with audiences in India, the US, and Canada in a truly impactful way. The engagement levels were exceptional, and their meticulous approach truly stood out. We’re thrilled with the results and can’t wait to collaborate with them again in the future!",
@@ -23,7 +23,7 @@ const testimonials = [
     role: "founder's office",
     company: "Punch Trade",
     image:
-      "https://www.shutterstock.com/image-photo/portrait-mature-man-45-50-600nw-2089548508.jpg",
+      "/review/2.jpg",
     star: 4.7,
     quote:
       "The Growwik team redefined our approach to meme marketing for Punch with their creativity and innovation. They seamlessly positioned our product in the market, making it feel authentic and relatable rather than overly promotional. Their efforts achieved visibility comparable to major brands like Zerodha—a truly remarkable accomplishment. Finding such a smart and impactful marketing strategy is a rare gem.",
@@ -45,7 +45,7 @@ const testimonials = [
     role: "Founder & CEO",
     company: "dTooR",
     image:
-      "https://www.shutterstock.com/image-photo/portrait-mature-man-45-50-600nw-2089548508.jpg",
+      "/review/4.jpg",
     star: 4.7,
     quote:
       "Partnering with Growwik Media for Cyrcle Phone’s marketing campaign was a transformative experience. They effectively leveraged influencers and organic conversations to spotlight our phone’s sustainable and modular design. Their strategic and thoughtful approach created buzz and expanded our audience reach, significantly enhancing interest in our eco-friendly product.",
@@ -56,7 +56,7 @@ const testimonials = [
     role: "Growth and product",
     company: "Luma AI",
     image:
-      "https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-59329.jpg?semt=ais_hybrid",
+      "/review/5.jpg",
     star: 5,
     quote:
       "Collaborating with Growwik Media for our Luma AI influencer campaign marked a significant milestone for us. Their creative presentation of the drone shoot feature was so impactful that it naturally resonated with the CSK cricket team. This campaign not only boosted visibility but also positioned Luma AI as a trusted and recognized brand in the market.",
@@ -67,7 +67,7 @@ const testimonials = [
     role: "overseas marketing director",
     company: "Maono",
     image:
-      "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+      "https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-59329.jpg?semt=ais_hybrid",
     star: 4.9,
     quote:
       "Growwik Media's influencer marketing campaign for Maono was an outstanding success. Their emphasis on targeted engagement effectively drove sales while generating genuine excitement around the brand. Their strategic approach amplified our message, reaching and captivating new audiences in a meaningful way. The results were nothing short of exceptional.",
