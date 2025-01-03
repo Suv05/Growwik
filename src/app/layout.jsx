@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
           content="We're a global influencer marketing agency, powered by influencers. We pride ourselves in bringing together data-led performance, real human relationships, expert creative strategy, authentic engaging content, and laser-sharp paid media targeting."
         />
         <meta name="twitter:image" content="/Agency-Logo-(Tag).png" />
-        <title>Growwik #1 Influencer marketing agency</title>
+        <title>Growwik Media:#1 Influencer marketing Platform</title>
       </head>
       <body className="antialiased">
         <ScrollProvider>
