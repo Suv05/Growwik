@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/ecb669a0-1f1b-4e27-9b27-b0dfb380e3f1)
+![image](https://github.com/user-attachments/assets/7199d8ce-f150-4858-8fd3-b4a479610121)
+
 
 # Growwik: Social Media Marketing Platform
 
@@ -8,6 +9,5 @@ Growwik is a cutting-edge social media marketing platform designed to bridge the
 
 - **Influencer Discovery**: Find influencers based on niche, engagement rates, audience demographics, and more.
 - **Campaign Management**: Create, manage, and track social media campaigns with real-time analytics.
-- **Secure Payments**: Hassle-free payment integration for secure and transparent transactions.
 - **Performance Analytics**: Detailed insights into campaign performance, including reach, impressions, clicks, and conversions.
 - **Collaboration Tools**: Simplified workflows for brands and influencers to communicate and collaborate.
