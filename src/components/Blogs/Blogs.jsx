@@ -67,6 +67,9 @@ function Blogs({ blogs }) {
     setFilteredPosts(results);
   }, [searchTerm, sortOrder, blogs]);
 
+  console.log("filtered posts:", filteredPosts);
+  
+
   return (
     <div className="min-h-screen bg-black text-white mt-6">
       {/* Hero Section */}
