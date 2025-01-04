@@ -34,26 +34,19 @@ export const postBlog = async (data) => {
 export const getAllBlog = async () => {
   try {
     await createConnection();
-
     const allBlog = await Blog.find();
-
-    if (allBlog) {
-      return {
-        status: "success",
-        message: "Blog fetched successfully",
-        data: JSON.parse(JSON.stringify(allBlog)),
-      };
-    } else {
-      return {
-        status: "error",
-        message: "Blog fetching failed",
-      };
-    }
+    console.log("Blogs fetched successfully:", allBlog);
+    return {
+      status: "success",
+      message: "Blog fetched successfully",
+      data: JSON.parse(JSON.stringify(allBlog)),
+    };
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching blogs in production:", error);
     return {
       status: "error",
       message: "Blog fetching failed",
     };
   }
 };
+
