@@ -23,7 +23,7 @@ const testimonials = [
     role: "founder's office",
     company: "Punch Trade",
     image:
-      "/review/2.jpg",
+      "/review/2.png",
     star: 4.7,
     quote:
       "The Growwik team redefined our approach to meme marketing for Punch with their creativity and innovation. They seamlessly positioned our product in the market, making it feel authentic and relatable rather than overly promotional. Their efforts achieved visibility comparable to major brands like Zerodha—a truly remarkable accomplishment. Finding such a smart and impactful marketing strategy is a rare gem.",
@@ -45,7 +45,7 @@ const testimonials = [
     role: "Founder & CEO",
     company: "dTooR",
     image:
-      "/review/4.jpg",
+      "/review/4.png",
     star: 4.7,
     quote:
       "Partnering with Growwik Media for Cyrcle Phone’s marketing campaign was a transformative experience. They effectively leveraged influencers and organic conversations to spotlight our phone’s sustainable and modular design. Their strategic and thoughtful approach created buzz and expanded our audience reach, significantly enhancing interest in our eco-friendly product.",
@@ -56,7 +56,7 @@ const testimonials = [
     role: "Growth and product",
     company: "Luma AI",
     image:
-      "/review/5.jpg",
+      "/review/5.png",
     star: 5,
     quote:
       "Collaborating with Growwik Media for our Luma AI influencer campaign marked a significant milestone for us. Their creative presentation of the drone shoot feature was so impactful that it naturally resonated with the CSK cricket team. This campaign not only boosted visibility but also positioned Luma AI as a trusted and recognized brand in the market.",
