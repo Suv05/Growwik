@@ -1,9 +1,9 @@
 import Blogs from "@/components/Blogs/Blogs";
 import { getAllBlog } from "@/actions/blog";
 
-async function Page({}) {
+export default async function Page() {
   const { data: allBlogs } = await getAllBlog();
-  
+
   return (
     <>
       <Blogs blogs={allBlogs} />
@@ -11,4 +11,4 @@ async function Page({}) {
   );
 }
 
-export default Page;
+export const dynamic = "force-dynamic"; // Use SSR for this page
