@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -29,6 +30,7 @@ import { Toast } from "@/utilities/Toast";
 import { redirect } from "next/navigation";
 
 function Blogpost() {
+  const router = useRouter();
   const [imagePreview, setImagePreview] = useState(null);
   const [filePrec, setFilePrec] = useState(0);
   const [imgLoading, setImgLoading] = useState(false);
@@ -43,28 +45,44 @@ function Blogpost() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
-    if (!imageURL) {
+    setLoading(true);
+    try {
+      if (!imageURL) {
+        setToast({
+          message: "Please wait until the image upload is complete.",
+          type: "error",
+          show: true,
+        });
+        return;
+      }
+      const finalData = { ...data, image: imageURL };
+      const { status, message } = await postBlog(finalData);
+      if (status === "success") {
+        reset();
+        setToast({ message, type: "success", show: true });
+        router.push("/blogs");
+      } else {
+        setToast({
+          message: message || "Post failed",
+          type: "error",
+          show: true,
+        });
+      }
+    } catch (error) {
+      console.error("An error occurred during submission:", error);
       setToast({
-        message: "Please wait until the image upload is complete.",
+        message: "An unexpected error occurred.",
         type: "error",
         show: true,
       });
-
-      return;
-    }
-    const finalData = { ...data, image: imageURL };
-    // Handle form submission
-
-    const { status, message } = await postBlog(finalData);
-    if (status === "success") {
-      setToast({ message, type: "success", show: true });
-      redirect("/blogs");
-    } else {
-      setToast({ message, type: "error", show: true });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -286,9 +304,13 @@ function Blogpost() {
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 rounded-md transition-all duration-300 transform hover:scale-105"
-                  disabled={imgLoading} // Disable while uploading
+                  disabled={imgLoading || loading} // Disable while uploading
                 >
-                  {imgLoading ? "Loading..." : "Create Post"}
+                  {imgLoading || loading ? (
+                    <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-white"></div>
+                  ) : (
+                    "Create Post"
+                  )}
                 </Button>
               </CardFooter>
             </form>
