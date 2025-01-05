@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
           property="og:description"
           content="We're a global influencer marketing agency, powered by influencers. We pride ourselves in bringing together data-led performance, real human relationships, expert creative strategy, authentic engaging content, and laser-sharp paid media targeting."
         />
-        <meta property="og:image" content="/Agency-Logo-(Tag).png" />
+        <meta property="og:image" content="https://utfs.io/f/1zJcitIgytnjq3zirxME4BmsUxrLHbkDwTaR5Q6KCfoOJIuP" />
         <meta property="og:url" content="https://growwik.com" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           name="twitter:image"
-          content="https://yourdomain.com/Agency-Logo-(Tag).png"
+          content="https://utfs.io/f/1zJcitIgytnjq3zirxME4BmsUxrLHbkDwTaR5Q6KCfoOJIuP"
         />
 
         <title>Growwik Media - Influencer marketing Platform</title>
