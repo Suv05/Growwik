@@ -4,8 +4,10 @@ import Image from "next/image";
 
 export default function LatestWorks() {
   const scrollRef = useRef(null);
+  const sectionRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isInView, setIsInView] = useState(false);
 
   const videos = [
     {
@@ -50,12 +52,32 @@ export default function LatestWorks() {
     },
   ];
 
+  // Observe if the LatestWorks section is in the viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.5 } // Adjust threshold as needed
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
     const scroll = () => {
-      if (isPaused) return;
+      if (isPaused || !isInView) return; // Scroll only when section is in view
 
       const nextIndex = (activeIndex + 1) % videos.length;
       setActiveIndex(nextIndex);
@@ -67,7 +89,7 @@ export default function LatestWorks() {
         if (activeVideo) {
           activeVideo.scrollIntoView({
             behavior: "smooth",
-            block: "nearest", // Prevents the section from jumping vertically
+            block: "nearest",
             inline: "start",
           });
         }
@@ -87,7 +109,7 @@ export default function LatestWorks() {
     const scrollInterval = setInterval(scroll, 10000);
 
     return () => clearInterval(scrollInterval);
-  }, [isPaused, activeIndex]);
+  }, [isPaused, activeIndex, isInView]);
 
   const handleMouseDown = (e) => {
     const slider = scrollRef.current;
@@ -115,7 +137,7 @@ export default function LatestWorks() {
   };
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden" ref={sectionRef}>
       {/* Gradient blending into the zebra illusion */}
       <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-t from-black to-transparent z-10"></div>
 
