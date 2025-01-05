@@ -54,20 +54,22 @@ export default function LatestWorks() {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    // Interval function
     const scroll = () => {
       if (isPaused) return;
 
-      // Update active index
       const nextIndex = (activeIndex + 1) % videos.length;
       setActiveIndex(nextIndex);
 
-      // Scroll active video into view on mobile devices
+      // Scroll active video into view for small screens
       if (window.innerWidth <= 768) {
         const videoElements = scrollContainer.children;
         const activeVideo = videoElements[nextIndex];
         if (activeVideo) {
-          activeVideo.scrollIntoView({ behavior: "smooth", inline: "start" });
+          activeVideo.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest", // Prevents the section from jumping vertically
+            inline: "start",
+          });
         }
       } else {
         // Default scroll behavior for larger devices
@@ -77,15 +79,15 @@ export default function LatestWorks() {
         if (scrollContainer.scrollLeft >= maxScrollLeft) {
           scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
         } else {
-          scrollContainer.scrollBy({ left: 300, behavior: "smooth" }); // Adjust 300px to match card width
+          scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
         }
       }
     };
 
-    const scrollInterval = setInterval(scroll, 10000); // Auto-scroll every 10 seconds
+    const scrollInterval = setInterval(scroll, 10000);
 
-    return () => clearInterval(scrollInterval); // Cleanup on component unmount
-  }, [isPaused, activeIndex]); // React to isPaused and activeIndex state changes
+    return () => clearInterval(scrollInterval);
+  }, [isPaused, activeIndex]);
 
   const handleMouseDown = (e) => {
     const slider = scrollRef.current;
@@ -99,7 +101,7 @@ export default function LatestWorks() {
     if (!slider.isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - slider.startX) * 2; // Adjust scrolling speed
+    const walk = (x - slider.startX) * 2;
     slider.scrollLeft = slider.scrollLeftStart - walk;
   };
 
@@ -134,9 +136,7 @@ export default function LatestWorks() {
             {videos.map((video, index) => (
               <div
                 key={index}
-                className={`relative flex-shrink-0 w-[300px] h-[500px] rounded-3xl overflow-hidden shadow-lg ${
-                  index === activeIndex ? "" : ""
-                }`}
+                className={`relative flex-shrink-0 w-[300px] h-[500px] rounded-3xl overflow-hidden shadow-lg`}
               >
                 <video
                   className="w-full h-full object-cover"
@@ -144,10 +144,10 @@ export default function LatestWorks() {
                   autoPlay
                   muted
                   loop
-                  onMouseEnter={() => handleVideoInteraction(true)} // Pause auto-scroll on hover
-                  onMouseLeave={() => handleVideoInteraction(false)} // Resume auto-scroll on hover exit
-                  onTouchStart={() => handleVideoInteraction(true)} // Pause auto-scroll on touch
-                  onTouchEnd={() => handleVideoInteraction(false)} // Resume auto-scroll on touch end
+                  onMouseEnter={() => handleVideoInteraction(true)}
+                  onMouseLeave={() => handleVideoInteraction(false)}
+                  onTouchStart={() => handleVideoInteraction(true)}
+                  onTouchEnd={() => handleVideoInteraction(false)}
                 ></video>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Image
