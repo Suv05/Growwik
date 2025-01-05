@@ -11,4 +11,4 @@ export default async function Page() {
   );
 }
 
-export const dynamic = "force-dynamic"; // Use SSR for this page
+export const dynamic = "force-dynamic"; // Use SSR for this page instead of Incremental Static Regeneration (ISR) caching
