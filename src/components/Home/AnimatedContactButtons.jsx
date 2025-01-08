@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMessageCircle, FiMail } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
@@ -15,28 +14,31 @@ const AnimatedContactButtons = () => {
     if (!container) return;
 
     const handleMouseEnter = () => {
-      if (!('ontouchstart' in window)) {
+      if (!("ontouchstart" in window)) {
         setIsOpen(true);
       }
     };
 
     const handleMouseLeave = () => {
-      if (!('ontouchstart' in window)) {
+      if (!("ontouchstart" in window)) {
         setIsOpen(false);
       }
     };
 
-    container.addEventListener('mouseenter', handleMouseEnter);
-    container.addEventListener('mouseleave', handleMouseLeave);
+    container.addEventListener("mouseenter", handleMouseEnter);
+    container.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      container.removeEventListener('mouseenter', handleMouseEnter);
-      container.removeEventListener('mouseleave', handleMouseLeave);
+      container.removeEventListener("mouseenter", handleMouseEnter);
+      container.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
   return (
-    <div ref={containerRef} className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
+    <div
+      ref={containerRef}
+      className="fixed bottom-4 right-4 z-50 flex flex-col items-end"
+    >
       <AnimatePresence>
         {isOpen && (
           <>
@@ -47,13 +49,13 @@ const AnimatedContactButtons = () => {
               transition={{ duration: 0.2 }}
               className="mb-2"
             >
-              <Link
+              <a
                 href="mailto:contact@growwik.com"
                 className="bg-gradient-to-r from-[#FFB200] to-[#FF8C00] text-white p-3 rounded-full hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center"
                 aria-label="Send us an email"
               >
                 <FiMail className="w-6 h-6" />
-              </Link>
+              </a>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -62,13 +64,15 @@ const AnimatedContactButtons = () => {
               transition={{ duration: 0.2, delay: 0.1 }}
               className="mb-2"
             >
-              <Link
+              <a
                 href="https://wa.me/+917760519545"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gradient-to-r from-[#FFB200] to-[#FF8C00] text-white p-3 rounded-full hover:bg-gray-800 transition-colors duration-300 flex items-center justify-center"
                 aria-label="Contact us on WhatsApp"
               >
                 <FaWhatsapp className="w-6 h-6" />
-              </Link>
+              </a>
             </motion.div>
           </>
         )}
@@ -85,4 +89,3 @@ const AnimatedContactButtons = () => {
 };
 
 export default AnimatedContactButtons;
-
