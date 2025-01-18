@@ -8,6 +8,9 @@
 body {
   font-family: "Noto Serif JP", serif;
 }
+body, html {
+  background-color: #000; /* or your desired color */
+}
 
 @layer base {
   :root {
