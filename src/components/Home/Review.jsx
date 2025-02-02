@@ -34,7 +34,7 @@ const testimonials = [
     role: "Growth manager",
     company: "Flamapp AI",
     image:
-      "https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-59329.jpg?semt=ais_hybrid",
+      "/brands/FlamApp.svg",
     star: 4.9,
     quote:
       "Despite operating within a tight budget and a one-day campaign window, Growwik Media exceeded our expectations for Flamapp AI. Their seamless coordination of UGC influencers with our AR newspaper ads was impressive. The campaign not only ran smoothly but also delivered excellent results, showcasing their expertise in executing high-pressure projects with remarkable finesse.",
@@ -67,7 +67,7 @@ const testimonials = [
     role: "overseas marketing director",
     company: "Maono",
     image:
-      "https://img.freepik.com/free-photo/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased-expression-standing-white-background-smiling-with-arms-crossed-chest_1258-59329.jpg?semt=ais_hybrid",
+      "/brands/Maono.svg",
     star: 4.9,
     quote:
       "Growwik Media's influencer marketing campaign for Maono was an outstanding success. Their emphasis on targeted engagement effectively drove sales while generating genuine excitement around the brand. Their strategic approach amplified our message, reaching and captivating new audiences in a meaningful way. The results were nothing short of exceptional.",

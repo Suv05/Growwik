@@ -19,7 +19,7 @@ function Creators() {
       youtubeLink: "https://youtube.com/@shortcircuit?si=LEaE3GLeWrY01BDA",
     },
     {
-      id: "Linua Tech",
+      id: "Linus Tech",
       image:
         "/creator/Linus tech.jpg",
       instaLink: "https://www.instagram.com/linustech",
