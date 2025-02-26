@@ -6,7 +6,7 @@ import { Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-function Herosection({}) {
+function Herosection({ nameSectionRef }) {
   const reviewCardsRef = useRef(null);
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -64,9 +64,19 @@ function Herosection({}) {
     return "text-gray-400";
   };
 
+  const handleWriteReviewClick = () => {
+    if (nameSectionRef.current) {
+      const elementPosition = nameSectionRef.current.getBoundingClientRect().top + window.scrollY - 100; // Adjust 10 as needed
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <>
-      <div className="min-h-screen bg-black text-white py-12 px-4 sm:px-6 lg:px-8 mt-20">
+      <div className="min-h-screen bg-black text-white py-12 px-4 sm:px-6 lg:px-8 mt-24">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
@@ -97,7 +107,10 @@ function Herosection({}) {
               ))}
             </div>
 
-            <button className="text-yellow-400 hover:text-yellow-300 text-lg font-medium transition-colors">
+            <button
+              className="text-yellow-400 hover:text-yellow-300 text-lg font-medium transition-colors"
+              onClick={handleWriteReviewClick} // Attach the click handler
+            >
               Write a review
             </button>
 
