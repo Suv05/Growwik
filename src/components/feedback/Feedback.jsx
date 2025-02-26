@@ -384,7 +384,7 @@ function Feedback({ nameSectionRef }) {
                   className="mt-2 w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-300 font-normal max-w-3xl px-4"
                 />
                 <p className="text-sm text-gray-400 italic">
-                  (don't worry it doesn't show to others)
+                  (don&apos;t worry it doesn&apos;t show to others)
                 </p>
               </div>
               {errors.email && (
