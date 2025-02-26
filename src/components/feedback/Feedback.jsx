@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState,useRef } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -11,8 +11,9 @@ import { Toast } from "@/utilities/Toast";
 import { getFeedbacks } from "@/actions/feedback";
 import { useRouter } from "next/navigation";
 
-function Feedback() {
+function Feedback({ nameSectionRef }) {
   const router = useRouter();
+  
   const {
     register,
     handleSubmit,
@@ -72,7 +73,7 @@ function Feedback() {
         <div className="max-w-7xl mx-auto">
           <form onSubmit={handleSubmit(onSubmit)} className="mx-4 space-y-20">
             {/* Name Field with Anonymous Option */}
-            <div className="space-y-10">
+            <div ref={nameSectionRef} className="space-y-10">
               <div className="space-y-8">
                 <h2 className="max-[680px]:text-lg text-2xl font-medium tracking-wider">
                   Your Name?
