@@ -1,18 +1,24 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Toast } from "@/utilities/Toast";
+import { getFeedbacks } from "@/actions/feedback";
+import { useRouter } from "next/navigation";
 
 function Feedback() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     watch,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -21,12 +27,38 @@ function Feedback() {
     },
   });
 
+  const [toast, setToast] = useState({
+    message: "",
+    type: "success",
+    show: false,
+  });
+  const [loading, setLoading] = useState(false);
   const isAnonymous = watch("isAnonymous");
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // Handle form submission
-  };
+  async function onSubmit(data) {
+    setLoading(true);
+    try {
+      const { status, message } = await getFeedbacks({
+        ...data,
+      });
+
+      if (status === "success") {
+        reset(); // Reset the form only on successful submission
+        router.push("/");
+      } else {
+        console.error(message || "Submission failed");
+        setToast({
+          message: "😥 Something went wrong, please try again later!",
+          type: "error",
+          show: true,
+        });
+      }
+    } catch (error) {
+      console.error("An error occurred during submission:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <>
@@ -229,7 +261,10 @@ function Feedback() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="No" id="expectation-no" />
-                  <Label htmlFor="expectation-no" className="text-gray-300 text-base">
+                  <Label
+                    htmlFor="expectation-no"
+                    className="text-gray-300 text-base"
+                  >
                     No
                   </Label>
                 </div>
@@ -362,10 +397,22 @@ function Feedback() {
               whileTap={{ scale: 0.98 }}
               type="submit"
               className="w-full py-3 px-6 bg-white text-black font-medium rounded-md hover:bg-white/90 transition-colors"
+              disabled={loading}
             >
-              Submit Review
+              {loading ? (
+                <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-black mx-auto"></div>
+              ) : (
+                "Submit Review"
+              )}
             </motion.button>
           </form>
+          {toast.show && (
+            <Toast
+              message={toast.message}
+              type={toast.type}
+              onClose={() => setToast((prev) => ({ ...prev, show: false }))}
+            />
+          )}
         </div>
       </motion.div>
     </>
