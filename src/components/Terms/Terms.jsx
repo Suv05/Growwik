@@ -910,7 +910,7 @@ function Terms() {
             Need Assistance?
           </h3>
           <p className="text-gray-400 mb-4">
-            Have questions about our terms? We're here to help.
+            Have questions about our terms? We&apos;re here to help.
           </p>
             <a href="mailto:contact@growwik.com" aria-label="Send us an email">
           <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-none">
