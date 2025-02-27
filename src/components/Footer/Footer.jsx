@@ -85,6 +85,14 @@ export default function Footer() {
                   <span className="mr-2">{">"}</span>Case Study
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/terms"
+                  className="hover:text-gray-300 transition-colors duration-200"
+                >
+                  <span className="mr-2">{">"}</span>Terms
+                </Link>
+              </li>
             </ul>
           </div>
 
