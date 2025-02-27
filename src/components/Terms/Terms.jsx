@@ -216,11 +216,11 @@ function Terms() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="prose prose-invert max-w-none mb-10"
         >
-          <p className="text-white pt-3 text-lg">
+          {/* <p className="text-white pt-3 text-lg">
             By engaging with our services, whether you are an influencer,
             brand/business, team member, or partner, you agree to abide by these
             terms.
-          </p>
+          </p> */}
         </motion.div>
 
         {/* Terms Content */}
