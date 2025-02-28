@@ -46,7 +46,7 @@ function Feedback({ nameSectionRef }) {
       });
 
       if (status === "success") {
-        reset(); // Reset the form only on successful submission
+        reset();
         router.push("/");
       } else {
         console.error(message || "Submission failed");
