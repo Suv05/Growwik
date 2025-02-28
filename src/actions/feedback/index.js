@@ -155,31 +155,32 @@ export async function sumOfStar() {
 
 export async function averageSatisfaction() {
   try {
-      await createConnection();
+    await createConnection();
 
-      // Get the sum of stars
-      const sumResult = await sumOfStar();
-      if (sumResult.status !== "success") {
-          return sumResult; // Propagate error if sumOfStar failed
-      }
-      const sumOfStars = sumResult.sumOfStar[0].total;
+    // Get the sum of stars
+    const sumResult = await sumOfStar();
+    if (sumResult.status !== "success") {
+      return sumResult; // Propagate error if sumOfStar failed
+    }
+    const sumOfStars = sumResult.sumOfStar[0].total;
 
-      // Get the total count of reviews
-      const totalReviews = await Feedback.countDocuments({});
+    // Get the total count of reviews
+    const totalReviews = await Feedback.countDocuments({});
 
-      // Calculate the average
-      const average = totalReviews > 0 ? sumOfStars / totalReviews : 0;
+    // Calculate the average and round to two decimal places
+    const average =
+      totalReviews > 0 ? (sumOfStars / totalReviews).toFixed(2) : 0;
 
-      return {
-          status: "success",
-          message: "Average satisfaction calculated",
-          average: average,
-      };
+    return {
+      status: "success",
+      message: "Average satisfaction calculated",
+      average: average,
+    };
   } catch (err) {
-      console.error(err);
-      return {
-          status: "error",
-          message: "Failed to calculate average satisfaction",
-      };
+    console.error(err);
+    return {
+      status: "error",
+      message: "Failed to calculate average satisfaction",
+    };
   }
 }
