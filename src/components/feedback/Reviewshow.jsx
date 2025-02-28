@@ -176,7 +176,7 @@ function ReviewShow({ limitReviews, allReviews }) {
             What Our Clients Say
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our clients have to say
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say
             about their experience working with us.
           </p>
         </div>
