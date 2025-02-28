@@ -122,7 +122,7 @@ function Feedback({ nameSectionRef }) {
                 onValueChange={(value) => setValue("role", value)}
                 className="flex flex-wrap gap-4"
               >
-                {["Brand", "Influencer", "Agency", "Manager"].map((role) => (
+                {["Brand Manager", "Influencer", "Agency Manager"].map((role) => (
                   <div key={role} className="flex items-center space-x-2">
                     <RadioGroupItem value={role} id={role} />
                     <Label htmlFor={role} className="text-gray-300 text-base">
@@ -149,7 +149,7 @@ function Feedback({ nameSectionRef }) {
                   })}
                   type="text"
                   id="brandName"
-                  placeholder="Your brand name"
+                  placeholder="Brand /Agency /Channel"
                   className="mt-2 w-full bg-transparent border-b-2 border-[#ffffff] pb-2 text-xl focus:outline-none focus:border-gray-400 placeholder-gray-300 font-normal max-w-3xl px-4"
                 />
                 {errors.brandName && (
