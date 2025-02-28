@@ -1,17 +1,28 @@
-"use client";
-import Feedback from "@/components/feedback/Feedback";
-import Herosection from "@/components/feedback/Herosection";
-import { useRef } from "react";
+import Pageclient from "@/components/feedback/Pageclient";
+import {
+  showAllReviews,
+  fetchReviews,
+  countAllReviews,
+  averageSatisfaction,
+} from "@/actions/feedback";
 
-function Page({}) {
-  const nameSectionRef = useRef(null); // Create ref in parent
+async function Page({}) {
+  const { reviewsData } = await showAllReviews();
+  const { limitReviews } = await fetchReviews();
+  const { countReviews } = await countAllReviews();
+  const {average} = await averageSatisfaction();
+
   return (
     <>
-      <Herosection nameSectionRef={nameSectionRef} /> {/* Pass the ref */}
-      <Feedback nameSectionRef={nameSectionRef} />
-      {/* pass the ref to feedback component too so it can be attached*/}
+      <Pageclient
+        allReviewsData={reviewsData}
+        initalReviewData={limitReviews}
+        countReviews={countReviews}
+        average={average}
+      />
     </>
   );
 }
 
 export default Page;
+export const dynamic = "force-dynamic";
