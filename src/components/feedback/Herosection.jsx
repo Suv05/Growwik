@@ -6,7 +6,7 @@ import { Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-function Herosection({ nameSectionRef }) {
+function Herosection({ nameSectionRef, countReviews, average }) {
   const reviewCardsRef = useRef(null);
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -66,7 +66,10 @@ function Herosection({ nameSectionRef }) {
 
   const handleWriteReviewClick = () => {
     if (nameSectionRef.current) {
-      const elementPosition = nameSectionRef.current.getBoundingClientRect().top + window.scrollY - 100; // Adjust 10 as needed
+      const elementPosition =
+        nameSectionRef.current.getBoundingClientRect().top +
+        window.scrollY -
+        100; // Adjust 10 as needed
       window.scrollTo({
         top: elementPosition,
         behavior: "smooth",
@@ -115,8 +118,10 @@ function Herosection({ nameSectionRef }) {
             </button>
 
             <div className="space-y-2">
-              <div className="text-6xl sm:text-7xl font-bold">4.2</div>
-              <div className="text-gray-400">17 Reviews</div>
+              <div className="text-6xl sm:text-7xl font-bold">{average}</div>
+              <div className="text-gray-400 text-lg px-auto">
+                {countReviews} Reviews
+              </div>
             </div>
           </div>
 
