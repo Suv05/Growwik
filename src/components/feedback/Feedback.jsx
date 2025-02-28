@@ -1,6 +1,6 @@
 "use client";
 
-import { useState,useRef } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 
 function Feedback({ nameSectionRef }) {
   const router = useRouter();
-  
+
   const {
     register,
     handleSubmit,
@@ -24,7 +24,7 @@ function Feedback({ nameSectionRef }) {
   } = useForm({
     defaultValues: {
       isAnonymous: false,
-      role: "Brand",
+      role: "Brand Manager",
     },
   });
 
@@ -38,6 +38,8 @@ function Feedback({ nameSectionRef }) {
 
   async function onSubmit(data) {
     setLoading(true);
+    console.log(data);
+
     try {
       const { status, message } = await getFeedbacks({
         ...data,
@@ -118,18 +120,20 @@ function Feedback({ nameSectionRef }) {
                 You Are?
               </h2>
               <RadioGroup
-                defaultValue="Brand"
+                defaultValue="Brand Manager"
                 onValueChange={(value) => setValue("role", value)}
                 className="flex flex-wrap gap-4"
               >
-                {["Brand Manager", "Influencer", "Agency Manager"].map((role) => (
-                  <div key={role} className="flex items-center space-x-2">
-                    <RadioGroupItem value={role} id={role} />
-                    <Label htmlFor={role} className="text-gray-300 text-base">
-                      {role}
-                    </Label>
-                  </div>
-                ))}
+                {["Brand Manager", "Influencer", "Agency Manager"].map(
+                  (role) => (
+                    <div key={role} className="flex items-center space-x-2">
+                      <RadioGroupItem value={role} id={role} />
+                      <Label htmlFor={role} className="text-gray-300 text-base">
+                        {role}
+                      </Label>
+                    </div>
+                  )
+                )}
               </RadioGroup>
             </div>
 
@@ -215,7 +219,7 @@ function Feedback({ nameSectionRef }) {
                   >
                     <input
                       {...register("satisfaction", {
-                        // required: "Please rate your satisfaction",
+                        required: "Please rate your satisfaction",
                       })}
                       type="radio"
                       value={rating}
