@@ -176,8 +176,8 @@ function ReviewShow({ limitReviews, allReviews }) {
             What Our Clients Say
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Don&apos;t just take our word for it. Here&apos;s what our clients have to say
-            about their experience working with us.
+            Don&apos;t just take our word for it. Here&apos;s what our clients
+            have to say about their experience working with us.
           </p>
         </div>
 
@@ -186,18 +186,19 @@ function ReviewShow({ limitReviews, allReviews }) {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             initial={false}
           >
-            {displayedReviews.map((review) => (
-              <motion.div
-                key={review._id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                layout
-              >
-                <ReviewCard review={review} />
-              </motion.div>
-            ))}
+            {displayedReviews &&
+              displayedReviews.map((review) => (
+                <motion.div
+                  key={review._id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  layout
+                >
+                  <ReviewCard review={review} />
+                </motion.div>
+              ))}
           </motion.div>
         </AnimatePresence>
 
