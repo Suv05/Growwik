@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaStar } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const testimonials = [
@@ -11,8 +12,7 @@ const testimonials = [
     name: "Dala Chan",
     role: "Overseas marketing specilist",
     company: "Hollyland",
-    image:
-      "/review/1.jpg",
+    image: "/review/1.jpg",
     star: 4.8,
     quote:
       "Working with Growwik Media was a wonderful experience. Their influencer marketing campaign for our Lark M2 and M2 Max products allowed us to connect with audiences in India, the US, and Canada in a truly impactful way. The engagement levels were exceptional, and their meticulous approach truly stood out. We’re thrilled with the results and can’t wait to collaborate with them again in the future!",
@@ -22,8 +22,7 @@ const testimonials = [
     name: "Salabh Jaishwal",
     role: "founder's office",
     company: "Punch Trade",
-    image:
-      "/review/2.png",
+    image: "/review/2.png",
     star: 4.7,
     quote:
       "The Growwik team redefined our approach to meme marketing for Punch with their creativity and innovation. They seamlessly positioned our product in the market, making it feel authentic and relatable rather than overly promotional. Their efforts achieved visibility comparable to major brands like Zerodha—a truly remarkable accomplishment. Finding such a smart and impactful marketing strategy is a rare gem.",
@@ -33,8 +32,7 @@ const testimonials = [
     name: "Prabhakar Chaudhary",
     role: "Growth manager",
     company: "Flamapp AI",
-    image:
-      "/brands/FlamApp.svg",
+    image: "/brands/FlamApp.svg",
     star: 4.9,
     quote:
       "Despite operating within a tight budget and a one-day campaign window, Growwik Media exceeded our expectations for Flamapp AI. Their seamless coordination of UGC influencers with our AR newspaper ads was impressive. The campaign not only ran smoothly but also delivered excellent results, showcasing their expertise in executing high-pressure projects with remarkable finesse.",
@@ -44,8 +42,7 @@ const testimonials = [
     name: "Christina Cyr",
     role: "Founder & CEO",
     company: "dTooR",
-    image:
-      "/review/4.png",
+    image: "/review/4.png",
     star: 4.7,
     quote:
       "Partnering with Growwik Media for Cyrcle Phone’s marketing campaign was a transformative experience. They effectively leveraged influencers and organic conversations to spotlight our phone’s sustainable and modular design. Their strategic and thoughtful approach created buzz and expanded our audience reach, significantly enhancing interest in our eco-friendly product.",
@@ -55,8 +52,7 @@ const testimonials = [
     name: "Barkley",
     role: "Growth and product",
     company: "Luma AI",
-    image:
-      "/review/5.png",
+    image: "/review/5.png",
     star: 5,
     quote:
       "Collaborating with Growwik Media for our Luma AI influencer campaign marked a significant milestone for us. Their creative presentation of the drone shoot feature was so impactful that it naturally resonated with the CSK cricket team. This campaign not only boosted visibility but also positioned Luma AI as a trusted and recognized brand in the market.",
@@ -66,8 +62,7 @@ const testimonials = [
     name: "Vera Chan",
     role: "overseas marketing director",
     company: "Maono",
-    image:
-      "/brands/Maono.svg",
+    image: "/brands/Maono.svg",
     star: 4.9,
     quote:
       "Growwik Media's influencer marketing campaign for Maono was an outstanding success. Their emphasis on targeted engagement effectively drove sales while generating genuine excitement around the brand. Their strategic approach amplified our message, reaching and captivating new audiences in a meaningful way. The results were nothing short of exceptional.",
@@ -77,6 +72,7 @@ const testimonials = [
 
 export default function Review() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -163,6 +159,20 @@ export default function Review() {
           </div>
         </div>
       </div>
+      {/* Review us button */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="flex justify-center mt-12"
+      >
+        <button
+          onClick={() => router.push("/feedback")}
+          className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105 active:scale-95"
+        >
+          Review Us
+        </button>
+      </motion.div>
     </div>
   );
 }
