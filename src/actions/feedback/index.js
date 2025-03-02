@@ -122,7 +122,6 @@ export async function fetchReviews() {
 //sum of all satisfaction rating
 export async function sumOfStar() {
   try {
-    // Ensure the MongoDB connection is established
     await createConnection();
 
     const sumOfStar = await Feedback.aggregate([
@@ -134,16 +133,18 @@ export async function sumOfStar() {
       },
     ]);
 
-    if (sumOfStar) {
+    if (sumOfStar && sumOfStar.length > 0) {
       return {
         status: "success",
         message: "all stars counted",
         sumOfStar: JSON.parse(JSON.stringify(sumOfStar)),
       };
     } else {
+      // Handle the case where there are no reviews
       return {
-        status: "error",
-        message: "can't get the stars",
+        status: "success", // Or you can return "info" or another status to indicate no data
+        message: "No reviews found.",
+        sumOfStar: [{ total: 0 }], //return 0 as total
       };
     }
   } catch (err) {
@@ -164,6 +165,16 @@ export async function averageSatisfaction() {
     if (sumResult.status !== "success") {
       return sumResult; // Propagate error if sumOfStar failed
     }
+
+    // Check if sumOfStar array exists and has at least one element.
+    if (!sumResult.sumOfStar || sumResult.sumOfStar.length === 0) {
+      return {
+        status: "success",
+        message: "No reviews found. Average is 0.",
+        average: "0",
+      };
+    }
+
     const sumOfStars = sumResult.sumOfStar[0].total;
 
     // Get the total count of reviews

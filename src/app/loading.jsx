@@ -1,3 +1,4 @@
+//fall back UI when the data is loading
 function Spinner({}) {
     return (
       <>

@@ -118,9 +118,11 @@ function Herosection({ nameSectionRef, countReviews, average }) {
             </button>
 
             <div className="space-y-2">
-              <div className="text-6xl sm:text-7xl font-bold">{average}</div>
+              <div className="text-6xl sm:text-7xl font-bold">
+                {average ? average : "0.0"}
+              </div>
               <div className="text-gray-400 text-lg px-auto">
-                {countReviews} Reviews
+                {countReviews > 0 ? countReviews : "0"} Reviews
               </div>
             </div>
           </div>
