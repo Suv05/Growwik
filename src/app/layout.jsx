@@ -1,8 +1,10 @@
 import "./globals.css";
 
+import { Suspense } from "react";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { ScrollProvider } from "@/lib/ScrollContext";
+import Spinner from "./loading";
 
 export default function RootLayout({ children }) {
   return (
@@ -44,13 +46,15 @@ export default function RootLayout({ children }) {
         <title>Growwik Media - Influencer marketing Platform</title>
       </head>
       <body className="antialiased">
-        <ScrollProvider>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-        </ScrollProvider>
+        <Suspense fallback={<Spinner />}>
+          <ScrollProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+          </ScrollProvider>
+        </Suspense>
       </body>
     </html>
   );

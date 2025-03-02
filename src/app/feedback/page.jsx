@@ -7,22 +7,23 @@ import {
 } from "@/actions/feedback";
 
 async function Page({}) {
-  const { reviewsData } = await showAllReviews();
-  const { limitReviews } = await fetchReviews();
-  const { countReviews } = await countAllReviews();
-  const {average} = await averageSatisfaction();
+  const [reviewsData, limitReviews, countReviews, average] = await Promise.all([
+    showAllReviews(),
+    fetchReviews(),
+    countAllReviews(),
+    averageSatisfaction(),
+  ]);
 
   return (
     <>
       <Pageclient
-        allReviewsData={reviewsData}
-        initalReviewData={limitReviews}
-        countReviews={countReviews}
-        average={average}
+        allReviewsData={reviewsData.reviewsData}
+        initalReviewData={limitReviews.limitReviews}
+        countReviews={countReviews.countReviews}
+        average={average.average}
       />
     </>
   );
 }
 
 export default Page;
-export const dynamic = "force-dynamic";
