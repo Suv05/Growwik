@@ -2,6 +2,7 @@
 
 import createConnection from "@/db";
 import Feedback from "@/schema/feedback.model.js";
+import { revalidatePath } from "next/cache";
 
 //store reviews in db
 export async function getFeedbacks(data) {
@@ -12,6 +13,7 @@ export async function getFeedbacks(data) {
     const newFeedback = await Feedback.create(data);
 
     if (newFeedback) {
+      revalidatePath("/feedback");
       return {
         status: "success",
         message: "Feedback store successfully",
