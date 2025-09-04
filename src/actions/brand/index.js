@@ -46,7 +46,7 @@ export async function sendEmailToClient(brandData) {
     const response = await resend.emails.send({
       from: "no-reply@growwik.com",
       to: "growwikmedia@gmail.com", // or process.env.CLIENT_EMAIL
-      subject: "New Brand Query",
+      subject: "New Brand Signup",
       react: <BrandEmail brandData={brandData} />,
     });
 
