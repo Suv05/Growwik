@@ -37,7 +37,7 @@ export default function BrandEmail({ brandData }) {
             <Text><strong>Brand:</strong> {brandData.brand}</Text>
             <Text><strong>Email:</strong> {brandData.email}</Text>
             <Text><strong>Phone:</strong> {brandData.phoneNo}</Text>
-            <Text><strong>Budget:</strong> ${brandData.budget}</Text>
+            <Text><strong>Budget:</strong> {brandData.budget}</Text>
             <Text><strong>Description:</strong> {brandData.description}</Text>
           </Section>
 
