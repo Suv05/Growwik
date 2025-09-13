@@ -67,14 +67,9 @@ export default function Header() {
   };
 
   return (
-    <motion.header
-      className="fixed top-0 left-0 w-full bg-black py-2 z-50"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
-    >
+    <header className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md border-b border-white/10 py-1 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link href="/">
@@ -112,7 +107,7 @@ export default function Header() {
                     </button>
                     {item.sublinks && (
                       <div className="absolute hidden group-hover:block pt-2 -left-4">
-                        <div className="bg-black py-2 px-4 rounded shadow-lg">
+                        <div className="bg-black/90 backdrop-blur-md border border-white/20 py-2 px-4 rounded-lg shadow-2xl">
                           {item.sublinks.map((sublink) => (
                             <button
                               key={sublink.label}
@@ -291,6 +286,6 @@ export default function Header() {
           )}
         </AnimatePresence>
       </div>
-    </motion.header>
+    </header>
   );
 }
