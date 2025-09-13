@@ -96,7 +96,7 @@ const ReviewCard = ({ review }) => {
                 {review.isAnonymous ? "Anonymous" : review.name}
               </h3>
               <p className="text-xs text-gray-400 capitalize">
-                {review.role} {review.brandName ? `at ${review.brandName}` : ""}
+                {review.role} {review.brandName ? `${review.brandName}` : ""}
               </p>
             </div>
           </div>
