@@ -163,7 +163,7 @@ function ReviewShow({ limitReviews, allReviews }) {
     }
   }, []);
 
-  console.log("allReviews", allReviews);
+  //console.log("allReviews", allReviews);
 
   return (
     <div
