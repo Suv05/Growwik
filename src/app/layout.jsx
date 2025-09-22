@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           property="og:title"
-          content="Growwik Media - Influencer marketing agency"
+          content="Growwik Media - Influencer Marketing Agency"
         />
         <meta
           property="og:description"
@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
           content="https://utfs.io/f/1zJcitIgytnjq3zirxME4BmsUxrLHbkDwTaR5Q6KCfoOJIuP"
         />
 
-        <title>Growwik Media - Influencer marketing Platform</title>
+        <title>Growwik Media - Influencer Marketing Agency</title>
       </head>
       <body className="antialiased">
         <Suspense fallback={<Spinner />}>
