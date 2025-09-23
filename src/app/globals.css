@@ -5,9 +5,15 @@
 @tailwind utilities;
 
 /* Apply the font globally or to specific elements */
+
 body {
   font-family: "Noto Serif JP", serif;
 }
+
+/* body {
+  font-family: var(--font-noto-serif-jp), serif;
+} */
+
 body, html {
   background-color: #000; /* or your desired color */
 }
