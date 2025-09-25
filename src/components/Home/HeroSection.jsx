@@ -9,7 +9,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/Illusion-Background.png')",
+          backgroundImage: "url('https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/Illusion-Background.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
