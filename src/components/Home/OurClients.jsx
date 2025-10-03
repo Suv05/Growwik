@@ -18,7 +18,10 @@ const clients = [
   { name: "METASHOT", logo: "/brands/Metashot.svg" },
   { name: "MOJ", logo: "/brands/Moj.svg" },
   { name: "PUNCH TRADING", logo: "/brands/Punch-Trading.svg" },
+  { name: "HOLLYLAND", logo: "/brands/Hollyland.svg" },
   { name: "ROOTER", logo: "/brands/Rooter.svg" },
+  { name: "VOYAGE", logo: "/brands/Voyage.svg" },
+  { name: "REVLON", logo: "/brands/Revlon.svg" },
 ];
 
 // Split clients into two rows
