@@ -141,8 +141,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                No. 47, 4th Cross, 2nd Main, HSR Layout, Sector 7, Bangalore,
-                Karnataka - 560102
+                Haridwar, Uttarakhand.
               </li>
             </ul>
           </div>
