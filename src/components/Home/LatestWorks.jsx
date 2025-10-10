@@ -11,43 +11,63 @@ export default function LatestWorks() {
 
   const videos = [
     {
+      id: 9,
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/9.mp4",
+      logo: "/logos/Hollyland.svg",
+    },
+    {
+      id: 10,
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/10.mp4",
+      logo: "/logos/Hollyland.svg",
+    },
+    {
+      id: 11,
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/11.mp4",
+      logo: "/logos/Voyage.svg",
+    },
+    {
+      id: 12,
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/12.mp4",
+      logo: "/logos/Revlon.svg",
+    },
+    {
       id: 1,
-      src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/1.mp4?alt=media&token=86e643a5-fdbf-489c-9375-45bdd7798b00",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/1.mp4",
       logo: "/logos/Maono.svg",
     },
     {
       id: 2,
-      src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/2.mp4?alt=media&token=b2fe76d9-b5bc-4cdf-8824-aa5b1a95b6cb",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/2.mp4",
       logo: "/logos/FlamApp.svg",
     },
     {
       id: 3,
-      src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/3.mp4?alt=media&token=320a5e8f-c7a9-4819-ab34-602c3748f169",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/3.mp4",
       logo: "/logos/Hangout-Hub.svg",
     },
     {
       id: 4,
-      src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/4.mp4?alt=media&token=e1e377a5-dc47-41e8-87eb-de6ed80c6cba",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/4.mp4",
       logo: "/logos/Punch-Trading.svg",
     },
     {
       id: 5,
-      src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/5.mp4?alt=media&token=37c265ad-7214-4998-bbc1-4d5034d11e0d",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/5.mp4",
       logo: "/logos/Luma-AI.svg",
     },
     {
       id: 6,
-      src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/6.mp4?alt=media&token=e68baaa3-b407-45f6-bc51-890e9c7b0a42",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/6.mp4",
       logo: "/logos/Maono.svg",
     },
     {
       id: 7,
-      src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/7.mp4?alt=media&token=ba0ce644-149c-4bc9-9edf-64422ac99a14",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/7.mp4",
       logo: "/logos/Maono.svg",
     },
     {
       id: 8,
-      src: "https://firebasestorage.googleapis.com/v0/b/jobsco-05.appspot.com/o/8.mp4?alt=media&token=c6cd4039-6dba-4c9a-8868-6f4290b4fed8",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/8.mp4",
       logo: "/logos/Maono.svg",
     },
   ];
