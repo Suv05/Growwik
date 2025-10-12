@@ -11,63 +11,65 @@ export default function LatestWorks() {
 
   const videos = [
     {
-      id: 9,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/9.mp4",
-      logo: "/logos/Hollyland.svg",
-    },
-    {
-      id: 10,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/10.mp4",
-      logo: "/logos/Hollyland.svg",
-    },
-    {
-      id: 11,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/11.mp4",
-      logo: "/logos/Voyage.svg",
-    },
-    {
-      id: 12,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/12.mp4",
-      logo: "/logos/Revlon.svg",
-    },
-    {
       id: 1,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/1.mp4",
-      logo: "/logos/Maono.svg",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/9New.mp4",
+      logo: "/logos/Hollyland.svg",
     },
     {
       id: 2,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/2.mp4",
-      logo: "/logos/FlamApp.svg",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/11New.mp4",
+      logo: "/logos/Voyage.svg",
     },
     {
       id: 3,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/3.mp4",
-      logo: "/logos/Hangout-Hub.svg",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/7-converted.mp4",
+      logo: "/logos/Maono.svg",
     },
     {
       id: 4,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/4.mp4",
-      logo: "/logos/Punch-Trading.svg",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/10New.mp4",
+      logo: "/logos/Hollyland.svg",
     },
     {
       id: 5,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/5.mp4",
-      logo: "/logos/Luma-AI.svg",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/12New.mp4",
+      logo: "/logos/Revlon.png",
     },
     {
       id: 6,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/6.mp4",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/1-converted.mp4",
       logo: "/logos/Maono.svg",
     },
     {
       id: 7,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/7.mp4",
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/2-converted.mp4",
+      logo: "/logos/FlamApp.svg",
+    },
+
+    {
+      id: 8,
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/3-converted.mp4",
+      logo: "/logos/Hangout-Hub.svg",
+    },
+    {
+      id: 9,
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/6-converted.mp4",
       logo: "/logos/Maono.svg",
     },
     {
-      id: 8,
-      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/8.mp4",
+      id: 10,
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/4-converted.mp4",
+      logo: "/logos/Punch-Trading.svg",
+    },
+    {
+      id: 11,
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/5-converted.mp4",
+      logo: "/logos/Luma-AI.svg",
+    },
+
+    {
+      id: 12,
+      src: "https://9mz6bxf3klptyi9o.public.blob.vercel-storage.com/videos/8-converted.mp4",
       logo: "/logos/Maono.svg",
     },
   ];
