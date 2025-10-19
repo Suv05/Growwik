@@ -8,46 +8,46 @@ function ServicePage() {
 
   const services = [
     {
-      title: "Influencer Marketing",
+      title: "Influencer Campaign Management",
       defaultImg: "/service/influencer.jpg",
       activeColor: "bg-gradient-to-r from-purple-500 to-pink-500",
       description:
-        "Leverage influencers to reach your target audience. Connect with those who resonate with your brand to amplify your message.",
+        "We handle everything from planning to execution so your campaigns run smoothly and deliver the impact you’re looking for.",
     },
     {
-      title: "Meme Marketing",
+      title: "Meme & UGC marketing",
       defaultImg: "/service/meme-marketing.jpg",
       activeColor: "bg-gradient-to-r from-yellow-400 to-orange-500",
       description:
-        "Utilize viral memes to create engaging content, capturing attention and enhancing your brand's visibility.",
+        "We create content that feels natural — memes, reels, and user videos that make people engage without feeling like ads.",
     },
     {
       title: "Content Creation",
       defaultImg: "/service/content-creation.jpg",
       activeColor: "bg-gradient-to-r from-blue-500 to-indigo-500",
       description:
-        "High-quality content tailored to your brand's voice, including videos, graphics, blogs, and more.",
+        "We design creative campaign ideas that stand out, from unique collaboration concepts to storytelling formats tailored to your brand.",
     },
     {
-      title: "Social Media Management",
-      defaultImg: "/service/social-media.jpg",
+      title: "Influencer Discovery & Outreach",
+      defaultImg: "/service/influ_dis.webp",
       activeColor: "bg-gradient-to-r from-red-500 to-pink-500",
       description:
-        "Manage your social presence, grow your online footprint, and foster customer relationships through strategic planning.",
+        "We actively scout and connect you with the right creators, whether it’s through paid collaborations or barter partnerships.",
     },
     {
-      title: "Performance Marketing",
-      defaultImg: "/service/performance.jpg",
+      title: "Brand Ambassador Program",
+      defaultImg: "/service/BRAND-AMBASSADOR-1.png",
       activeColor: "bg-gradient-to-r from-teal-400 to-green-400",
       description:
-        "Drive results with performance marketing strategies, optimizing campaigns for maximum ROI.",
+        "We build long term influencer partnerships that grow into genuine brand advocacy and trust.",
     },
     {
-      title: "SEO",
-      defaultImg: "/service/seo.jpg",
+      title: "Campaign Analytics & Reporting",
+      defaultImg: "/service/campagin-analytics.webp",
       activeColor: "bg-gradient-to-r from-cyan-500 to-blue-500",
       description:
-        "Boost your site's visibility on search engines, enhancing organic traffic with expert SEO techniques.",
+        "We track real results with clear reporting so you know exactly how your brand performed and where it grew.",
     },
   ];
 
