@@ -91,8 +91,10 @@ function ServicePage() {
                     fill
                     className="object-cover rounded-3xl"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <h3 className="text-xl font-bold">{service.title}</h3>
+                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-4">
+                    <h3 className="text-xl font-bold leading-snug">
+                      {service.title}
+                    </h3>
                   </div>
                 </div>
 
