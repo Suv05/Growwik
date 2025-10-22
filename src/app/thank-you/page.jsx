@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
@@ -34,12 +34,15 @@ export default function ThankYouPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-[#FFB200]">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-[#FFB200] relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black via-black to-transparent pointer-events-none z-10 shadow-2xl" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black via-black to-transparent pointer-events-none z-10 shadow-2xl" />
+
       <motion.div
         initial="hidden"
         animate={controls}
         variants={containerVariants}
-        className="max-w-3xl w-full px-6 py-12 bg-black bg-opacity-80 rounded-2xl shadow-2xl border border-[#FFB200]"
+        className="max-w-3xl w-full px-6 py-12 bg-black bg-opacity-80 rounded-2xl shadow-2xl border border-[#FFB200] relative z-20"
       >
         <motion.div
           variants={itemVariants}
