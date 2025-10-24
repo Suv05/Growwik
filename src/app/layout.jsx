@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           property="og:image"
-          content="https://growwik.com/growwik-preview-img.png"
+          content="https://growwik.com/whatsapp-preview-image.webp"
         />
         <meta property="og:url" content="https://growwik.com" />
 
