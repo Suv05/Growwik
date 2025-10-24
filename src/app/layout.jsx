@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           name="twitter:image"
-          content="https://growwik.com/growwik-preview-twitter-img.png"
+          content="https://growwik.com/growwik-twitter-preview.png"
         />
 
         {/* Favicon + Logo */}
